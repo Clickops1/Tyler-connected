@@ -1,0 +1,286 @@
+/*
+  The Great Unknown Liquidation: brand layer on top of Dawn.
+  Source: TGU brand guidelines v1.0 (Nov 2026). Colors, type, buttons, badges, cards, motifs.
+  Color schemes themselves live in config/settings_data.json:
+    scheme-1 cream · scheme-2 forest · scheme-3 forest deep · scheme-4 sand · scheme-5 white (product media)
+*/
+
+:root {
+  --tgu-forest: #262a1b;
+  --tgu-forest-deep: #15180e;
+  --tgu-olive: #34351a;
+  --tgu-sand: #d7b18d;
+  --tgu-sand-light: #efd9bf;
+  --tgu-sand-deep: #a9845f;
+  --tgu-cream: #f7efe4;
+  --tgu-error: #b4533c;
+  --tgu-shadow-card: 0 10px 30px rgba(21, 24, 14, 0.28);
+  --tgu-radius-plate: 22px;
+  --tgu-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+
+  --font-heading-family: 'Antonio', 'Arial Narrow', sans-serif;
+  --font-heading-weight: 700;
+  --font-heading-style: normal;
+}
+
+/* ---------- Type ---------- */
+h1, h2, h3, .h0, .h1, .h2, .h3, .tgu-display {
+  font-family: var(--font-heading-family);
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+}
+h1, .h1 { line-height: 0.95; }
+h2, .h2 { line-height: 1; }
+h3, .h3 { font-weight: 600; line-height: 1.1; letter-spacing: 0.02em; }
+.h0 { line-height: 0.92; }
+
+/* Small headings (card titles, product meta) stay in Montserrat so prices and names read cleanly */
+h4, h5, .h4, .h5, .card__heading, .card__heading.h5 {
+  font-family: var(--font-body-family);
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 600;
+}
+
+.tgu-eyebrow,
+.caption-with-letter-spacing {
+  font-family: var(--font-body-family);
+  font-weight: 600;
+  font-size: 1.3rem;
+  line-height: 1;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.tgu-tagline {
+  font-family: var(--font-body-family);
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(2rem, 2.4vw, 2.8rem);
+  line-height: 1.3;
+}
+
+/* ---------- Buttons ---------- */
+.button,
+.shopify-challenge__button,
+.customer button {
+  font-family: var(--font-body-family);
+  font-weight: 600;
+  font-size: 1.4rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0 2.8rem;
+  transition: background-color 0.2s var(--tgu-ease), color 0.2s var(--tgu-ease);
+}
+
+.color-scheme-2 .button:not(.button--secondary):not(.button--tertiary):hover,
+.color-scheme-3 .button:not(.button--secondary):not(.button--tertiary):hover,
+.tgu-btn--primary:hover {
+  --color-button: 239, 217, 191; /* sand-light */
+}
+
+/* Ghost button: 1.5px sand outline, 12% sand fill on hover */
+.button--secondary {
+  --border-opacity: 1;
+}
+.color-scheme-2 .button--secondary:hover,
+.color-scheme-3 .button--secondary:hover {
+  background-color: rgba(215, 177, 141, 0.12);
+}
+
+.button:focus-visible,
+a:focus-visible,
+.link:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--tgu-sand-light);
+  outline-offset: 3px;
+  box-shadow: none;
+}
+
+.button:disabled,
+.button[aria-disabled='true'] {
+  opacity: 0.4;
+}
+
+/* ---------- Links ---------- */
+.color-scheme-2 .rte a,
+.color-scheme-3 .rte a {
+  color: var(--tgu-sand-light);
+  text-underline-offset: 4px;
+}
+.color-scheme-2 .rte a:hover,
+.color-scheme-3 .rte a:hover {
+  color: var(--tgu-cream);
+}
+
+/* ---------- Badges ---------- */
+.badge {
+  font-family: var(--font-body-family);
+  font-weight: 600;
+  font-size: 1.1rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+}
+
+.tgu-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+.card__badge .tgu-badges { flex-direction: column; align-items: flex-start; }
+
+.tgu-badge--condition {
+  background: var(--tgu-forest);
+  color: var(--tgu-sand);
+  border: 1px solid rgba(215, 177, 141, 0.55);
+}
+.tgu-badge--deal {
+  background: var(--tgu-sand);
+  color: var(--tgu-forest);
+  border: 1px solid var(--tgu-sand);
+}
+
+.product__info-container .tgu-badges { margin: 0 0 1.2rem; }
+
+/* ---------- Cards / plates ---------- */
+.tgu-plate {
+  background: var(--tgu-forest);
+  color: var(--tgu-cream);
+  border: 1.5px solid rgba(215, 177, 141, 0.55);
+  border-radius: var(--tgu-radius-plate);
+  box-shadow: var(--tgu-shadow-card);
+  transition: transform 0.35s var(--tgu-ease), border-color 0.35s var(--tgu-ease);
+}
+a.tgu-plate:hover,
+.tgu-plate--link:hover {
+  transform: translateY(-4px);
+  border-color: var(--tgu-sand);
+}
+
+.card-wrapper .card--card,
+.card-wrapper .card--standard .card__inner {
+  transition: transform 0.35s var(--tgu-ease);
+}
+.card-wrapper:hover .card--card {
+  transform: translateY(-4px);
+}
+
+/* ---------- Forms ---------- */
+.field__input,
+.select__select,
+.customer .field input,
+.localization-form__select {
+  font-family: var(--font-body-family);
+}
+.field:after,
+.select:after,
+.customer .field:after {
+  box-shadow: 0 0 0 1.5px var(--tgu-sand-deep);
+}
+.field__input:focus,
+.field__input:focus-visible {
+  box-shadow: 0 0 0 2px var(--tgu-sand);
+}
+.form__message,
+.form-status-list .form__message,
+.field__input[aria-invalid='true'] + .field__label {
+  color: var(--tgu-error);
+}
+.color-scheme-2 .form__message,
+.color-scheme-3 .form__message {
+  color: var(--tgu-sand-light);
+}
+
+/* ---------- Motifs ---------- */
+/* Topographic contours at ~10% opacity on forest */
+.tgu-contours {
+  position: relative;
+  isolation: isolate;
+}
+.tgu-contours::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.1;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400' fill='none' stroke='%23D7B18D' stroke-width='1.5'%3E%3Cpath d='M-20 320 C 80 260 160 300 240 250 S 400 170 480 210 S 600 180 640 150'/%3E%3Cpath d='M-20 280 C 70 220 170 260 250 210 S 390 130 470 170 S 600 140 640 110'/%3E%3Cpath d='M-20 240 C 90 180 160 220 260 170 S 380 90 460 130 S 590 100 640 70'/%3E%3Cpath d='M-20 360 C 100 300 180 340 260 300 S 420 220 500 250 S 600 230 640 200'/%3E%3Cpath d='M-20 200 C 80 150 170 180 270 130 S 390 50 450 90 S 580 60 640 30'/%3E%3Cellipse cx='470' cy='300' rx='60' ry='26'/%3E%3Cellipse cx='470' cy='300' rx='34' ry='13'/%3E%3Cellipse cx='120' cy='90' rx='70' ry='30'/%3E%3Cellipse cx='120' cy='90' rx='40' ry='15'/%3E%3C/svg%3E");
+  background-size: 600px 400px;
+}
+
+/* Ridge divider */
+.tgu-ridge {
+  display: block;
+  width: 100%;
+  max-width: 22rem;
+  height: auto;
+  color: var(--tgu-sand);
+  margin: 0 auto;
+}
+
+/* Monoline icons: stroke currentColor, 4.2 on a 100 grid, round caps/joins */
+.tgu-icon {
+  width: 5.6rem;
+  height: 5.6rem;
+  color: var(--tgu-sand);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 4.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.tgu-icon path,
+.tgu-icon circle,
+.tgu-icon rect,
+.tgu-icon polyline,
+.tgu-icon line {
+  stroke-dasharray: 400;
+  stroke-dashoffset: 0;
+}
+.scroll-trigger.animate--slide-in .tgu-icon path,
+.tgu-icon--draw path {
+  animation: tgu-draw 0.6s var(--tgu-ease) both;
+}
+@keyframes tgu-draw {
+  from { stroke-dashoffset: 400; }
+  to { stroke-dashoffset: 0; }
+}
+
+/* ---------- Header ---------- */
+.header-wrapper {
+  border-bottom-color: rgba(215, 177, 141, 0.25);
+}
+.header__heading-logo {
+  min-height: 40px;
+  object-fit: contain;
+}
+.header__heading-link .h2 {
+  font-size: 2.2rem;
+}
+
+/* ---------- Footer ---------- */
+.footer .footer-block__heading {
+  font-family: var(--font-heading-family);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--tgu-sand);
+}
+
+/* ---------- Motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .tgu-plate,
+  .card-wrapper .card--card,
+  .tgu-icon path {
+    transition: none !important;
+    animation: none !important;
+  }
+  a.tgu-plate:hover,
+  .card-wrapper:hover .card--card {
+    transform: none;
+  }
+}
+
+.tgu-header-mark { width: 80px; }
+.tgu-header-mark img { height: 42px; width: auto; }

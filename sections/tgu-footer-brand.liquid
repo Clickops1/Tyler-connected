@@ -1,0 +1,68 @@
+{%- style -%}
+  .tgu-footer-brand {
+    padding: 64px 24px 16px;
+    text-align: center;
+  }
+  .tgu-footer-brand__logo {
+    width: 280px; /* brand minimum for the full lockup */
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+  }
+  .tgu-footer-brand__line {
+    margin: 2.4rem auto 0;
+    max-width: 48rem;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 1.9rem;
+    line-height: 1.4;
+    color: var(--tgu-cream);
+  }
+{%- endstyle -%}
+
+<div class="tgu-footer-brand color-{{ section.settings.color_scheme }} gradient">
+  <a href="{{ routes.root_url }}">
+    <img
+      class="tgu-footer-brand__logo"
+      src="{{ 'tgu-logo-sand.png' | asset_url }}"
+      width="1672"
+      height="1086"
+      alt="{{ shop.name | escape }}"
+      loading="lazy"
+    >
+  </a>
+  {%- if section.settings.line != blank -%}
+    <p class="tgu-footer-brand__line">{{ section.settings.line | escape }}</p>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "TGU footer logo",
+  "tag": "div",
+  "class": "section",
+  "enabled_on": {
+    "groups": ["footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "line",
+      "label": "Line under logo",
+      "default": "From Our Family to Yours: Honest Deals, Lasting Impact."
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-3"
+    }
+  ],
+  "presets": [
+    {
+      "name": "TGU footer logo"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,164 @@
+{
+  "sections": {
+    "hero": {
+      "type": "tgu-hero",
+      "settings": {
+        "eyebrow": "Family-owned liquidation \u00b7 Franklin, WI",
+        "heading": "Every aisle is new ground.",
+        "tagline": "Renovation gear. Liquidation prices.",
+        "button_label_1": "See the latest finds",
+        "button_link_1": "shopify://collections/all",
+        "button_label_2": "Book a visit",
+        "button_link_2": "",
+        "show_logo": true,
+        "color_scheme": "scheme-2",
+        "padding_top": 128,
+        "padding_bottom": 128
+      }
+    },
+    "categories": {
+      "type": "tgu-category-plates",
+      "settings": {
+        "eyebrow": "What we carry",
+        "heading": "Overstock and returns, all over the map.",
+        "text": "<p>Renovation gear for DIYers and contractors, plus furniture, electronics, watches and home goods.</p>",
+        "color_scheme": "scheme-1",
+        "padding_top": 96,
+        "padding_bottom": 48
+      },
+      "blocks": {
+        "reno": {
+          "type": "plate",
+          "settings": {
+            "icon": "tools",
+            "title": "Renovation & tools",
+            "caption": "Tile, fixtures, flooring and tools for DIYers and contractors.",
+            "collection": "",
+            "link": "",
+            "cta": "Shop"
+          }
+        },
+        "furniture": {
+          "type": "plate",
+          "settings": {
+            "icon": "sofa",
+            "title": "Furniture",
+            "caption": "Recliners, tables, dressers and more.",
+            "collection": "",
+            "link": "",
+            "cta": "Shop"
+          }
+        },
+        "electronics": {
+          "type": "plate",
+          "settings": {
+            "icon": "electronics",
+            "title": "Electronics & watches",
+            "caption": "TVs, gadgets, smartwatches and accessories.",
+            "collection": "",
+            "link": "",
+            "cta": "Shop"
+          }
+        },
+        "home": {
+          "type": "plate",
+          "settings": {
+            "icon": "home",
+            "title": "Home goods",
+            "caption": "Kitchen, decor and everyday household finds.",
+            "collection": "",
+            "link": "",
+            "cta": "Shop"
+          }
+        }
+      },
+      "block_order": [
+        "reno",
+        "furniture",
+        "electronics",
+        "home"
+      ]
+    },
+    "latest": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "What's on the shelves this week",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "all",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-1",
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "swipe_on_mobile": true,
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "standard",
+        "columns_mobile": "2",
+        "padding_top": 48,
+        "padding_bottom": 96
+      }
+    },
+    "mystery": {
+      "type": "tgu-mystery-teaser",
+      "settings": {
+        "badge": "Coming soon",
+        "heading": "Mystery boxes.",
+        "text": "<p>We're not announcing them yet. (They're coming.)</p>",
+        "show_signup": true,
+        "button_label": "Get mystery box updates",
+        "success_message": "You're on the list. We'll tell you the moment they drop.",
+        "follow_label": "Follow the finds on TikTok",
+        "color_scheme": "scheme-2",
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
+    },
+    "story": {
+      "type": "tgu-story",
+      "settings": {
+        "eyebrow": "Our story",
+        "heading": "From our family to yours.",
+        "text": "<p>The Great Unknown Liquidation is a family business in Franklin, Wisconsin, run by Tyler and Kylee Rude. We buy overstock, shelf pulls and returns, and pass the savings on to you.</p><p>Honest deals on the stuff you need, and plenty you didn't know you needed.</p>",
+        "signature": "Tyler & Kylee",
+        "button_label": "Read our story",
+        "button_link": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
+    },
+    "visit": {
+      "type": "tgu-visit",
+      "settings": {
+        "eyebrow": "Visit the store",
+        "heading": "Come take a look.",
+        "address": "9924 S Monarch Dr\nFranklin, WI 53132",
+        "hours": "Showroom open by appointment",
+        "phone": "",
+        "button_label": "Book a visit",
+        "button_link": "",
+        "show_map": true,
+        "color_scheme": "scheme-4",
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "categories",
+    "latest",
+    "mystery",
+    "story",
+    "visit"
+  ]
+}

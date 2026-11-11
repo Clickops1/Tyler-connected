@@ -1,0 +1,184 @@
+{{ 'tgu-sections.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  #shopify-section-{{ section.id }} .tgu-section {
+    --tgu-pt: {{ section.settings.padding_top | times: 0.67 | round }}px;
+    --tgu-pb: {{ section.settings.padding_bottom | times: 0.67 | round }}px;
+    --tgu-pt-d: {{ section.settings.padding_top }}px;
+    --tgu-pb-d: {{ section.settings.padding_bottom }}px;
+  }
+{%- endstyle -%}
+
+{%- liquid
+  assign address_query = section.settings.address | strip_newlines | url_encode
+  assign phone_digits = section.settings.phone | remove: ' ' | remove: '(' | remove: ')' | remove: '-' | remove: '.'
+-%}
+
+<section class="tgu-visit tgu-section color-{{ section.settings.color_scheme }} gradient" id="visit">
+  <div class="tgu-inner">
+    <div class="tgu-visit__grid{% if section.settings.show_map and section.settings.address != blank %} tgu-visit__grid--has-map{% endif %}">
+      <div class="tgu-visit__copy">
+        {%- if section.settings.eyebrow != blank -%}
+          <span class="tgu-eyebrow">{{ section.settings.eyebrow | escape }}</span>
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 class="tgu-h2 tgu-heading">{{ section.settings.heading | escape }}</h2>
+        {%- endif -%}
+
+        <ul class="tgu-visit__list" role="list">
+          {%- if section.settings.address != blank -%}
+            <li class="tgu-visit__item">
+              {% render 'tgu-icon', icon: 'pin' %}
+              <div>
+                <span class="tgu-visit__label">Address</span>
+                <a href="https://www.google.com/maps/search/?api=1&query={{ address_query }}" target="_blank" rel="noopener">
+                  {{- section.settings.address | escape | newline_to_br -}}
+                </a>
+              </div>
+            </li>
+          {%- endif -%}
+          {%- if section.settings.hours != blank -%}
+            <li class="tgu-visit__item">
+              {% render 'tgu-icon', icon: 'calendar' %}
+              <div>
+                <span class="tgu-visit__label">Hours</span>
+                {{ section.settings.hours | escape | newline_to_br }}
+              </div>
+            </li>
+          {%- endif -%}
+          {%- if section.settings.phone != blank -%}
+            <li class="tgu-visit__item">
+              {% render 'tgu-icon', icon: 'phone' %}
+              <div>
+                <span class="tgu-visit__label">Call or text</span>
+                <a href="tel:{{ phone_digits }}">{{ section.settings.phone | escape }}</a>
+              </div>
+            </li>
+          {%- endif -%}
+        </ul>
+
+        <div class="tgu-buttons">
+          {%- if section.settings.button_label != blank -%}
+            {%- if section.settings.button_link != blank -%}
+              <a class="button" href="{{ section.settings.button_link }}">{{ section.settings.button_label | escape }}</a>
+            {%- elsif section.settings.phone != blank -%}
+              <a class="button" href="tel:{{ phone_digits }}">{{ section.settings.button_label | escape }}</a>
+            {%- endif -%}
+          {%- endif -%}
+          {%- if section.settings.address != blank -%}
+            <a
+              class="button button--secondary"
+              href="https://www.google.com/maps/dir/?api=1&destination={{ address_query }}"
+              target="_blank"
+              rel="noopener"
+            >
+              Get directions
+            </a>
+          {%- endif -%}
+        </div>
+      </div>
+
+      {%- if section.settings.show_map and section.settings.address != blank -%}
+        <div class="tgu-visit__map">
+          <iframe
+            title="Map to {{ shop.name | escape }}"
+            src="https://maps.google.com/maps?q={{ address_query }}&z=14&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "TGU visit",
+  "tag": "div",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Visit the store"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Come take a look."
+    },
+    {
+      "type": "textarea",
+      "id": "address",
+      "label": "Address",
+      "default": "9924 S Monarch Dr\nFranklin, WI 53132"
+    },
+    {
+      "type": "textarea",
+      "id": "hours",
+      "label": "Hours",
+      "default": "Showroom open by appointment",
+      "info": "Confirm with Tyler before launch."
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "label": "Phone",
+      "info": "Leave blank to hide. Add the real number before launch."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Booking button label",
+      "default": "Book a visit",
+      "info": "Links to the booking link below, or calls the phone number if no link is set. Hidden if neither is set."
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Booking link",
+      "info": "e.g. your Contact page or a booking app."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_map",
+      "label": "Show map",
+      "default": true
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-4"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 160,
+      "step": 8,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 96
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 160,
+      "step": 8,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 96
+    }
+  ],
+  "presets": [
+    {
+      "name": "TGU visit"
+    }
+  ]
+}
+{% endschema %}

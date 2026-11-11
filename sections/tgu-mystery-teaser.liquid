@@ -1,0 +1,191 @@
+{{ 'tgu-sections.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  #shopify-section-{{ section.id }} .tgu-section {
+    --tgu-pt: {{ section.settings.padding_top | times: 0.67 | round }}px;
+    --tgu-pb: {{ section.settings.padding_bottom | times: 0.67 | round }}px;
+    --tgu-pt-d: {{ section.settings.padding_top }}px;
+    --tgu-pb-d: {{ section.settings.padding_bottom }}px;
+  }
+{%- endstyle -%}
+
+<section class="tgu-teaser tgu-section tgu-contours color-{{ section.settings.color_scheme }} gradient" id="mystery-boxes">
+  <div class="tgu-inner">
+    <div class="tgu-teaser__grid">
+      <div class="tgu-teaser__art">
+        {%- if section.settings.image != blank -%}
+          {{
+            section.settings.image
+            | image_url: width: 900
+            | image_tag: widths: '440, 660, 880', sizes: '(min-width: 1024px) 440px, 90vw', loading: 'lazy'
+          }}
+        {%- else -%}
+          <img
+            src="{{ 'tgu-mystery-box-closed.png' | asset_url }}"
+            width="800"
+            height="795"
+            alt="A kraft-paper mystery box tied with twine"
+            loading="lazy"
+          >
+        {%- endif -%}
+      </div>
+
+      <div class="tgu-teaser__copy">
+        {%- if section.settings.badge != blank -%}
+          <span class="badge tgu-badge--deal tgu-teaser__badge">{{ section.settings.badge | escape }}</span>
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 class="tgu-h2 tgu-heading">{{ section.settings.heading | escape }}</h2>
+        {%- endif -%}
+        {%- if section.settings.text != blank -%}
+          <div class="tgu-body-l tgu-teaser__text">{{ section.settings.text }}</div>
+        {%- endif -%}
+
+        {%- if section.settings.show_signup -%}
+          {%- form 'customer', id: 'TguMysterySignup', class: 'tgu-teaser__form-wrapper' -%}
+            <input type="hidden" name="contact[tags]" value="newsletter,mystery-box">
+            {%- if form.posted_successfully? -%}
+              <p class="form__message tgu-teaser__note" tabindex="-1" autofocus>
+                {{ section.settings.success_message | escape }}
+              </p>
+            {%- else -%}
+              <div class="tgu-teaser__form">
+                <div class="field">
+                  <input
+                    id="TguMysteryEmail-{{ section.id }}"
+                    type="email"
+                    name="contact[email]"
+                    class="field__input"
+                    value="{{ form.email }}"
+                    aria-required="true"
+                    autocorrect="off"
+                    autocapitalize="off"
+                    autocomplete="email"
+                    {% if form.errors %}
+                      autofocus
+                      aria-invalid="true"
+                      aria-describedby="TguMysteryError-{{ section.id }}"
+                    {% endif %}
+                    placeholder="{{ 'newsletter.label' | t }}"
+                    required
+                  >
+                  <label class="field__label" for="TguMysteryEmail-{{ section.id }}">
+                    {{ 'newsletter.label' | t }}
+                  </label>
+                </div>
+                <button type="submit" class="button" name="commit">
+                  {{- section.settings.button_label | escape -}}
+                </button>
+              </div>
+              {%- if form.errors -%}
+                <p class="form__message tgu-teaser__note" id="TguMysteryError-{{ section.id }}">
+                  {{- form.errors.translated_fields.email | capitalize }}
+                  {{ form.errors.messages.email -}}
+                </p>
+              {%- endif -%}
+            {%- endif -%}
+          {%- endform -%}
+        {%- endif -%}
+
+        {%- if section.settings.follow_label != blank and settings.social_tiktok_link != blank -%}
+          <div class="tgu-teaser__follow">
+            <a class="button button--secondary" href="{{ settings.social_tiktok_link }}" target="_blank" rel="noopener">
+              {{- section.settings.follow_label | escape -}}
+            </a>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "TGU mystery box teaser",
+  "tag": "div",
+  "class": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Box image (optional)",
+      "info": "Swap in a photo of the real box once it exists. The bundled art is a campaign prop for the teaser only."
+    },
+    {
+      "type": "text",
+      "id": "badge",
+      "label": "Badge",
+      "default": "Coming soon"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Mystery boxes."
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>We're not announcing them yet. (They're coming.)</p>"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_signup",
+      "label": "Show email sign-up",
+      "default": true,
+      "info": "Sign-ups are saved as customers tagged \"mystery-box\"."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Sign-up button",
+      "default": "Get mystery box updates"
+    },
+    {
+      "type": "text",
+      "id": "success_message",
+      "label": "Success message",
+      "default": "You're on the list. We'll tell you the moment they drop."
+    },
+    {
+      "type": "text",
+      "id": "follow_label",
+      "label": "TikTok button",
+      "default": "Follow the finds on TikTok",
+      "info": "Uses the TikTok link in Theme settings > Social media."
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-2"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 160,
+      "step": 8,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 96
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 160,
+      "step": 8,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 96
+    }
+  ],
+  "presets": [
+    {
+      "name": "TGU mystery box teaser"
+    }
+  ]
+}
+{% endschema %}

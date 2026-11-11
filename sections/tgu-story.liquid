@@ -1,0 +1,130 @@
+{{ 'tgu-sections.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  #shopify-section-{{ section.id }} .tgu-section {
+    --tgu-pt: {{ section.settings.padding_top | times: 0.67 | round }}px;
+    --tgu-pb: {{ section.settings.padding_bottom | times: 0.67 | round }}px;
+    --tgu-pt-d: {{ section.settings.padding_top }}px;
+    --tgu-pb-d: {{ section.settings.padding_bottom }}px;
+  }
+{%- endstyle -%}
+
+<section class="tgu-story tgu-section color-{{ section.settings.color_scheme }} gradient">
+  <div class="tgu-inner">
+    <div class="tgu-story__grid{% if section.settings.image != blank %} tgu-story__grid--has-image{% endif %}">
+      {%- if section.settings.image != blank -%}
+        <div class="tgu-story__media">
+          {{
+            section.settings.image
+            | image_url: width: 1200
+            | image_tag: widths: '600, 900, 1200', sizes: '(min-width: 1024px) 50vw, 100vw', loading: 'lazy'
+          }}
+        </div>
+      {%- endif -%}
+      <div class="tgu-story__copy">
+        {%- if section.settings.eyebrow != blank -%}
+          <span class="tgu-eyebrow">{{ section.settings.eyebrow | escape }}</span>
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 class="tgu-h2 tgu-heading">{{ section.settings.heading | escape }}</h2>
+        {%- endif -%}
+        {%- if section.settings.text != blank -%}
+          <div class="tgu-story__text tgu-body-l rte">{{ section.settings.text }}</div>
+        {%- endif -%}
+        {%- if section.settings.signature != blank -%}
+          <p class="tgu-story__sign">{{ section.settings.signature | escape }}</p>
+        {%- endif -%}
+        {%- if section.settings.button_label != blank and section.settings.button_link != blank -%}
+          <div class="tgu-buttons">
+            <a class="button button--secondary" href="{{ section.settings.button_link }}">
+              {{- section.settings.button_label | escape -}}
+            </a>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "TGU our story",
+  "tag": "div",
+  "class": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Photo",
+      "info": "A real photo of Tyler and Kylee or the store. No stock or AI photos."
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Our story"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "From our family to yours."
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>The Great Unknown Liquidation is a family business in Franklin, Wisconsin, run by Tyler and Kylee Rude. We buy overstock, shelf pulls and returns, and pass the savings on to you.</p><p>Honest deals on the stuff you need, and plenty you didn't know you needed.</p>"
+    },
+    {
+      "type": "text",
+      "id": "signature",
+      "label": "Signature line",
+      "default": "Tyler & Kylee"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Read our story"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link",
+      "info": "Point this at your About page. The button is hidden until a link is set."
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 160,
+      "step": 8,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 96
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 160,
+      "step": 8,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 96
+    }
+  ],
+  "presets": [
+    {
+      "name": "TGU our story"
+    }
+  ]
+}
+{% endschema %}

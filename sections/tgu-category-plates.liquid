@@ -1,0 +1,186 @@
+{{ 'tgu-sections.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  #shopify-section-{{ section.id }} .tgu-section {
+    --tgu-pt: {{ section.settings.padding_top | times: 0.67 | round }}px;
+    --tgu-pb: {{ section.settings.padding_bottom | times: 0.67 | round }}px;
+    --tgu-pt-d: {{ section.settings.padding_top }}px;
+    --tgu-pb-d: {{ section.settings.padding_bottom }}px;
+  }
+{%- endstyle -%}
+
+<section class="tgu-plates tgu-section color-{{ section.settings.color_scheme }} gradient">
+  <div class="tgu-inner">
+    <div class="tgu-plates__header">
+      {%- if section.settings.eyebrow != blank -%}
+        <span class="tgu-eyebrow">{{ section.settings.eyebrow | escape }}</span>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="tgu-h2 tgu-heading">{{ section.settings.heading | escape }}</h2>
+      {%- endif -%}
+      {%- if section.settings.text != blank -%}
+        <div class="tgu-body-l">{{ section.settings.text }}</div>
+      {%- endif -%}
+    </div>
+
+    <ul class="tgu-plates__grid" style="--tgu-cols: {{ section.blocks.size | at_most: 4 | at_least: 1 }};" role="list">
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign link = block.settings.link
+          if link == blank and block.settings.collection != blank
+            assign link = block.settings.collection.url
+          endif
+        -%}
+        <li {{ block.shopify_attributes }}>
+          {%- if link != blank -%}
+            <a class="tgu-plate tgu-plate--link" href="{{ link }}">
+          {%- else -%}
+            <div class="tgu-plate">
+          {%- endif -%}
+              {% render 'tgu-icon', icon: block.settings.icon %}
+              <h3 class="tgu-plate__title">{{ block.settings.title | escape }}</h3>
+              {%- if block.settings.caption != blank -%}
+                <p class="tgu-plate__caption">{{ block.settings.caption | escape }}</p>
+              {%- endif -%}
+              {%- if link != blank and block.settings.cta != blank -%}
+                <span class="tgu-plate__cta">{{ block.settings.cta | escape }} &rarr;</span>
+              {%- endif -%}
+          {%- if link != blank -%}
+            </a>
+          {%- else -%}
+            </div>
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "TGU category plates",
+  "tag": "div",
+  "class": "section",
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "What we carry"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Overstock and returns, all over the map."
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>Renovation gear for DIYers and contractors, plus furniture, electronics, watches and home goods.</p>"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 160,
+      "step": 8,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 96
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 160,
+      "step": 8,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 96
+    }
+  ],
+  "blocks": [
+    {
+      "type": "plate",
+      "name": "Category",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "default": "tools",
+          "options": [
+            { "value": "tools", "label": "Tools" },
+            { "value": "sofa", "label": "Furniture" },
+            { "value": "electronics", "label": "Electronics" },
+            { "value": "watch", "label": "Watch" },
+            { "value": "home", "label": "Home" },
+            { "value": "box", "label": "Box" },
+            { "value": "mountains", "label": "Mountains" },
+            { "value": "trail", "label": "Trail" }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Category"
+        },
+        {
+          "type": "text",
+          "id": "caption",
+          "label": "Caption"
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link (overrides collection)"
+        },
+        {
+          "type": "text",
+          "id": "cta",
+          "label": "Link text",
+          "default": "Shop"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "TGU category plates",
+      "blocks": [
+        {
+          "type": "plate",
+          "settings": { "icon": "tools", "title": "Renovation & tools" }
+        },
+        {
+          "type": "plate",
+          "settings": { "icon": "sofa", "title": "Furniture" }
+        },
+        {
+          "type": "plate",
+          "settings": { "icon": "electronics", "title": "Electronics & watches" }
+        },
+        {
+          "type": "plate",
+          "settings": { "icon": "home", "title": "Home goods" }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,245 @@
+/* TGU custom sections: hero, category plates, mystery teaser, story, visit. */
+
+.tgu-section {
+  padding-top: var(--tgu-pt, 64px);
+  padding-bottom: var(--tgu-pb, 64px);
+}
+@media screen and (min-width: 1024px) {
+  .tgu-section {
+    padding-top: var(--tgu-pt-d, 96px);
+    padding-bottom: var(--tgu-pb-d, 96px);
+  }
+}
+
+.tgu-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+@media screen and (min-width: 1024px) {
+  .tgu-inner { padding: 0 48px; }
+}
+
+.tgu-eyebrow { display: block; margin: 0 0 1.6rem; color: var(--tgu-sand); }
+.color-scheme-1 .tgu-eyebrow,
+.color-scheme-5 .tgu-eyebrow { color: var(--tgu-olive); }
+.color-scheme-4 .tgu-eyebrow { color: var(--tgu-forest); }
+
+.tgu-heading { margin: 0; }
+.color-scheme-2 .tgu-heading,
+.color-scheme-3 .tgu-heading { color: var(--tgu-sand); }
+
+.tgu-display {
+  font-size: clamp(5.6rem, 9vw, 11.2rem);
+  line-height: 0.92;
+  font-weight: 700;
+  margin: 0;
+}
+.tgu-h2 { font-size: clamp(3.2rem, 5vw, 5.2rem); line-height: 1; }
+
+.tgu-body-l { font-size: 1.9rem; line-height: 1.6; }
+
+.tgu-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  margin-top: 3.2rem;
+}
+
+/* ---------- Hero ---------- */
+.tgu-hero {
+  position: relative;
+  overflow: hidden;
+}
+.tgu-hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+.tgu-hero__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.tgu-hero__media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(38, 42, 27, 0.55) 0%, rgba(21, 24, 14, 0.88) 100%);
+}
+.tgu-hero__grid {
+  display: grid;
+  gap: 4.8rem;
+  align-items: center;
+}
+@media screen and (min-width: 1024px) {
+  .tgu-hero__grid { grid-template-columns: 7fr 5fr; }
+}
+.tgu-hero__tagline { margin: 2.4rem 0 0; color: var(--tgu-cream); }
+.tgu-hero__logo {
+  justify-self: center;
+  width: 100%;
+  max-width: 440px;
+  min-width: 280px;
+  padding: 2.4rem; /* clear space around the lockup */
+}
+.tgu-hero__logo img { width: 100%; height: auto; display: block; }
+@media screen and (max-width: 639px) {
+  .tgu-hero__logo { order: -1; max-width: 300px; }
+}
+
+/* ---------- Category plates ---------- */
+.tgu-plates__header { max-width: 72rem; margin-bottom: 4.8rem; }
+.tgu-plates__header p { margin: 1.6rem 0 0; }
+.tgu-plates__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 2.4rem;
+  grid-template-columns: 1fr;
+}
+@media screen and (min-width: 640px) {
+  .tgu-plates__grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media screen and (min-width: 1024px) {
+  .tgu-plates__grid { grid-template-columns: repeat(var(--tgu-cols, 4), 1fr); }
+}
+.tgu-plate {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  height: 100%;
+  padding: 3.2rem 2.8rem;
+  text-decoration: none;
+}
+.tgu-plate__title {
+  font-family: var(--font-heading-family);
+  text-transform: uppercase;
+  font-size: 2.8rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  color: var(--tgu-sand);
+  margin: 0;
+}
+.tgu-plate__caption {
+  font-size: 1.4rem;
+  line-height: 1.55;
+  color: var(--tgu-cream);
+  margin: 0;
+}
+.tgu-plate__cta {
+  margin-top: auto;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--tgu-sand-light);
+}
+
+/* ---------- Mystery teaser ---------- */
+.tgu-teaser__grid {
+  display: grid;
+  gap: 4.8rem;
+  align-items: center;
+}
+@media screen and (min-width: 1024px) {
+  .tgu-teaser__grid { grid-template-columns: 5fr 6fr; }
+}
+.tgu-teaser__art { max-width: 440px; margin: 0 auto; width: 100%; }
+.tgu-teaser__art img { width: 100%; height: auto; display: block; }
+.tgu-teaser__badge { display: inline-block; margin-bottom: 2rem; }
+.tgu-teaser__text { margin: 2rem 0 0; color: var(--tgu-cream); }
+.tgu-teaser__form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  margin-top: 3.2rem;
+  max-width: 52rem;
+}
+.tgu-teaser__form .field { flex: 1 1 24rem; margin: 0; }
+.tgu-teaser__form .field__input {
+  background: var(--tgu-cream);
+  color: var(--tgu-forest);
+  border-radius: 14px;
+}
+.tgu-teaser__form .field__label { color: rgba(38, 42, 27, 0.75); }
+.tgu-teaser__form .field:after { border-radius: 14px; }
+.tgu-teaser__note { font-size: 1.3rem; margin: 1.2rem 0 0; opacity: 0.85; }
+.tgu-teaser__follow { margin-top: 2.4rem; }
+
+/* ---------- Story ---------- */
+.tgu-story__grid {
+  display: grid;
+  gap: 4.8rem;
+  align-items: center;
+}
+@media screen and (min-width: 1024px) {
+  .tgu-story__grid--has-image { grid-template-columns: 1fr 1fr; }
+}
+.tgu-story__media img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--tgu-radius-plate);
+}
+.tgu-story__text { margin-top: 2.4rem; }
+.tgu-story__text p { margin: 0 0 1.6rem; }
+.tgu-story__sign {
+  font-family: var(--font-body-family);
+  font-weight: 300;
+  font-style: italic;
+  font-size: 2.2rem;
+  margin-top: 2.4rem;
+  color: var(--tgu-olive);
+}
+.color-scheme-2 .tgu-story__sign,
+.color-scheme-3 .tgu-story__sign { color: var(--tgu-sand); }
+
+/* ---------- Visit ---------- */
+.tgu-visit__grid {
+  display: grid;
+  gap: 4.8rem;
+  align-items: start;
+}
+@media screen and (min-width: 1024px) {
+  .tgu-visit__grid--has-map { grid-template-columns: 5fr 7fr; }
+}
+.tgu-visit__list {
+  list-style: none;
+  padding: 0;
+  margin: 3.2rem 0 0;
+  display: grid;
+  gap: 2rem;
+}
+.tgu-visit__item {
+  display: grid;
+  grid-template-columns: 4rem 1fr;
+  gap: 1.6rem;
+  align-items: start;
+  font-size: 1.7rem;
+  line-height: 1.5;
+}
+.tgu-visit__item .tgu-icon { width: 4rem; height: 4rem; }
+.color-scheme-4 .tgu-visit__item .tgu-icon,
+.color-scheme-1 .tgu-visit__item .tgu-icon { color: var(--tgu-forest); }
+.tgu-visit__label {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+.tgu-visit__map {
+  border-radius: var(--tgu-radius-plate);
+  overflow: hidden;
+  border: 1.5px solid rgba(38, 42, 27, 0.35);
+  aspect-ratio: 4 / 3;
+  background: var(--tgu-forest);
+}
+.tgu-visit__map iframe { width: 100%; height: 100%; border: 0; display: block; }
+.color-scheme-4 .tgu-visit .button:not(.button--secondary):hover {
+  --color-button: 52, 53, 26; /* olive */
+}

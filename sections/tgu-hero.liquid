@@ -1,0 +1,175 @@
+{{ 'tgu-sections.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  #shopify-section-{{ section.id }} .tgu-section {
+    --tgu-pt: {{ section.settings.padding_top | times: 0.67 | round }}px;
+    --tgu-pb: {{ section.settings.padding_bottom | times: 0.67 | round }}px;
+    --tgu-pt-d: {{ section.settings.padding_top }}px;
+    --tgu-pb-d: {{ section.settings.padding_bottom }}px;
+  }
+{%- endstyle -%}
+
+<section class="tgu-hero tgu-section color-{{ section.settings.color_scheme }} gradient{% if section.settings.image == blank %} tgu-contours{% endif %}">
+  {%- if section.settings.image != blank -%}
+    <div class="tgu-hero__media">
+      {{
+        section.settings.image
+        | image_url: width: 2400
+        | image_tag:
+          widths: '750, 1100, 1500, 1800, 2400',
+          sizes: '100vw',
+          loading: 'eager',
+          fetchpriority: 'high',
+          alt: section.settings.image.alt
+      }}
+    </div>
+  {%- endif -%}
+
+  <div class="tgu-inner">
+    <div class="tgu-hero__grid">
+      <div class="tgu-hero__copy">
+        {%- if section.settings.eyebrow != blank -%}
+          <span class="tgu-eyebrow">{{ section.settings.eyebrow | escape }}</span>
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 class="tgu-display tgu-heading">{{ section.settings.heading | escape }}</h2>
+        {%- endif -%}
+        {%- if section.settings.tagline != blank -%}
+          <p class="tgu-tagline tgu-hero__tagline">{{ section.settings.tagline | escape }}</p>
+        {%- endif -%}
+        <div class="tgu-buttons">
+          {%- if section.settings.button_label_1 != blank -%}
+            <a class="button tgu-btn--primary" href="{{ section.settings.button_link_1 | default: routes.all_products_collection_url }}">
+              {{- section.settings.button_label_1 | escape -}}
+            </a>
+          {%- endif -%}
+          {%- if section.settings.button_label_2 != blank -%}
+            <a class="button button--secondary" href="{{ section.settings.button_link_2 | default: '#visit' }}">
+              {{- section.settings.button_label_2 | escape -}}
+            </a>
+          {%- endif -%}
+        </div>
+      </div>
+
+      {%- if section.settings.show_logo -%}
+        <div class="tgu-hero__logo">
+          {%- if section.settings.logo_override != blank -%}
+            {{ section.settings.logo_override | image_url: width: 900 | image_tag: alt: shop.name, loading: 'eager' }}
+          {%- else -%}
+            <img
+              src="{{ 'tgu-logo-sand.png' | asset_url }}"
+              width="1672"
+              height="1086"
+              alt="{{ shop.name | escape }}"
+              loading="eager"
+            >
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "TGU hero",
+  "tag": "div",
+  "class": "section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Forest background with topographic contours. Add a warm store photo to place it under a forest scrim instead."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Background photo (optional)"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Family-owned liquidation · Franklin, WI"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Headline",
+      "default": "Every aisle is new ground."
+    },
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Tagline",
+      "default": "Renovation gear. Liquidation prices."
+    },
+    {
+      "type": "text",
+      "id": "button_label_1",
+      "label": "Primary button label",
+      "default": "See the latest finds"
+    },
+    {
+      "type": "url",
+      "id": "button_link_1",
+      "label": "Primary button link"
+    },
+    {
+      "type": "text",
+      "id": "button_label_2",
+      "label": "Ghost button label",
+      "default": "Book a visit"
+    },
+    {
+      "type": "url",
+      "id": "button_link_2",
+      "label": "Ghost button link",
+      "info": "Leave blank to jump to the Visit section on this page."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_logo",
+      "label": "Show full logo lockup",
+      "default": true,
+      "info": "Brand rule: the full lockup is never shown smaller than 280px wide."
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_override",
+      "label": "Replace logo file (optional)",
+      "info": "Use the sand version on forest. Defaults to the bundled sand lockup."
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-2"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 160,
+      "step": 8,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 128
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 160,
+      "step": 8,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 128
+    }
+  ],
+  "presets": [
+    {
+      "name": "TGU hero"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,65 @@
+{%- comment -%}
+  Renders liquidation badges for a product: its condition and, when there's a real retail price, how far below retail it is.
+
+  Condition comes from (first match wins):
+    1. A product metafield `custom.condition` (single-line text), or
+    2. A product tag starting with `condition:`, e.g. `condition:open-box`, `condition:as-is`, `condition:new`.
+       Dashes become spaces, so `condition:like-new` shows as "Like new".
+
+  The "% below retail" badge only appears when the product's compare-at price is set. Per the brand guidelines,
+  never invent savings: only enter a compare-at price that is the item's real retail price.
+
+  Accepts:
+  - product: {Object} Product Liquid object (required)
+  - variant: {Object} Variant to price from (optional, defaults to the selected or first available variant)
+  - show_condition: {Boolean} Default true
+  - show_deal: {Boolean} Default true
+
+  Usage:
+  {% render 'tgu-product-badges', product: product %}
+{%- endcomment -%}
+
+{%- liquid
+  assign condition = blank
+  if product.metafields.custom.condition != blank
+    assign condition = product.metafields.custom.condition.value | default: product.metafields.custom.condition
+  else
+    for tag in product.tags
+      assign tag_lower = tag | downcase
+      if tag_lower contains 'condition:'
+        assign condition = tag | split: ':' | last | strip | replace: '-', ' ' | capitalize
+        break
+      endif
+    endfor
+  endif
+
+  assign v = variant | default: product.selected_or_first_available_variant
+  assign percent_off = 0
+  if v.compare_at_price > v.price and v.compare_at_price > 0
+    assign savings = v.compare_at_price | minus: v.price | times: 100
+    assign percent_off = savings | divided_by: v.compare_at_price
+  endif
+
+  assign render_condition = false
+  if show_condition != false and condition != blank
+    assign render_condition = true
+  endif
+
+  assign render_deal = false
+  if show_deal != false and percent_off > 0 and product.available
+    assign render_deal = true
+  endif
+-%}
+
+{%- if render_condition or render_deal -%}
+  <div class="tgu-badges">
+    {%- if render_condition -%}
+      <span class="badge tgu-badge--condition">{{ condition | escape }}</span>
+    {%- endif -%}
+    {%- if render_deal -%}
+      <span class="badge tgu-badge--deal">
+        {{- 'products.product.tgu_percent_below_retail' | t: percent: percent_off -}}
+      </span>
+    {%- endif -%}
+  </div>
+{%- endif -%}
