@@ -102,3 +102,79 @@
   }
   if (!customElements.get('tgu-recently-viewed')) customElements.define('tgu-recently-viewed', TguRecentlyViewed);
 })();
+
+/* ---------- Next drop countdown ---------- */
+(() => {
+  class TguDropCountdown extends HTMLElement {
+    connectedCallback() {
+      const raw = (this.dataset.date || '').trim();
+      this.target = raw ? Date.parse(raw) : NaN;
+      if (Number.isNaN(this.target)) return; // no real date: no countdown
+      this.nums = {};
+      this.querySelectorAll('[data-unit]').forEach((el) => (this.nums[el.dataset.unit] = el));
+      this.tick();
+      this.timer = setInterval(() => this.tick(), 1000);
+    }
+    disconnectedCallback() {
+      clearInterval(this.timer);
+    }
+    setLive(live) {
+      this.querySelectorAll('[data-state-upcoming]').forEach((el) => (el.hidden = live));
+      this.querySelectorAll('[data-state-live]').forEach((el) => (el.hidden = !live));
+    }
+    tick() {
+      let s = Math.max(0, Math.floor((this.target - Date.now()) / 1000));
+      if (s === 0) {
+        this.setLive(true);
+        clearInterval(this.timer);
+        return;
+      }
+      this.setLive(false);
+      const parts = { days: Math.floor(s / 86400), hours: Math.floor((s % 86400) / 3600), minutes: Math.floor((s % 3600) / 60), seconds: s % 60 };
+      for (const [k, v] of Object.entries(parts)) {
+        const el = this.nums[k];
+        if (!el) continue;
+        const text = String(v).padStart(2, '0');
+        if (el.textContent !== text) {
+          el.textContent = text;
+          el.classList.remove('is-flipping');
+          void el.offsetWidth;
+          el.classList.add('is-flipping');
+        }
+      }
+    }
+  }
+  if (!customElements.get('tgu-drop-countdown')) customElements.define('tgu-drop-countdown', TguDropCountdown);
+})();
+
+/* ---------- Finds videos: play muted only while on screen ---------- */
+(() => {
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const init = () => {
+    const videos = document.querySelectorAll('.tgu-reel__video, .tgu-hero__video');
+    if (!videos.length || !('IntersectionObserver' in window)) return;
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((e) => {
+        const v = e.target;
+        if (e.isIntersecting && !reduce) v.play().catch(() => {});
+        else v.pause();
+      }),
+      { threshold: 0.35 }
+    );
+    videos.forEach((v) => { v.muted = true; io.observe(v); });
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+
+/* ---------- Mystery box reveal ---------- */
+(() => {
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-tgu-reveal]');
+    if (!btn) return;
+    const box = btn.closest('.tgu-teaser__art');
+    const open = box.classList.toggle('is-open');
+    btn.setAttribute('aria-pressed', open ? 'true' : 'false');
+    btn.textContent = open ? btn.dataset.closeLabel : btn.dataset.openLabel;
+  });
+})();

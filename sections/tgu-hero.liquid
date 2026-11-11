@@ -9,8 +9,15 @@
   }
 {%- endstyle -%}
 
-<section class="tgu-hero tgu-section color-{{ section.settings.color_scheme }} gradient{% if section.settings.image == blank %} tgu-contours{% endif %}">
-  {%- if section.settings.image != blank -%}
+<section class="tgu-hero tgu-section color-{{ section.settings.color_scheme }} gradient{% if section.settings.image == blank and section.settings.video == blank %} tgu-contours{% endif %}">
+  {%- if section.settings.video != blank -%}
+    <div class="tgu-hero__media">
+      {{
+        section.settings.video
+        | video_tag: autoplay: true, loop: true, muted: true, controls: false, playsinline: true, class: 'tgu-hero__video', image_size: '1600x'
+      }}
+    </div>
+  {%- elsif section.settings.image != blank -%}
     <div class="tgu-hero__media">
       {{
         section.settings.image
@@ -82,6 +89,12 @@
     {
       "type": "paragraph",
       "content": "Forest background with topographic contours. Add a warm store photo to place it under a forest scrim instead."
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Background video (optional)",
+      "info": "A short muted loop of the aisles. Shown under a forest scrim. Takes priority over the photo."
     },
     {
       "type": "image_picker",

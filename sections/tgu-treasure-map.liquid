@@ -1,0 +1,242 @@
+{{ 'tgu-sections.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  #shopify-section-{{ section.id }} .tgu-section {
+    --tgu-pt: {{ section.settings.padding_top | times: 0.67 | round }}px;
+    --tgu-pb: {{ section.settings.padding_bottom | times: 0.67 | round }}px;
+    --tgu-pt-d: {{ section.settings.padding_top }}px;
+    --tgu-pb-d: {{ section.settings.padding_bottom }}px;
+  }
+{%- endstyle -%}
+
+<section class="tgu-map tgu-section color-{{ section.settings.color_scheme }} gradient">
+  <div class="tgu-inner">
+    <div class="tgu-map__header{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+      {%- if section.settings.eyebrow != blank -%}
+        <span class="tgu-eyebrow">{{ section.settings.eyebrow | escape }}</span>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="tgu-h2 tgu-heading">{{ section.settings.heading | escape }}</h2>
+      {%- endif -%}
+      {%- if section.settings.text != blank -%}
+        <p class="tgu-map__intro">{{ section.settings.text | escape }}</p>
+      {%- endif -%}
+    </div>
+
+    <div class="tgu-map__frame{% if settings.animations_reveal_on_scroll %} scroll-trigger{% endif %}">
+      <svg class="tgu-map__art" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+        <g class="tgu-map__contours" fill="none" stroke="currentColor" stroke-width="1.4">
+          <path d="M-20 650 C 160 600 260 640 420 590 S 700 520 860 560 S 1100 520 1220 540"/>
+          <path d="M-20 610 C 140 560 270 600 430 550 S 690 470 850 510 S 1090 470 1220 490"/>
+          <path d="M-20 120 C 120 80 240 130 380 90 S 640 30 780 70 S 1060 40 1220 70"/>
+          <path d="M-20 160 C 130 120 250 170 390 130 S 650 70 790 110 S 1070 80 1220 110"/>
+          <ellipse cx="300" cy="300" rx="120" ry="52"/>
+          <ellipse cx="300" cy="300" rx="78" ry="32"/>
+          <ellipse cx="300" cy="300" rx="38" ry="14"/>
+          <ellipse cx="900" cy="470" rx="140" ry="58"/>
+          <ellipse cx="900" cy="470" rx="92" ry="36"/>
+          <ellipse cx="900" cy="470" rx="44" ry="16"/>
+          <ellipse cx="620" cy="200" rx="90" ry="34"/>
+          <ellipse cx="620" cy="200" rx="48" ry="16"/>
+        </g>
+        <g class="tgu-map__peaks" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M70 330 L130 250 L160 285 L200 220 L270 330"/>
+          <path d="M520 150 L580 70 L620 120 L660 60 L740 150"/>
+          <path d="M940 360 L1000 280 L1040 330 L1090 260 L1170 360"/>
+          <path d="M360 640 L410 580 L440 610 L480 560 L540 640"/>
+        </g>
+        <path
+          class="tgu-map__river"
+          d="M-10 560 C 80 530 120 500 168 476 S 340 300 432 280 S 620 450 720 434 S 920 230 1008 210 S 1160 150 1220 120"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="4"
+          stroke-linecap="round"
+          stroke-dasharray="2 14"
+        />
+        <g class="tgu-map__compass" transform="translate(1110 600)" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <circle r="34"/>
+          <path d="M0 -26 L8 0 L0 26 L-8 0 Z"/>
+          <path d="M-26 0 H-14 M14 0 H26"/>
+        </g>
+      </svg>
+
+      <ul class="tgu-map__spots" role="list">
+        {%- for block in section.blocks -%}
+          {%- liquid
+            assign link = block.settings.link
+            if link == blank and block.settings.collection != blank
+              assign link = block.settings.collection.url
+            endif
+          -%}
+          <li
+            class="tgu-map__spot"
+            style="--x: {{ block.settings.x }}%; --y: {{ block.settings.y }}%; --i: {{ forloop.index }};"
+            {{ block.shopify_attributes }}
+          >
+            <a class="tgu-map__pin" href="{{ link | default: routes.all_products_collection_url }}">
+              <span class="tgu-map__marker">
+                {% render 'tgu-icon', icon: block.settings.icon %}
+              </span>
+              <span class="tgu-map__name">{{ block.settings.place | escape }}</span>
+              <span class="tgu-map__card" role="presentation">
+                <span class="tgu-map__card-title">{{ block.settings.title | escape }}</span>
+                {%- if block.settings.caption != blank -%}
+                  <span class="tgu-map__card-text">{{ block.settings.caption | escape }}</span>
+                {%- endif -%}
+                <span class="tgu-map__card-cta">{{ section.settings.cta | escape }} &rarr;</span>
+              </span>
+            </a>
+          </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "TGU treasure map",
+  "tag": "div",
+  "class": "section",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "An illustrated trail map. Each block is a stop on the map linked to a collection. Move stops with the X and Y sliders."
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Choose your trail"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Where will the hunt take you?"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Intro",
+      "default": "Every aisle is new ground. Pick a stop and see what's on the shelves."
+    },
+    {
+      "type": "text",
+      "id": "cta",
+      "label": "Card link text",
+      "default": "Explore"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-2"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 160,
+      "step": 8,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 96
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 160,
+      "step": 8,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 96
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stop",
+      "name": "Map stop",
+      "settings": [
+        {
+          "type": "text",
+          "id": "place",
+          "label": "Place name",
+          "default": "Renovation Ridge"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Card title",
+          "default": "Renovation & tools"
+        },
+        {
+          "type": "text",
+          "id": "caption",
+          "label": "Card text"
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "default": "tools",
+          "options": [
+            { "value": "tools", "label": "Tools" },
+            { "value": "sofa", "label": "Furniture" },
+            { "value": "electronics", "label": "Electronics" },
+            { "value": "watch", "label": "Watch" },
+            { "value": "home", "label": "Home" },
+            { "value": "box", "label": "Box" },
+            { "value": "mountains", "label": "Mountains" },
+            { "value": "pin", "label": "Map pin" }
+          ]
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link (overrides collection)"
+        },
+        {
+          "type": "range",
+          "id": "x",
+          "min": 4,
+          "max": 96,
+          "step": 1,
+          "unit": "%",
+          "label": "Position across",
+          "default": 20
+        },
+        {
+          "type": "range",
+          "id": "y",
+          "min": 8,
+          "max": 92,
+          "step": 1,
+          "unit": "%",
+          "label": "Position down",
+          "default": 50
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "TGU treasure map",
+      "blocks": [
+        { "type": "stop", "settings": { "place": "Renovation Ridge", "title": "Renovation & tools", "icon": "tools", "x": 14, "y": 68 } },
+        { "type": "stop", "settings": { "place": "Furniture Falls", "title": "Furniture", "icon": "sofa", "x": 36, "y": 40 } },
+        { "type": "stop", "settings": { "place": "Gadget Gulch", "title": "Electronics & watches", "icon": "electronics", "x": 60, "y": 62 } },
+        { "type": "stop", "settings": { "place": "Homestead Hollow", "title": "Home goods", "icon": "home", "x": 84, "y": 30 } }
+      ]
+    }
+  ]
+}
+{% endschema %}

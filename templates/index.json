@@ -16,69 +16,6 @@
         "padding_bottom": 128
       }
     },
-    "categories": {
-      "type": "tgu-category-plates",
-      "settings": {
-        "eyebrow": "What we carry",
-        "heading": "Overstock and returns, all over the map.",
-        "text": "<p>Renovation gear for DIYers and contractors, plus furniture, electronics, watches and home goods.</p>",
-        "color_scheme": "scheme-1",
-        "padding_top": 96,
-        "padding_bottom": 64
-      },
-      "blocks": {
-        "reno": {
-          "type": "plate",
-          "settings": {
-            "icon": "tools",
-            "title": "Renovation & tools",
-            "caption": "Tile, fixtures, flooring and tools for DIYers and contractors.",
-            "collection": "",
-            "link": "",
-            "cta": "Shop"
-          }
-        },
-        "furniture": {
-          "type": "plate",
-          "settings": {
-            "icon": "sofa",
-            "title": "Furniture",
-            "caption": "Recliners, tables, dressers and more.",
-            "collection": "",
-            "link": "",
-            "cta": "Shop"
-          }
-        },
-        "electronics": {
-          "type": "plate",
-          "settings": {
-            "icon": "electronics",
-            "title": "Electronics & watches",
-            "caption": "TVs, gadgets, smartwatches and accessories.",
-            "collection": "",
-            "link": "",
-            "cta": "Shop"
-          }
-        },
-        "home": {
-          "type": "plate",
-          "settings": {
-            "icon": "home",
-            "title": "Home goods",
-            "caption": "Kitchen, decor and everyday household finds.",
-            "collection": "",
-            "link": "",
-            "cta": "Shop"
-          }
-        }
-      },
-      "block_order": [
-        "reno",
-        "furniture",
-        "electronics",
-        "home"
-      ]
-    },
     "latest": {
       "type": "tgu-new-arrivals",
       "settings": {
@@ -105,7 +42,9 @@
         "follow_label": "Follow the finds on TikTok",
         "color_scheme": "scheme-2",
         "padding_top": 96,
-        "padding_bottom": 96
+        "padding_bottom": 96,
+        "reveal_label": "Peek inside",
+        "reveal_close_label": "Close the box"
       }
     },
     "story": {
@@ -279,13 +218,140 @@
         "color_scheme": "scheme-1",
         "padding": 24
       }
+    },
+    "map": {
+      "type": "tgu-treasure-map",
+      "settings": {
+        "eyebrow": "Choose your trail",
+        "heading": "Where will the hunt take you?",
+        "text": "Every aisle is new ground. Pick a stop and see what's on the shelves.",
+        "cta": "Explore",
+        "color_scheme": "scheme-2",
+        "padding_top": 96,
+        "padding_bottom": 96
+      },
+      "blocks": {
+        "m1": {
+          "type": "stop",
+          "settings": {
+            "place": "Renovation Ridge",
+            "title": "Renovation & tools",
+            "caption": "Tile, fixtures, flooring and tools for DIYers and contractors.",
+            "icon": "tools",
+            "x": 14,
+            "y": 68
+          }
+        },
+        "m2": {
+          "type": "stop",
+          "settings": {
+            "place": "Furniture Falls",
+            "title": "Furniture",
+            "caption": "Recliners, tables, dressers and more.",
+            "icon": "sofa",
+            "x": 36,
+            "y": 40
+          }
+        },
+        "m3": {
+          "type": "stop",
+          "settings": {
+            "place": "Gadget Gulch",
+            "title": "Electronics & watches",
+            "caption": "TVs, gadgets, smartwatches and accessories.",
+            "icon": "electronics",
+            "x": 60,
+            "y": 62
+          }
+        },
+        "m4": {
+          "type": "stop",
+          "settings": {
+            "place": "Homestead Hollow",
+            "title": "Home goods",
+            "caption": "Kitchen, decor and everyday household finds.",
+            "icon": "home",
+            "x": 84,
+            "y": 30
+          }
+        }
+      },
+      "block_order": [
+        "m1",
+        "m2",
+        "m3",
+        "m4"
+      ]
+    },
+    "drop": {
+      "type": "tgu-drop",
+      "settings": {
+        "drop_date": "",
+        "badge": "Next drop",
+        "live_badge": "Live now",
+        "heading": "The next truckload.",
+        "text": "Fresh overstock and returns, straight to the shelves. Get a heads-up the moment it lands.",
+        "count_label": "new finds in this drop",
+        "live_button": "See the drop",
+        "form_label": "Get drop alerts",
+        "form_button": "Notify me",
+        "success": "You're in. We'll email you when the next drop lands.",
+        "color_scheme": "scheme-3",
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
+    },
+    "reels": {
+      "type": "tgu-video-finds",
+      "settings": {
+        "eyebrow": "Straight from the aisles",
+        "heading": "Watch the hunt.",
+        "follow_label": "Follow on TikTok",
+        "color_scheme": "scheme-2",
+        "padding_top": 96,
+        "padding_bottom": 96
+      },
+      "blocks": {
+        "r0": {
+          "type": "reel",
+          "settings": {
+            "caption": "Look what came off the truck"
+          }
+        },
+        "r1": {
+          "type": "reel",
+          "settings": {
+            "caption": "Pallet of tile, unboxed"
+          }
+        },
+        "r2": {
+          "type": "reel",
+          "settings": {
+            "caption": "This recliner though"
+          }
+        },
+        "r3": {
+          "type": "reel",
+          "settings": {
+            "caption": "Mystery find of the week"
+          }
+        }
+      },
+      "block_order": [
+        "r0",
+        "r1",
+        "r2",
+        "r3"
+      ]
     }
   },
   "order": [
     "hero",
     "ticker",
-    "categories",
+    "map",
     "latest",
+    "drop",
+    "reels",
     "trail",
     "mystery",
     "sold",

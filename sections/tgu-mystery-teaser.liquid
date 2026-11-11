@@ -20,13 +20,37 @@
             | image_tag: widths: '440, 660, 880', sizes: '(min-width: 1024px) 440px, 90vw', loading: 'lazy'
           }}
         {%- else -%}
-          <img
-            src="{{ 'tgu-mystery-box-closed.png' | asset_url }}"
-            width="800"
-            height="795"
-            alt="A kraft-paper mystery box tied with twine"
-            loading="lazy"
-          >
+          <div class="tgu-reveal">
+            <img
+              class="tgu-reveal__closed"
+              src="{{ 'tgu-mystery-box-closed.png' | asset_url }}"
+              width="800"
+              height="795"
+              alt="A kraft-paper mystery box tied with twine"
+              loading="lazy"
+            >
+            <img
+              class="tgu-reveal__open"
+              src="{{ 'tgu-mystery-box-open.png' | asset_url }}"
+              width="800"
+              height="800"
+              alt=""
+              loading="lazy"
+            >
+            <span class="tgu-reveal__glow" aria-hidden="true"></span>
+          </div>
+          {%- if section.settings.reveal_label != blank -%}
+            <button
+              type="button"
+              class="tgu-reveal__btn"
+              data-tgu-reveal
+              aria-pressed="false"
+              data-open-label="{{ section.settings.reveal_label | escape }}"
+              data-close-label="{{ section.settings.reveal_close_label | escape }}"
+            >
+              {{- section.settings.reveal_label | escape -}}
+            </button>
+          {%- endif -%}
         {%- endif -%}
       </div>
 
@@ -110,6 +134,19 @@
       "id": "image",
       "label": "Box image (optional)",
       "info": "Swap in a photo of the real box once it exists. The bundled art is a campaign prop for the teaser only."
+    },
+    {
+      "type": "text",
+      "id": "reveal_label",
+      "label": "Peek button",
+      "default": "Peek inside",
+      "info": "Opens the bundled box art with a glow. Leave blank to turn off."
+    },
+    {
+      "type": "text",
+      "id": "reveal_close_label",
+      "label": "Close button",
+      "default": "Close the box"
     },
     {
       "type": "text",
