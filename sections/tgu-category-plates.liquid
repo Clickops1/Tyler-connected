@@ -11,7 +11,7 @@
 
 <section class="tgu-plates tgu-section color-{{ section.settings.color_scheme }} gradient">
   <div class="tgu-inner">
-    <div class="tgu-plates__header">
+    <div class="tgu-plates__header{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
       {%- if section.settings.eyebrow != blank -%}
         <span class="tgu-eyebrow">{{ section.settings.eyebrow | escape }}</span>
       {%- endif -%}
@@ -31,7 +31,7 @@
             assign link = block.settings.collection.url
           endif
         -%}
-        <li {{ block.shopify_attributes }}>
+        <li class="{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}" {% if settings.animations_reveal_on_scroll %}data-cascade style="--animation-order: {{ forloop.index }};"{% endif %} {{ block.shopify_attributes }}>
           {%- if link != blank -%}
             <a class="tgu-plate tgu-plate--link" href="{{ link }}">
           {%- else -%}
@@ -126,6 +126,7 @@
             { "value": "home", "label": "Home" },
             { "value": "box", "label": "Box" },
             { "value": "mountains", "label": "Mountains" },
+            { "value": "check", "label": "Check mark" },
             { "value": "trail", "label": "Trail" }
           ]
         },

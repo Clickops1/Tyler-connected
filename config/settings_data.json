@@ -190,7 +190,9 @@
             "color_scheme": "scheme-2"
           }
         }
-      }
+      },
+      "tgu_new_badge_days": 7,
+      "tgu_new_badge_label": "Just in"
     }
   }
 }

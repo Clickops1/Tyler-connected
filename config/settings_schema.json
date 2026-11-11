@@ -8,6 +8,32 @@
     "theme_support_url": "https://support.shopify.com/"
   },
   {
+    "name": "TGU Liquidation",
+    "settings": [
+      {
+        "type": "header",
+        "content": "\"Just in\" badge"
+      },
+      {
+        "type": "range",
+        "id": "tgu_new_badge_days",
+        "min": 0,
+        "max": 30,
+        "step": 1,
+        "unit": "d",
+        "label": "Show \"Just in\" on products added in the last",
+        "default": 7,
+        "info": "Set to 0 to turn the badge off."
+      },
+      {
+        "type": "text",
+        "id": "tgu_new_badge_label",
+        "label": "Badge text",
+        "default": "Just in"
+      }
+    ]
+  },
+  {
     "name": "t:settings_schema.logo.name",
     "settings": [
       {

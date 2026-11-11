@@ -231,22 +231,14 @@ a.tgu-plate:hover,
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-.tgu-icon path,
-.tgu-icon circle,
-.tgu-icon rect,
-.tgu-icon polyline,
-.tgu-icon line {
+.tgu-icon > * {
   stroke-dasharray: 400;
   stroke-dashoffset: 0;
+  transition: stroke-dashoffset 0.7s var(--tgu-ease) 0.15s;
 }
-.scroll-trigger.animate--slide-in .tgu-icon path,
-.tgu-icon--draw path {
-  animation: tgu-draw 0.6s var(--tgu-ease) both;
-}
-@keyframes tgu-draw {
-  from { stroke-dashoffset: 400; }
-  to { stroke-dashoffset: 0; }
-}
+.tgu-icon > .tgu-no-draw { stroke-dasharray: 2 9; transition: none; }
+/* Icons "draw on" when their section scrolls into view (Dawn's animations.js toggles the offscreen class) */
+.scroll-trigger--offscreen .tgu-icon > *:not(.tgu-no-draw) { stroke-dashoffset: 400; }
 
 /* ---------- Header ---------- */
 .header-wrapper {
@@ -272,7 +264,7 @@ a.tgu-plate:hover,
 @media (prefers-reduced-motion: reduce) {
   .tgu-plate,
   .card-wrapper .card--card,
-  .tgu-icon path {
+  .tgu-icon > * {
     transition: none !important;
     animation: none !important;
   }
@@ -284,3 +276,131 @@ a.tgu-plate:hover,
 
 .tgu-header-mark { width: 80px; }
 .tgu-header-mark img { height: 42px; width: auto; }
+
+/* ---------- Product page blocks ---------- */
+.tgu-compare-wrap:empty { display: none; }
+.tgu-compare {
+  margin: 0 0 1.6rem;
+  padding: 1.6rem 2rem;
+  border: 1.5px solid var(--tgu-sand-deep);
+  border-radius: 14px;
+  background: rgba(215, 177, 141, 0.12);
+  display: grid;
+  gap: 0.8rem;
+  max-width: 44rem;
+}
+.tgu-compare__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1.6rem;
+  font-size: 1.5rem;
+}
+.tgu-compare dt { font-weight: 500; }
+.tgu-compare dd { margin: 0; font-variant-numeric: tabular-nums; }
+.tgu-compare__row--ours { font-size: 1.8rem; font-weight: 700; color: var(--tgu-forest); }
+.tgu-compare__row--save {
+  padding-top: 0.8rem;
+  border-top: 1px dashed var(--tgu-sand-deep);
+  font-weight: 600;
+  color: var(--tgu-olive);
+}
+
+.tgu-condition {
+  margin: 1.6rem 0;
+  padding: 1.6rem 2rem;
+  border-radius: 14px;
+  background: var(--tgu-forest);
+  color: var(--tgu-cream);
+  max-width: 44rem;
+}
+.tgu-condition__head { display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap; }
+.tgu-condition__label {
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--tgu-sand);
+}
+.tgu-condition .tgu-badge--condition { background: var(--tgu-sand); color: var(--tgu-forest); }
+.tgu-condition__def { margin: 1rem 0 0; font-size: 1.5rem; line-height: 1.55; }
+.tgu-condition__note { margin: 0.6rem 0 0; font-size: 1.3rem; opacity: 0.8; }
+
+.tgu-visit-prompt {
+  display: grid;
+  grid-template-columns: 4.8rem 1fr;
+  gap: 1.4rem;
+  align-items: start;
+  margin: 2rem 0;
+  padding: 1.6rem 0;
+  border-top: 1px solid rgba(169, 132, 95, 0.4);
+  border-bottom: 1px solid rgba(169, 132, 95, 0.4);
+  max-width: 44rem;
+}
+.tgu-visit-prompt .tgu-icon { width: 4.8rem; height: 4.8rem; color: var(--tgu-sand-deep); }
+.tgu-visit-prompt__title { margin: 0; font-weight: 700; font-size: 1.6rem; color: var(--tgu-forest); }
+.tgu-visit-prompt__text { margin: 0.2rem 0 0.6rem; font-size: 1.4rem; }
+.tgu-visit-prompt__link {
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--tgu-olive);
+  text-underline-offset: 4px;
+}
+
+/* ---------- Recently viewed ---------- */
+tgu-recently-viewed { display: block; }
+tgu-recently-viewed[hidden] { display: none; }
+.tgu-recent__heading { font-size: clamp(2.8rem, 4vw, 4rem); margin: 0 0 2.4rem; }
+.color-scheme-1 .tgu-recent__heading, .tgu-recent.color-scheme-1 .tgu-recent__heading { color: var(--tgu-olive); }
+.tgu-recent__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0.8rem;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(16rem, 22rem);
+  gap: 1.6rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+.tgu-recent__item { scroll-snap-align: start; }
+.tgu-recent__link { display: grid; gap: 0.8rem; text-decoration: none; color: inherit; }
+.tgu-recent__media {
+  position: relative;
+  display: block;
+  aspect-ratio: 1;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid rgba(169, 132, 95, 0.35);
+}
+.tgu-recent__media img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.tgu-recent__noimg { display: block; width: 100%; height: 100%; background: #ece6dc; }
+.tgu-recent__sold { position: absolute; top: 1rem; left: 1rem; }
+.tgu-recent__title { font-weight: 600; font-size: 1.4rem; line-height: 1.35; }
+.tgu-recent__prices { font-size: 1.4rem; }
+.tgu-recent__was { opacity: 0.6; margin-left: 0.4rem; }
+.tgu-recent__link:hover .tgu-recent__title { text-decoration: underline; text-underline-offset: 3px; }
+
+.tgu-badge--new {
+  background: var(--tgu-cream);
+  color: var(--tgu-forest);
+  border: 1px solid var(--tgu-forest);
+}
+
+/* ---------- Collection banner on forest ---------- */
+.collection-hero.color-scheme-2 .collection-hero__title { color: var(--tgu-sand); }
+.collection-hero.color-scheme-2 { position: relative; isolation: isolate; }
+.collection-hero.color-scheme-2::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.1;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400' fill='none' stroke='%23D7B18D' stroke-width='1.5'%3E%3Cpath d='M-20 320 C 80 260 160 300 240 250 S 400 170 480 210 S 600 180 640 150'/%3E%3Cpath d='M-20 280 C 70 220 170 260 250 210 S 390 130 470 170 S 600 140 640 110'/%3E%3Cpath d='M-20 240 C 90 180 160 220 260 170 S 380 90 460 130 S 590 100 640 70'/%3E%3Cpath d='M-20 200 C 80 150 170 180 270 130 S 390 50 450 90 S 580 60 640 30'/%3E%3C/svg%3E");
+  background-size: 600px 400px;
+}
+.facets__heading, .facet-filters__label { font-family: var(--font-body-family); font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; font-size: 1.2rem; }

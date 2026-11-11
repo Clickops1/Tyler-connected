@@ -1,0 +1,113 @@
+{
+  "sections": {
+    "hero": {
+      "type": "tgu-page-hero",
+      "settings": {
+        "eyebrow": "Coming soon",
+        "heading": "Mystery boxes.",
+        "text": "What's inside? That's the fun part.",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "scheme-2",
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
+    },
+    "teaser": {
+      "type": "tgu-mystery-teaser",
+      "settings": {
+        "badge": "Coming soon",
+        "heading": "Be first in line.",
+        "text": "<p>We're not announcing them yet. (They're coming.)</p>",
+        "show_signup": true,
+        "button_label": "Get mystery box updates",
+        "success_message": "You're on the list. We'll tell you the moment they drop.",
+        "follow_label": "Follow the finds on TikTok",
+        "color_scheme": "scheme-2",
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
+    },
+    "ticker": {
+      "type": "tgu-ticker",
+      "settings": {
+        "label": "Things you might find",
+        "speed": 45,
+        "color_scheme": "scheme-2"
+      },
+      "blocks": {
+        "t0": {
+          "type": "item",
+          "settings": {
+            "text": "Recliners",
+            "link": ""
+          }
+        },
+        "t1": {
+          "type": "item",
+          "settings": {
+            "text": "Pallets of tile",
+            "link": ""
+          }
+        },
+        "t2": {
+          "type": "item",
+          "settings": {
+            "text": "Smartwatches",
+            "link": ""
+          }
+        },
+        "t3": {
+          "type": "item",
+          "settings": {
+            "text": "Power tools",
+            "link": ""
+          }
+        },
+        "t4": {
+          "type": "item",
+          "settings": {
+            "text": "Dressers",
+            "link": ""
+          }
+        },
+        "t5": {
+          "type": "item",
+          "settings": {
+            "text": "TVs",
+            "link": ""
+          }
+        },
+        "t6": {
+          "type": "item",
+          "settings": {
+            "text": "Kitchen finds",
+            "link": ""
+          }
+        },
+        "t7": {
+          "type": "item",
+          "settings": {
+            "text": "Home goods",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "t0",
+        "t1",
+        "t2",
+        "t3",
+        "t4",
+        "t5",
+        "t6",
+        "t7"
+      ]
+    }
+  },
+  "order": [
+    "hero",
+    "teaser",
+    "ticker"
+  ]
+}

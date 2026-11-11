@@ -17,7 +17,7 @@
 <section class="tgu-visit tgu-section color-{{ section.settings.color_scheme }} gradient" id="visit">
   <div class="tgu-inner">
     <div class="tgu-visit__grid{% if section.settings.show_map and section.settings.address != blank %} tgu-visit__grid--has-map{% endif %}">
-      <div class="tgu-visit__copy">
+      <div class="tgu-visit__copy{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
         {%- if section.settings.eyebrow != blank -%}
           <span class="tgu-eyebrow">{{ section.settings.eyebrow | escape }}</span>
         {%- endif -%}
@@ -79,7 +79,7 @@
       </div>
 
       {%- if section.settings.show_map and section.settings.address != blank -%}
-        <div class="tgu-visit__map">
+        <div class="tgu-visit__map{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
           <iframe
             title="Map to {{ shop.name | escape }}"
             src="https://maps.google.com/maps?q={{ address_query }}&z=14&output=embed"

@@ -106,6 +106,12 @@
                       </h2>
                     </a>
                   </div>
+                {%- when 'tgu_compare' -%}
+                  {% render 'tgu-price-compare', product: product, section: section, block: block %}
+                {%- when 'tgu_condition' -%}
+                  {% render 'tgu-condition-explainer', product: product, block: block %}
+                {%- when 'tgu_visit_prompt' -%}
+                  {% render 'tgu-visit-prompt', block: block %}
                 {%- when 'tgu_badges' -%}
                   <div {{ block.shopify_attributes }}>
                     {%- render 'tgu-product-badges',
@@ -764,6 +770,49 @@
   "tag": "section",
   "class": "section",
   "blocks": [
+    {
+      "type": "tgu_compare",
+      "name": "Retail vs our price",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Only shows when the variant has a compare-at price. Use the item's real retail price there, never an invented one."
+        },
+        { "type": "text", "id": "retail_label", "label": "Retail label", "default": "Retail price" },
+        { "type": "text", "id": "our_label", "label": "Our price label", "default": "Our price" },
+        { "type": "text", "id": "save_label", "label": "Savings label", "default": "You save" }
+      ]
+    },
+    {
+      "type": "tgu_condition",
+      "name": "Condition explainer",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Shows the item's condition (from a condition: tag or the custom.condition metafield) with a plain-language explanation. Confirm these definitions with Tyler and Kylee."
+        },
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Condition" },
+        { "type": "textarea", "id": "def_new", "label": "New", "default": "Unused, in its original condition." },
+        { "type": "textarea", "id": "def_like_new", "label": "Like new", "default": "Looks and works like new. It may have been opened or returned." },
+        { "type": "textarea", "id": "def_open_box", "label": "Open box", "default": "The packaging has been opened. It may have been returned or used for display." },
+        { "type": "textarea", "id": "def_used", "label": "Used", "default": "Previously used. Expect normal signs of wear." },
+        { "type": "textarea", "id": "def_as_is", "label": "As is", "default": "Sold as-is, exactly as you see it." },
+        { "type": "text", "id": "footnote", "label": "Note under every condition", "default": "Check the photos and description for the details on this exact item." }
+      ]
+    },
+    {
+      "type": "tgu_visit_prompt",
+      "name": "See it in person",
+      "limit": 1,
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Want to see it first?" },
+        { "type": "text", "id": "text", "label": "Text", "default": "Come take a look at our Franklin showroom." },
+        { "type": "text", "id": "link_label", "label": "Link label", "default": "Book a visit" },
+        { "type": "url", "id": "link", "label": "Link", "info": "Defaults to /pages/visit" }
+      ]
+    },
     {
       "type": "tgu_badges",
       "name": "Condition & deal badges",

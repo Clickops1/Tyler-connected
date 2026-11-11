@@ -56,18 +56,68 @@
             "inventory_threshold": 5,
             "show_inventory_quantity": true
           }
+        },
+        "tgu_compare": {
+          "type": "tgu_compare",
+          "settings": {
+            "retail_label": "Retail price",
+            "our_label": "Our price",
+            "save_label": "You save"
+          }
+        },
+        "tgu_condition": {
+          "type": "tgu_condition",
+          "settings": {}
+        },
+        "tgu_visit_prompt": {
+          "type": "tgu_visit_prompt",
+          "settings": {
+            "heading": "Want to see it first?",
+            "text": "Come take a look at our Franklin showroom.",
+            "link_label": "Book a visit",
+            "link": ""
+          }
+        },
+        "faq_see": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Can I see it before I buy?",
+            "icon": "eye",
+            "content": "<p>Yes. Book a visit to our showroom at 9924 S Monarch Dr in Franklin, WI, and we'll show you around.</p>"
+          }
+        },
+        "faq_price": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Why is it priced so low?",
+            "icon": "price_tag",
+            "content": "<p>We buy overstock, shelf pulls and returns, and pass the savings on to you. That's also why stock changes and most items are one of a kind.</p>"
+          }
+        },
+        "faq_returns": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Returns",
+            "icon": "return",
+            "content": "<p>See our <a href=\"/policies/refund-policy\">return policy</a> for the details.</p>"
+          }
         }
       },
       "block_order": [
         "vendor",
         "title",
-        "tgu_badges",
         "price",
+        "tgu_compare",
         "inventory",
+        "tgu_condition",
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
+        "tgu_visit_prompt",
         "description",
+        "faq_see",
+        "faq_price",
+        "faq_returns",
         "share"
       ],
       "settings": {
@@ -110,11 +160,22 @@
         "padding_top": 36,
         "padding_bottom": 28
       }
+    },
+    "recently_viewed": {
+      "type": "tgu-recently-viewed",
+      "settings": {
+        "heading": "Your recent finds",
+        "limit": 6,
+        "color_scheme": "scheme-1",
+        "padding_top": 24,
+        "padding_bottom": 64
+      }
     }
   },
   "order": [
     "main",
     "disclosures",
-    "related-products"
+    "related-products",
+    "recently_viewed"
   ]
 }

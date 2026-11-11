@@ -1,0 +1,30 @@
+{%- comment -%}
+  Retail vs our price box for the product page. Only renders the comparison when the selected variant has a
+  compare-at price (the item's real retail price). The wrapper id lets assets/tgu.js refresh it on variant change.
+  Accepts: product, section, block
+{%- endcomment -%}
+{%- liquid
+  assign tgu_v = product.selected_or_first_available_variant
+-%}
+<div id="TguCompare-{{ section.id }}" class="tgu-compare-wrap" {{ block.shopify_attributes }}>
+  {%- if tgu_v.compare_at_price > tgu_v.price -%}
+    {%- liquid
+      assign tgu_save = tgu_v.compare_at_price | minus: tgu_v.price
+      assign tgu_pct = tgu_save | times: 100 | divided_by: tgu_v.compare_at_price | floor
+    -%}
+    <dl class="tgu-compare">
+      <div class="tgu-compare__row">
+        <dt>{{ block.settings.retail_label | escape }}</dt>
+        <dd><s>{{ tgu_v.compare_at_price | money }}</s></dd>
+      </div>
+      <div class="tgu-compare__row tgu-compare__row--ours">
+        <dt>{{ block.settings.our_label | escape }}</dt>
+        <dd>{{ tgu_v.price | money }}</dd>
+      </div>
+      <div class="tgu-compare__row tgu-compare__row--save">
+        <dt>{{ block.settings.save_label | escape }}</dt>
+        <dd>{{ tgu_save | money }} ({{ tgu_pct }}%)</dd>
+      </div>
+    </dl>
+  {%- endif -%}
+</div>

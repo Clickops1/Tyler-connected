@@ -1,0 +1,18 @@
+{%- comment -%}
+  "Want to see it first?" prompt linking to the visit page.
+  Accepts: block
+{%- endcomment -%}
+<div class="tgu-visit-prompt" {{ block.shopify_attributes }}>
+  {% render 'tgu-icon', icon: 'pin' %}
+  <div>
+    <p class="tgu-visit-prompt__title">{{ block.settings.heading | escape }}</p>
+    {%- if block.settings.text != blank -%}
+      <p class="tgu-visit-prompt__text">{{ block.settings.text | escape }}</p>
+    {%- endif -%}
+    {%- if block.settings.link_label != blank -%}
+      <a class="tgu-visit-prompt__link" href="{{ block.settings.link | default: '/pages/visit' }}">
+        {{- block.settings.link_label | escape }} &rarr;
+      </a>
+    {%- endif -%}
+  </div>
+</div>

@@ -16,6 +16,11 @@ Tyler and Kylee manage products, orders and payments in Shopify. This repo only 
 | Condition badges | `snippets/tgu-product-badges.liquid`: shows **Open box**, **As is**, **New**, etc. on product cards and product pages. |
 | % below retail | Product cards and pages show "35% below retail" when a compare-at price is set. |
 | Stock left | Product pages show the real stock count when 5 or fewer are left. |
+| "Just in" badge | Products added in the last 7 days get a "Just in" badge (change the window in Theme settings → TGU Liquidation). |
+| Motion | Hero ridge line draws itself and the copy rises in; sections slide in as you scroll; icons draw on; a slow "finds" ticker; a dotted "trail" linking the How-it-works steps. All motion switches off for visitors who turn on reduced motion. |
+| Product page | Retail-vs-our-price box (only with a real compare-at price), condition explainer, "Want to see it first?" visit prompt, FAQ accordions, real low-stock count, "Your recent finds" strip. |
+| Shopping | "New this week" row (newest products first, quick view on every card), "Just missed it" strip of real sold-out items, quick view on collection pages, filter sidebar, recently viewed. |
+| Pages | Templates for About, Visit, Mystery boxes, What we carry and Wholesale & contractors (see below). |
 
 ## Connect it to the store (one time)
 
@@ -44,6 +49,26 @@ For a whole pallet, use **Products → Import** with Shopify's CSV template. Put
 
 ## Store setup checklist
 
+### Page templates
+Create each page in **Online Store → Pages**, then pick its template under **Theme template**:
+
+| Page | Handle | Template | Notes |
+| --- | --- | --- | --- |
+| About | `about` | `page.about` | The page's own text shows under "What we stand for". The homepage "Read our story" button links to `/pages/about`. |
+| Visit | `visit` | `page.visit` | Address, map, FAQ and a contact form. Product pages link "Book a visit" to `/pages/visit`. |
+| Mystery boxes | `mystery-boxes` | `page.mystery-boxes` | Coming-soon page with the email sign-up. |
+| What we carry | `what-we-carry` | `page.what-we-carry` | Category cards, new arrivals, just sold. |
+| Wholesale & contractors | `wholesale` | `page.wholesale` | **[CONFIRM]** Only publish once Tyler confirms they sell wholesale. The page's text plus a contact form. |
+| Faith statement | `faith` | default `page` | In Tyler and Kylee's own words. |
+
+### Filters (shop by condition, category, price)
+Install Shopify's free **Search & Discovery** app, then under **Filters** add: Availability, Price, Product type, and
+**Tag** (or the `custom.condition` metafield) for condition. The collection pages show them in a sidebar automatically.
+
+### Keep sold items published
+The "Just missed it" strip shows real sold-out products. It only works if sold-out products stay published (Shopify's
+default). It hides itself when nothing is sold out.
+
 ### Create in Shopify admin
 - [ ] Collections: **Renovation & tools**, **Furniture**, **Electronics & watches**, **Home goods**. Then in the
       theme editor, link each "What we carry" plate to its collection.
@@ -70,6 +95,10 @@ The brand guidelines say: don't invent prices, hours, policies, reviews, stock c
 - [ ] Real photos: store and aisles for the hero background, Tyler and Kylee for "Our story".
 - [ ] Vector logo (SVG/AI) and a horizontal lockup from their designer, if they exist.
 - [ ] Swap the mystery box art for photos of the real boxes once they exist.
+- [ ] Condition definitions on product pages (theme editor → Product → Condition explainer). The defaults are
+      general ("Open box: the packaging has been opened…"); Tyler and Kylee should approve the wording.
+- [ ] FAQ answers on product pages and the Visit page say the showroom is by appointment.
+- [ ] Wholesale & contractors page: only publish if they offer it.
 
 ## Working on the theme locally
 

@@ -3,7 +3,7 @@
   Never fill them or add colors.
 
   Accepts:
-  - icon: {String} tools | sofa | electronics | watch | home | box | pin | calendar | phone | trail | mountains
+  - icon: {String} tools | sofa | electronics | watch | home | box | pin | calendar | phone | check | trail | mountains
   - class: {String} extra classes (optional)
 
   Usage:
@@ -62,8 +62,11 @@
       <path d="M32 70 H40"/>
     {%- when 'phone' -%}
       <path d="M30 16 L40 16 L46 32 L38 38 C42 48 52 58 62 62 L68 54 L84 60 V70 C84 78 78 84 70 84 C42 82 18 58 16 30 C16 22 22 16 30 16 Z"/>
+    {%- when 'check' -%}
+      <circle cx="50" cy="50" r="34"/>
+      <path d="M34 51 L45 62 L67 39"/>
     {%- when 'trail' -%}
-      <path d="M14 80 C30 80 30 62 46 62 S62 44 78 44" stroke-dasharray="2 9"/>
+      <path class="tgu-no-draw" d="M14 80 C30 80 30 62 46 62 S62 44 78 44"/>
       <circle cx="82" cy="40" r="6"/>
       <circle cx="14" cy="80" r="3"/>
     {%- else -%}

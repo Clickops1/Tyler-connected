@@ -1,0 +1,117 @@
+{{ 'tgu-sections.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  #shopify-section-{{ section.id }} .tgu-section {
+    --tgu-pt: {{ section.settings.padding_top | times: 0.67 | round }}px;
+    --tgu-pb: {{ section.settings.padding_bottom | times: 0.67 | round }}px;
+    --tgu-pt-d: {{ section.settings.padding_top }}px;
+    --tgu-pb-d: {{ section.settings.padding_bottom }}px;
+  }
+{%- endstyle -%}
+
+{%- assign heading = section.settings.heading | default: page.title -%}
+
+<section class="tgu-page-hero tgu-hero tgu-section color-{{ section.settings.color_scheme }} gradient{% if section.settings.image == blank %} tgu-contours{% endif %}">
+  {%- if section.settings.image != blank -%}
+    <div class="tgu-hero__media">
+      {{
+        section.settings.image
+        | image_url: width: 2400
+        | image_tag: widths: '750, 1100, 1500, 1800, 2400', sizes: '100vw', loading: 'eager', alt: section.settings.image.alt
+      }}
+    </div>
+  {%- endif -%}
+  <div class="tgu-inner">
+    <div class="tgu-page-hero__copy tgu-rise">
+      <svg class="tgu-hero__ridge" viewBox="0 0 240 44" aria-hidden="true" focusable="false">
+        <path d="M2 40 L52 8 L84 28 L116 4 L160 34 L184 18 L238 40"/>
+      </svg>
+      {%- if section.settings.eyebrow != blank -%}
+        <span class="tgu-eyebrow">{{ section.settings.eyebrow | escape }}</span>
+      {%- endif -%}
+      {%- if heading != blank -%}
+        <h1 class="tgu-page-hero__title tgu-heading">{{ heading | escape }}</h1>
+      {%- endif -%}
+      {%- if section.settings.text != blank -%}
+        <p class="tgu-tagline tgu-hero__tagline">{{ section.settings.text | escape }}</p>
+      {%- endif -%}
+      {%- if section.settings.button_label != blank and section.settings.button_link != blank -%}
+        <div class="tgu-buttons">
+          <a class="button" href="{{ section.settings.button_link }}">{{ section.settings.button_label | escape }}</a>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "TGU page hero",
+  "tag": "div",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "info": "Leave blank to use the page title."
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Tagline"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Background photo (optional)"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-2"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 160,
+      "step": 8,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 96
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 160,
+      "step": 8,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 96
+    }
+  ],
+  "presets": [
+    {
+      "name": "TGU page hero"
+    }
+  ]
+}
+{% endschema %}

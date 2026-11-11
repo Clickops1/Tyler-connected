@@ -1,0 +1,191 @@
+{
+  "sections": {
+    "hero": {
+      "type": "tgu-page-hero",
+      "settings": {
+        "eyebrow": "What we carry",
+        "heading": "Overstock and returns, all over the map.",
+        "text": "Renovation gear. Liquidation prices.",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "scheme-2",
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
+    },
+    "categories": {
+      "type": "tgu-category-plates",
+      "settings": {
+        "eyebrow": "Shop by category",
+        "heading": "Pick a trail.",
+        "text": "<p>Renovation gear for DIYers and contractors, plus furniture, electronics, watches and home goods.</p>",
+        "color_scheme": "scheme-1",
+        "padding_top": 96,
+        "padding_bottom": 96
+      },
+      "blocks": {
+        "b0": {
+          "type": "plate",
+          "settings": {
+            "icon": "tools",
+            "title": "Renovation & tools",
+            "caption": "Tile, fixtures, flooring and tools for DIYers and contractors.",
+            "collection": "",
+            "link": "",
+            "cta": "Shop"
+          }
+        },
+        "b1": {
+          "type": "plate",
+          "settings": {
+            "icon": "sofa",
+            "title": "Furniture",
+            "caption": "Recliners, tables, dressers and more.",
+            "collection": "",
+            "link": "",
+            "cta": "Shop"
+          }
+        },
+        "b2": {
+          "type": "plate",
+          "settings": {
+            "icon": "electronics",
+            "title": "Electronics & watches",
+            "caption": "TVs, gadgets, smartwatches and accessories.",
+            "collection": "",
+            "link": "",
+            "cta": "Shop"
+          }
+        },
+        "b3": {
+          "type": "plate",
+          "settings": {
+            "icon": "home",
+            "title": "Home goods",
+            "caption": "Kitchen, decor and everyday household finds.",
+            "collection": "",
+            "link": "",
+            "cta": "Shop"
+          }
+        }
+      },
+      "block_order": [
+        "b0",
+        "b1",
+        "b2",
+        "b3"
+      ]
+    },
+    "ticker": {
+      "type": "tgu-ticker",
+      "settings": {
+        "label": "Things you might find",
+        "speed": 45,
+        "color_scheme": "scheme-2"
+      },
+      "blocks": {
+        "t0": {
+          "type": "item",
+          "settings": {
+            "text": "Recliners",
+            "link": ""
+          }
+        },
+        "t1": {
+          "type": "item",
+          "settings": {
+            "text": "Pallets of tile",
+            "link": ""
+          }
+        },
+        "t2": {
+          "type": "item",
+          "settings": {
+            "text": "Smartwatches",
+            "link": ""
+          }
+        },
+        "t3": {
+          "type": "item",
+          "settings": {
+            "text": "Power tools",
+            "link": ""
+          }
+        },
+        "t4": {
+          "type": "item",
+          "settings": {
+            "text": "Dressers",
+            "link": ""
+          }
+        },
+        "t5": {
+          "type": "item",
+          "settings": {
+            "text": "TVs",
+            "link": ""
+          }
+        },
+        "t6": {
+          "type": "item",
+          "settings": {
+            "text": "Kitchen finds",
+            "link": ""
+          }
+        },
+        "t7": {
+          "type": "item",
+          "settings": {
+            "text": "Home goods",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "t0",
+        "t1",
+        "t2",
+        "t3",
+        "t4",
+        "t5",
+        "t6",
+        "t7"
+      ]
+    },
+    "latest": {
+      "type": "tgu-new-arrivals",
+      "settings": {
+        "eyebrow": "Fresh off the truck",
+        "heading": "New this week",
+        "only_recent": false,
+        "hide_sold": true,
+        "limit": 8,
+        "link_label": "See all new finds",
+        "color_scheme": "scheme-1",
+        "padding_top": 64,
+        "padding_bottom": 96
+      }
+    },
+    "sold": {
+      "type": "tgu-just-sold",
+      "settings": {
+        "eyebrow": "Already found a home",
+        "heading": "Just missed it",
+        "text": "Stock changes all the time. Follow along so you don't miss the next one.",
+        "stamp": "Sold",
+        "show_price": true,
+        "limit": 6,
+        "color_scheme": "scheme-3",
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "categories",
+    "ticker",
+    "latest",
+    "sold"
+  ]
+}

@@ -27,7 +27,10 @@
 
   <div class="tgu-inner">
     <div class="tgu-hero__grid">
-      <div class="tgu-hero__copy">
+      <div class="tgu-hero__copy tgu-rise">
+        <svg class="tgu-hero__ridge" viewBox="0 0 240 44" aria-hidden="true" focusable="false">
+          <path d="M2 40 L52 8 L84 28 L116 4 L160 34 L184 18 L238 40"/>
+        </svg>
         {%- if section.settings.eyebrow != blank -%}
           <span class="tgu-eyebrow">{{ section.settings.eyebrow | escape }}</span>
         {%- endif -%}
@@ -52,7 +55,7 @@
       </div>
 
       {%- if section.settings.show_logo -%}
-        <div class="tgu-hero__logo">
+        <div class="tgu-hero__logo tgu-rise tgu-rise--late">
           {%- if section.settings.logo_override != blank -%}
             {{ section.settings.logo_override | image_url: width: 900 | image_tag: alt: shop.name, loading: 'eager' }}
           {%- else -%}

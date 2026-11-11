@@ -14,35 +14,36 @@
   - variant: {Object} Variant to price from (optional, defaults to the selected or first available variant)
   - show_condition: {Boolean} Default true
   - show_deal: {Boolean} Default true
+  - show_new: {Boolean} Show "Just in" for products added within the theme setting's window. Default true
 
   Usage:
   {% render 'tgu-product-badges', product: product %}
 {%- endcomment -%}
 
-{%- liquid
-  assign condition = blank
-  if product.metafields.custom.condition != blank
-    assign condition = product.metafields.custom.condition.value | default: product.metafields.custom.condition
-  else
-    for tag in product.tags
-      assign tag_lower = tag | downcase
-      if tag_lower contains 'condition:'
-        assign condition = tag | split: ':' | last | strip | replace: '-', ' ' | capitalize
-        break
-      endif
-    endfor
-  endif
+{%- capture condition -%}{%- render 'tgu-condition-name', product: product -%}{%- endcapture -%}
+{%- assign condition = condition | strip -%}
 
+{%- liquid
   assign v = variant | default: product.selected_or_first_available_variant
   assign percent_off = 0
   if v.compare_at_price > v.price and v.compare_at_price > 0
     assign savings = v.compare_at_price | minus: v.price | times: 100
-    assign percent_off = savings | divided_by: v.compare_at_price
+    assign percent_off = savings | divided_by: v.compare_at_price | floor
   endif
 
   assign render_condition = false
   if show_condition != false and condition != blank
     assign render_condition = true
+  endif
+
+  assign render_new = false
+  if show_new != false and settings.tgu_new_badge_days > 0 and product.available and product.created_at
+    assign tgu_now = 'now' | date: '%s' | plus: 0
+    assign tgu_created = product.created_at | date: '%s' | plus: 0
+    assign tgu_age_days = tgu_now | minus: tgu_created | divided_by: 86400
+    if tgu_age_days < settings.tgu_new_badge_days
+      assign render_new = true
+    endif
   endif
 
   assign render_deal = false
@@ -51,8 +52,11 @@
   endif
 -%}
 
-{%- if render_condition or render_deal -%}
+{%- if render_condition or render_deal or render_new -%}
   <div class="tgu-badges">
+    {%- if render_new -%}
+      <span class="badge tgu-badge--new">{{ settings.tgu_new_badge_label | default: 'Just in' | escape }}</span>
+    {%- endif -%}
     {%- if render_condition -%}
       <span class="badge tgu-badge--condition">{{ condition | escape }}</span>
     {%- endif -%}

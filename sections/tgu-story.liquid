@@ -13,7 +13,7 @@
   <div class="tgu-inner">
     <div class="tgu-story__grid{% if section.settings.image != blank %} tgu-story__grid--has-image{% endif %}">
       {%- if section.settings.image != blank -%}
-        <div class="tgu-story__media">
+        <div class="tgu-story__media{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
           {{
             section.settings.image
             | image_url: width: 1200
@@ -21,7 +21,7 @@
           }}
         </div>
       {%- endif -%}
-      <div class="tgu-story__copy">
+      <div class="tgu-story__copy{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
         {%- if section.settings.eyebrow != blank -%}
           <span class="tgu-eyebrow">{{ section.settings.eyebrow | escape }}</span>
         {%- endif -%}

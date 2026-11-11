@@ -1,0 +1,173 @@
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'template-collection.css' | asset_url | stylesheet_tag }}
+{{ 'quick-add.css' | asset_url | stylesheet_tag }}
+{{ 'tgu-sections.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
+
+{%- comment -%}
+  Newest products first, from the chosen collection (default: all products). Uses each product's real "created" date.
+  With "Only this week's finds" on, it shows products added within the theme's "Just in" window, and hides itself
+  when there are none.
+{%- endcomment -%}
+
+{%- liquid
+  assign source = section.settings.collection | default: collections.all
+  assign tgu_now = 'now' | date: '%s' | plus: 0
+  assign window_seconds = settings.tgu_new_badge_days | at_least: 1 | times: 86400
+  assign shown = 0
+-%}
+
+{%- capture cards -%}
+  {%- paginate source.products by 50 -%}
+    {%- assign newest = source.products | sort: 'created_at' | reverse -%}
+    {%- for product in newest -%}
+      {%- if shown >= section.settings.limit -%}{%- break -%}{%- endif -%}
+      {%- liquid
+        assign include = true
+        if section.settings.only_recent
+          assign created = product.created_at | date: '%s' | plus: 0
+          assign age = tgu_now | minus: created
+          if age > window_seconds
+            assign include = false
+          endif
+        endif
+        if section.settings.hide_sold and product.available == false
+          assign include = false
+        endif
+      -%}
+      {%- if include -%}
+        {%- assign shown = shown | plus: 1 -%}
+        <li class="grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+          {% if settings.animations_reveal_on_scroll %}data-cascade style="--animation-order: {{ shown }};"{% endif %}>
+          {% render 'card-product',
+            card_product: product,
+            media_aspect_ratio: 'square',
+            image_shape: 'default',
+            show_secondary_image: true,
+            show_vendor: false,
+            show_rating: false,
+            section_id: section.id,
+            quick_add: 'standard',
+            product_view_context: 'collection'
+          %}
+        </li>
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endpaginate -%}
+{%- endcapture -%}
+
+{%- if shown > 0 or request.design_mode -%}
+  <section class="tgu-new tgu-section color-{{ section.settings.color_scheme }} gradient" style="--tgu-pt: {{ section.settings.padding_top | times: 0.67 | round }}px; --tgu-pb: {{ section.settings.padding_bottom | times: 0.67 | round }}px; --tgu-pt-d: {{ section.settings.padding_top }}px; --tgu-pb-d: {{ section.settings.padding_bottom }}px;">
+    <div class="tgu-inner">
+      <div class="tgu-row-head{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+        <div>
+          {%- if section.settings.eyebrow != blank -%}
+            <span class="tgu-eyebrow">{{ section.settings.eyebrow | escape }}</span>
+          {%- endif -%}
+          <h2 class="tgu-h2 tgu-heading">{{ section.settings.heading | escape }}</h2>
+        </div>
+        {%- if section.settings.link_label != blank -%}
+          <a class="button button--secondary" href="{{ source.url }}?sort_by=created-descending">
+            {{- section.settings.link_label | escape -}}
+          </a>
+        {%- endif -%}
+      </div>
+      {%- if shown > 0 -%}
+        <ul class="grid product-grid contains-card--product grid--2-col-tablet-down grid--4-col-desktop" role="list">
+          {{ cards }}
+        </ul>
+      {%- else -%}
+        <p class="tgu-empty">No products were added in the last {{ settings.tgu_new_badge_days }} days, so this row is hidden on the live store.</p>
+      {%- endif -%}
+    </div>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "TGU new this week",
+  "tag": "div",
+  "class": "section",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection",
+      "info": "Leave empty to use all products."
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Fresh off the truck"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "New this week"
+    },
+    {
+      "type": "checkbox",
+      "id": "only_recent",
+      "label": "Only this week's finds",
+      "info": "Uses the \"Just in\" window in Theme settings. Off: always shows the newest products.",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_sold",
+      "label": "Hide sold items",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "limit",
+      "min": 2,
+      "max": 16,
+      "step": 1,
+      "label": "Products to show",
+      "default": 8
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Link label",
+      "default": "See all new finds"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 160,
+      "step": 8,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 96
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 160,
+      "step": 8,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 96
+    }
+  ],
+  "presets": [
+    {
+      "name": "TGU new this week"
+    }
+  ]
+}
+{% endschema %}

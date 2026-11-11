@@ -24,7 +24,7 @@
         "text": "<p>Renovation gear for DIYers and contractors, plus furniture, electronics, watches and home goods.</p>",
         "color_scheme": "scheme-1",
         "padding_top": 96,
-        "padding_bottom": 48
+        "padding_bottom": 64
       },
       "blocks": {
         "reno": {
@@ -80,30 +80,16 @@
       ]
     },
     "latest": {
-      "type": "featured-collection",
+      "type": "tgu-new-arrivals",
       "settings": {
-        "title": "What's on the shelves this week",
-        "heading_size": "h1",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
-        "columns_desktop": 4,
+        "eyebrow": "Fresh off the truck",
+        "heading": "What's on the shelves this week",
+        "only_recent": false,
+        "hide_sold": true,
+        "limit": 8,
+        "link_label": "See all new finds",
         "color_scheme": "scheme-1",
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "swipe_on_mobile": true,
-        "image_ratio": "square",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "standard",
-        "columns_mobile": "2",
-        "padding_top": 48,
+        "padding_top": 64,
         "padding_bottom": 96
       }
     },
@@ -130,7 +116,7 @@
         "text": "<p>The Great Unknown Liquidation is a family business in Franklin, Wisconsin, run by Tyler and Kylee Rude. We buy overstock, shelf pulls and returns, and pass the savings on to you.</p><p>Honest deals on the stuff you need, and plenty you didn't know you needed.</p>",
         "signature": "Tyler & Kylee",
         "button_label": "Read our story",
-        "button_link": "",
+        "button_link": "/pages/about",
         "color_scheme": "scheme-1",
         "padding_top": 96,
         "padding_bottom": 96
@@ -151,14 +137,160 @@
         "padding_top": 96,
         "padding_bottom": 96
       }
+    },
+    "ticker": {
+      "type": "tgu-ticker",
+      "settings": {
+        "label": "Things you might find",
+        "speed": 45,
+        "color_scheme": "scheme-2"
+      },
+      "blocks": {
+        "t0": {
+          "type": "item",
+          "settings": {
+            "text": "Recliners",
+            "link": ""
+          }
+        },
+        "t1": {
+          "type": "item",
+          "settings": {
+            "text": "Pallets of tile",
+            "link": ""
+          }
+        },
+        "t2": {
+          "type": "item",
+          "settings": {
+            "text": "Smartwatches",
+            "link": ""
+          }
+        },
+        "t3": {
+          "type": "item",
+          "settings": {
+            "text": "Power tools",
+            "link": ""
+          }
+        },
+        "t4": {
+          "type": "item",
+          "settings": {
+            "text": "Dressers",
+            "link": ""
+          }
+        },
+        "t5": {
+          "type": "item",
+          "settings": {
+            "text": "TVs",
+            "link": ""
+          }
+        },
+        "t6": {
+          "type": "item",
+          "settings": {
+            "text": "Kitchen finds",
+            "link": ""
+          }
+        },
+        "t7": {
+          "type": "item",
+          "settings": {
+            "text": "Home goods",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "t0",
+        "t1",
+        "t2",
+        "t3",
+        "t4",
+        "t5",
+        "t6",
+        "t7"
+      ]
+    },
+    "trail": {
+      "type": "tgu-trail",
+      "settings": {
+        "eyebrow": "How it works",
+        "heading": "Follow the trail.",
+        "text": "",
+        "button_label": "",
+        "button_link": "",
+        "contours": true,
+        "color_scheme": "scheme-2",
+        "padding_top": 96,
+        "padding_bottom": 96
+      },
+      "blocks": {
+        "s0": {
+          "type": "step",
+          "settings": {
+            "icon": "trail",
+            "title": "Spot the find",
+            "text": "Browse the newest finds right here, or follow along on TikTok @tguliquidation."
+          }
+        },
+        "s1": {
+          "type": "step",
+          "settings": {
+            "icon": "pin",
+            "title": "Come see it",
+            "text": "Book a visit to our Franklin showroom and see it in person."
+          }
+        },
+        "s2": {
+          "type": "step",
+          "settings": {
+            "icon": "home",
+            "title": "Make it yours",
+            "text": "Check out right here on the site, or ask us about it when you visit."
+          }
+        }
+      },
+      "block_order": [
+        "s0",
+        "s1",
+        "s2"
+      ]
+    },
+    "sold": {
+      "type": "tgu-just-sold",
+      "settings": {
+        "eyebrow": "Already found a home",
+        "heading": "Just missed it",
+        "text": "Stock changes all the time. Follow along so you don't miss the next one.",
+        "stamp": "Sold",
+        "show_price": true,
+        "limit": 6,
+        "color_scheme": "scheme-3",
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    },
+    "divider": {
+      "type": "tgu-divider",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "padding": 24
+      }
     }
   },
   "order": [
     "hero",
+    "ticker",
     "categories",
     "latest",
+    "trail",
     "mystery",
+    "sold",
     "story",
+    "divider",
     "visit"
   ]
 }

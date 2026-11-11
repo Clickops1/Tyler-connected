@@ -12,7 +12,7 @@
 <section class="tgu-teaser tgu-section tgu-contours color-{{ section.settings.color_scheme }} gradient" id="mystery-boxes">
   <div class="tgu-inner">
     <div class="tgu-teaser__grid">
-      <div class="tgu-teaser__art">
+      <div class="tgu-teaser__art{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
         {%- if section.settings.image != blank -%}
           {{
             section.settings.image
@@ -30,7 +30,7 @@
         {%- endif -%}
       </div>
 
-      <div class="tgu-teaser__copy">
+      <div class="tgu-teaser__copy{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
         {%- if section.settings.badge != blank -%}
           <span class="badge tgu-badge--deal tgu-teaser__badge">{{ section.settings.badge | escape }}</span>
         {%- endif -%}

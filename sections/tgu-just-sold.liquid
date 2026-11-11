@@ -1,0 +1,155 @@
+{{ 'tgu-sections.css' | asset_url | stylesheet_tag }}
+
+{%- comment -%}
+  "Just missed it": real sold-out products from the chosen collection, most recently updated first.
+  Only works if sold-out products stay published (Shopify keeps them visible unless you hide them).
+  The section hides itself when nothing is sold out.
+{%- endcomment -%}
+
+{%- liquid
+  assign source = section.settings.collection | default: collections.all
+  assign shown = 0
+-%}
+
+{%- capture items -%}
+  {%- paginate source.products by 50 -%}
+    {%- assign recent = source.products | sort: 'updated_at' | reverse -%}
+    {%- for product in recent -%}
+      {%- if shown >= section.settings.limit -%}{%- break -%}{%- endif -%}
+      {%- if product.available == false -%}
+        {%- assign shown = shown | plus: 1 -%}
+        <li class="tgu-sold__item">
+          <a class="tgu-sold__link" href="{{ product.url }}">
+            <span class="tgu-sold__media">
+              {%- if product.featured_media -%}
+                {{
+                  product.featured_media
+                  | image_url: width: 480
+                  | image_tag: widths: '240, 360, 480', sizes: '220px', loading: 'lazy', alt: product.featured_media.alt
+                }}
+              {%- endif -%}
+              <span class="tgu-sold__stamp">{{ section.settings.stamp | escape }}</span>
+            </span>
+            <span class="tgu-sold__title">{{ product.title | escape }}</span>
+            {%- if section.settings.show_price -%}
+              <span class="tgu-sold__price">{{ product.price | money }}</span>
+            {%- endif -%}
+          </a>
+        </li>
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endpaginate -%}
+{%- endcapture -%}
+
+{%- if shown > 0 or request.design_mode -%}
+  <section class="tgu-sold tgu-section color-{{ section.settings.color_scheme }} gradient" style="--tgu-pt: {{ section.settings.padding_top | times: 0.67 | round }}px; --tgu-pb: {{ section.settings.padding_bottom | times: 0.67 | round }}px; --tgu-pt-d: {{ section.settings.padding_top }}px; --tgu-pb-d: {{ section.settings.padding_bottom }}px;">
+    <div class="tgu-inner">
+      <div class="tgu-row-head">
+        <div>
+          {%- if section.settings.eyebrow != blank -%}
+            <span class="tgu-eyebrow">{{ section.settings.eyebrow | escape }}</span>
+          {%- endif -%}
+          <h2 class="tgu-h2 tgu-heading">{{ section.settings.heading | escape }}</h2>
+          {%- if section.settings.text != blank -%}
+            <p class="tgu-row-head__text">{{ section.settings.text | escape }}</p>
+          {%- endif -%}
+        </div>
+      </div>
+      {%- if shown > 0 -%}
+        <ul class="tgu-sold__grid" role="list">{{ items }}</ul>
+      {%- else -%}
+        <p class="tgu-empty">Nothing is sold out right now, so this row is hidden on the live store.</p>
+      {%- endif -%}
+    </div>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "TGU just sold",
+  "tag": "div",
+  "class": "section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Shows real sold-out items so shoppers can see stock moving. Keep sold-out products published for this to work."
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection",
+      "info": "Leave empty to use all products."
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Already found a home"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Just missed it"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Text",
+      "default": "Stock changes all the time. Follow along so you don't miss the next one."
+    },
+    {
+      "type": "text",
+      "id": "stamp",
+      "label": "Stamp",
+      "default": "Sold"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_price",
+      "label": "Show what it sold for",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "limit",
+      "min": 3,
+      "max": 12,
+      "step": 1,
+      "label": "Items to show",
+      "default": 6
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-3"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 160,
+      "step": 8,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 160,
+      "step": 8,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 64
+    }
+  ],
+  "presets": [
+    {
+      "name": "TGU just sold"
+    }
+  ]
+}
+{% endschema %}

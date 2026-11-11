@@ -1,0 +1,43 @@
+{{ 'tgu-sections.css' | asset_url | stylesheet_tag }}
+
+<div
+  class="tgu-divider color-{{ section.settings.color_scheme }} gradient{% if settings.animations_reveal_on_scroll %} scroll-trigger{% endif %}"
+  style="padding-top: {{ section.settings.padding }}px; padding-bottom: {{ section.settings.padding }}px;"
+  role="presentation"
+>
+  <svg viewBox="0 0 320 48" aria-hidden="true" focusable="false">
+    <path d="M2 44 L40 30 L66 38 L104 12 L130 26 L160 4 L196 30 L218 20 L252 36 L280 28 L318 44"/>
+    <path d="M60 46 C96 42 120 47 160 44 S236 41 262 46" opacity="0.6"/>
+  </svg>
+</div>
+
+{% schema %}
+{
+  "name": "TGU ridge divider",
+  "tag": "div",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding",
+      "min": 0,
+      "max": 96,
+      "step": 8,
+      "unit": "px",
+      "label": "Padding",
+      "default": 24
+    }
+  ],
+  "presets": [
+    {
+      "name": "TGU ridge divider"
+    }
+  ]
+}
+{% endschema %}

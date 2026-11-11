@@ -1,0 +1,158 @@
+{
+  "sections": {
+    "hero": {
+      "type": "tgu-page-hero",
+      "settings": {
+        "eyebrow": "Our story",
+        "heading": "From our family to yours.",
+        "text": "Honest deals, lasting impact.",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "scheme-2",
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
+    },
+    "story": {
+      "type": "tgu-story",
+      "settings": {
+        "eyebrow": "Meet Tyler & Kylee",
+        "heading": "A family business in Franklin, WI.",
+        "text": "<p>The Great Unknown Liquidation is a family business in Franklin, Wisconsin, run by Tyler and Kylee Rude. We buy overstock, shelf pulls and returns, and pass the savings on to you.</p><p>Honest deals on the stuff you need, and plenty you didn't know you needed.</p>",
+        "signature": "Tyler & Kylee",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
+    },
+    "values": {
+      "type": "tgu-category-plates",
+      "settings": {
+        "eyebrow": "What we stand for",
+        "heading": "Honest deals. Lasting impact.",
+        "text": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 96,
+        "padding_bottom": 96
+      },
+      "blocks": {
+        "b0": {
+          "type": "plate",
+          "settings": {
+            "icon": "mountains",
+            "title": "Every visit is a treasure hunt",
+            "caption": "Stock changes all the time. You don't know exactly what's on the shelves until you walk in.",
+            "collection": "",
+            "link": "",
+            "cta": ""
+          }
+        },
+        "b1": {
+          "type": "plate",
+          "settings": {
+            "icon": "check",
+            "title": "Honest first",
+            "caption": "We say \"as-is\" and \"open box\" when it's true. No fake urgency, no made-up savings.",
+            "collection": "",
+            "link": "",
+            "cta": ""
+          }
+        },
+        "b2": {
+          "type": "plate",
+          "settings": {
+            "icon": "home",
+            "title": "Family-run",
+            "caption": "Tyler and Kylee Rude run the store together, right here in Franklin.",
+            "collection": "",
+            "link": "",
+            "cta": ""
+          }
+        }
+      },
+      "block_order": [
+        "b0",
+        "b1",
+        "b2"
+      ]
+    },
+    "content": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
+    "trail": {
+      "type": "tgu-trail",
+      "settings": {
+        "eyebrow": "How it works",
+        "heading": "Follow the trail.",
+        "text": "",
+        "button_label": "",
+        "button_link": "",
+        "contours": true,
+        "color_scheme": "scheme-2",
+        "padding_top": 96,
+        "padding_bottom": 96
+      },
+      "blocks": {
+        "s0": {
+          "type": "step",
+          "settings": {
+            "icon": "trail",
+            "title": "Spot the find",
+            "text": "Browse the newest finds right here, or follow along on TikTok @tguliquidation."
+          }
+        },
+        "s1": {
+          "type": "step",
+          "settings": {
+            "icon": "pin",
+            "title": "Come see it",
+            "text": "Book a visit to our Franklin showroom and see it in person."
+          }
+        },
+        "s2": {
+          "type": "step",
+          "settings": {
+            "icon": "home",
+            "title": "Make it yours",
+            "text": "Check out right here on the site, or ask us about it when you visit."
+          }
+        }
+      },
+      "block_order": [
+        "s0",
+        "s1",
+        "s2"
+      ]
+    },
+    "visit": {
+      "type": "tgu-visit",
+      "settings": {
+        "eyebrow": "Visit the store",
+        "heading": "Come take a look.",
+        "address": "9924 S Monarch Dr\nFranklin, WI 53132",
+        "hours": "Showroom open by appointment",
+        "phone": "",
+        "button_label": "Book a visit",
+        "button_link": "",
+        "show_map": true,
+        "color_scheme": "scheme-4",
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "story",
+    "values",
+    "content",
+    "trail",
+    "visit"
+  ]
+}

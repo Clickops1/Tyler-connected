@@ -1,0 +1,37 @@
+{%- comment -%}
+  Condition badge plus a plain-language explanation for the product page.
+  Accepts: product, block
+{%- endcomment -%}
+{%- capture tgu_condition -%}{%- render 'tgu-condition-name', product: product -%}{%- endcapture -%}
+{%- liquid
+  assign tgu_condition = tgu_condition | strip
+  assign tgu_key = tgu_condition | handleize
+  case tgu_key
+    when 'new'
+      assign tgu_def = block.settings.def_new
+    when 'like-new'
+      assign tgu_def = block.settings.def_like_new
+    when 'open-box'
+      assign tgu_def = block.settings.def_open_box
+    when 'used'
+      assign tgu_def = block.settings.def_used
+    when 'as-is'
+      assign tgu_def = block.settings.def_as_is
+    else
+      assign tgu_def = blank
+  endcase
+-%}
+{%- if tgu_condition != blank -%}
+  <div class="tgu-condition" {{ block.shopify_attributes }}>
+    <div class="tgu-condition__head">
+      <span class="tgu-condition__label">{{ block.settings.heading | escape }}</span>
+      <span class="badge tgu-badge--condition">{{ tgu_condition | escape }}</span>
+    </div>
+    {%- if tgu_def != blank -%}
+      <p class="tgu-condition__def">{{ tgu_def | escape }}</p>
+    {%- endif -%}
+    {%- if block.settings.footnote != blank -%}
+      <p class="tgu-condition__note">{{ block.settings.footnote | escape }}</p>
+    {%- endif -%}
+  </div>
+{%- endif -%}

@@ -1,0 +1,18 @@
+{%- comment -%}
+  Outputs a product's condition as plain text (or nothing): from the `custom.condition` metafield, else from the first
+  tag that starts with `condition:` (dashes become spaces, e.g. `condition:open-box` → "Open box").
+  Capture it to use it: {% capture condition %}{% render 'tgu-condition-name', product: product %}{% endcapture %}
+{%- endcomment -%}
+{%- liquid
+  if product.metafields.custom.condition != blank
+    echo product.metafields.custom.condition.value | default: product.metafields.custom.condition | strip
+  else
+    for tag in product.tags
+      assign tag_lower = tag | downcase
+      if tag_lower contains 'condition:'
+        echo tag | split: ':' | last | strip | replace: '-', ' ' | capitalize
+        break
+      endif
+    endfor
+  endif
+-%}

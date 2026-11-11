@@ -1,0 +1,88 @@
+{
+  "sections": {
+    "hero": {
+      "type": "tgu-page-hero",
+      "settings": {
+        "eyebrow": "Visit the store",
+        "heading": "Come take a look.",
+        "text": "9924 S Monarch Dr, Franklin, WI 53132",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "scheme-2",
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
+    },
+    "visit": {
+      "type": "tgu-visit",
+      "settings": {
+        "eyebrow": "Find us",
+        "heading": "Plan your visit.",
+        "address": "9924 S Monarch Dr\nFranklin, WI 53132",
+        "hours": "Showroom open by appointment",
+        "phone": "",
+        "button_label": "Book a visit",
+        "button_link": "",
+        "show_map": true,
+        "color_scheme": "scheme-4",
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
+    },
+    "faq": {
+      "type": "collapsible-content",
+      "settings": {
+        "caption": "",
+        "heading": "Good to know",
+        "heading_size": "h1",
+        "heading_alignment": "left",
+        "layout": "none",
+        "container_color_scheme": "scheme-1",
+        "color_scheme": "scheme-1",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 64,
+        "padding_bottom": 32
+      },
+      "blocks": {
+        "q1": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Do I need an appointment?",
+            "icon": "none",
+            "row_content": "<p>Yes, our showroom is open by appointment. Book a visit and we'll set up a time.</p>"
+          }
+        },
+        "q3": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Does the stock change?",
+            "icon": "none",
+            "row_content": "<p>All the time. We buy overstock, shelf pulls and returns, so most items are one of a kind. Check \"New this week\" or follow us on TikTok @tguliquidation.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q3"
+      ]
+    },
+    "form": {
+      "type": "contact-form",
+      "settings": {
+        "heading": "Send us a message",
+        "heading_size": "h1",
+        "color_scheme": "scheme-1",
+        "padding_top": 32,
+        "padding_bottom": 96
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "visit",
+    "faq",
+    "form"
+  ]
+}
