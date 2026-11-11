@@ -85,7 +85,8 @@
 }
 .tgu-hero__logo img { width: 100%; height: auto; display: block; }
 @media screen and (max-width: 639px) {
-  .tgu-hero__logo { order: -1; max-width: 300px; }
+  /* Brand minimum for the full lockup is 280px wide */
+  .tgu-hero__logo { order: -1; max-width: 320px; padding: 0 0 8px; }
 }
 
 /* ---------- Category plates ---------- */
@@ -242,4 +243,24 @@
 .tgu-visit__map iframe { width: 100%; height: 100%; border: 0; display: block; }
 .color-scheme-4 .tgu-visit .button:not(.button--secondary):hover {
   --color-button: 52, 53, 26; /* olive */
+}
+
+/* Links inside TGU sections inherit the section's text color (no default browser blue) */
+.tgu-section a:not(.button):not(.tgu-plate) {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+}
+.tgu-section a:not(.button):not(.tgu-plate):hover {
+  text-decoration-thickness: 2px;
+}
+.color-scheme-2 .tgu-section a:not(.button):not(.tgu-plate),
+.tgu-section.color-scheme-2 a:not(.button):not(.tgu-plate) {
+  color: var(--tgu-sand-light);
+}
+
+/* Story without a photo: keep a readable line length */
+.tgu-story__grid:not(.tgu-story__grid--has-image) .tgu-story__copy {
+  max-width: 76rem;
 }
