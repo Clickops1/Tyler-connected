@@ -1,0 +1,205 @@
+{
+  "sections": {
+    "hero": {
+      "type": "tgu-page-hero",
+      "settings": {
+        "eyebrow": "Help & FAQ",
+        "heading": "Questions? We've got answers.",
+        "text": "Honest answers about prices, condition, visiting and orders.",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "scheme-2",
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
+    },
+    "faq": {
+      "type": "tgu-faq",
+      "settings": {
+        "eyebrow": "",
+        "heading": "",
+        "show_search": true,
+        "search_label": "Search questions",
+        "empty_text": "No questions match that. Try another word, or send us a message.",
+        "schema": true,
+        "cta_heading": "Still wondering?",
+        "cta_text": "Come see the store in person, or send us a message.",
+        "cta_label": "Visit or contact us",
+        "cta_link": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 80,
+        "padding_bottom": 96
+      },
+      "blocks": {
+        "c0": {
+          "type": "category",
+          "settings": {
+            "title": "Shopping & prices"
+          }
+        },
+        "q0_0": {
+          "type": "question",
+          "settings": {
+            "question": "Why are your prices so low?",
+            "answer": "<p>We buy overstock, shelf pulls and returns, and pass the savings on to you.</p>"
+          }
+        },
+        "q0_1": {
+          "type": "question",
+          "settings": {
+            "question": "What does \"below retail\" mean?",
+            "answer": "<p>When we know an item's retail price, we show it next to our price so you can see the difference. If we don't know the retail price, we don't show one.</p>"
+          }
+        },
+        "q0_2": {
+          "type": "question",
+          "settings": {
+            "question": "How often does new stock come in?",
+            "answer": "<p>Stock changes all the time. Check <a href=\"/collections/all?sort_by=created-descending\">New this week</a>, sign up for drop alerts, or follow along on TikTok @tguliquidation.</p>"
+          }
+        },
+        "q0_3": {
+          "type": "question",
+          "settings": {
+            "question": "If I see it online, is it still available?",
+            "answer": "<p>The stock count on each product page is the real number left. Quantities are often small, so when something sells out it may not come back.</p>"
+          }
+        },
+        "c1": {
+          "type": "category",
+          "settings": {
+            "title": "Condition"
+          }
+        },
+        "q1_0": {
+          "type": "question",
+          "settings": {
+            "question": "What do the condition labels mean?",
+            "answer": "<p>Every product shows its condition, like New, Open box or As is. See the <a href=\"/pages/condition-guide\">condition guide</a> for what each one means. The photos and description always cover the details of that exact item.</p>"
+          }
+        },
+        "q1_1": {
+          "type": "question",
+          "settings": {
+            "question": "What does \"as-is\" mean?",
+            "answer": "<p>The item is sold exactly as you see it. Look closely at the photos and description, and come see it in person if you're unsure.</p>"
+          }
+        },
+        "c2": {
+          "type": "category",
+          "settings": {
+            "title": "Visiting the store"
+          }
+        },
+        "q2_0": {
+          "type": "question",
+          "settings": {
+            "question": "Where are you?",
+            "answer": "<p>9924 S Monarch Dr, Franklin, WI 53132, in the Milwaukee area. <a href=\"/pages/visit\">Get directions</a>.</p>"
+          }
+        },
+        "q2_1": {
+          "type": "question",
+          "settings": {
+            "question": "Do I need an appointment?",
+            "answer": "<p>Yes, the showroom is open by appointment. <a href=\"/pages/visit\">Book a visit</a> and we'll set up a time.</p>"
+          }
+        },
+        "q2_2": {
+          "type": "question",
+          "settings": {
+            "question": "Can I see an item before I buy it?",
+            "answer": "<p>Yes. Book a visit and come take a look in person.</p>"
+          }
+        },
+        "c3": {
+          "type": "category",
+          "settings": {
+            "title": "Orders & payment"
+          }
+        },
+        "q3_0": {
+          "type": "question",
+          "settings": {
+            "question": "How do I pay?",
+            "answer": "<p>Securely at checkout. You'll see every payment option available there.</p>"
+          }
+        },
+        "q3_1": {
+          "type": "question",
+          "settings": {
+            "question": "Do you ship, or is it pickup?",
+            "answer": "<p>See our <a href=\"/policies/shipping-policy\">shipping policy</a> for the options and costs.</p>"
+          }
+        },
+        "q3_2": {
+          "type": "question",
+          "settings": {
+            "question": "What's your return policy?",
+            "answer": "<p>See our <a href=\"/policies/refund-policy\">return policy</a> for the details.</p>"
+          }
+        },
+        "c4": {
+          "type": "category",
+          "settings": {
+            "title": "Mystery boxes"
+          }
+        },
+        "q4_0": {
+          "type": "question",
+          "settings": {
+            "question": "When do mystery boxes launch?",
+            "answer": "<p>We're not announcing them yet. <a href=\"/pages/mystery-boxes\">Get on the list</a> and you'll hear first.</p>"
+          }
+        },
+        "c5": {
+          "type": "category",
+          "settings": {
+            "title": "DIYers & contractors"
+          }
+        },
+        "q5_0": {
+          "type": "question",
+          "settings": {
+            "question": "Do you carry renovation supplies?",
+            "answer": "<p>Yes. Renovation gear for DIYers and contractors is a big part of what we carry: tile, fixtures, flooring and tools, at liquidation prices.</p>"
+          }
+        },
+        "q5_1": {
+          "type": "question",
+          "settings": {
+            "question": "I'm planning a bigger job. Can you help?",
+            "answer": "<p>Send us a message with what you need and we'll let you know what we have.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "c0",
+        "q0_0",
+        "q0_1",
+        "q0_2",
+        "q0_3",
+        "c1",
+        "q1_0",
+        "q1_1",
+        "c2",
+        "q2_0",
+        "q2_1",
+        "q2_2",
+        "c3",
+        "q3_0",
+        "q3_1",
+        "q3_2",
+        "c4",
+        "q4_0",
+        "c5",
+        "q5_0",
+        "q5_1"
+      ]
+    }
+  },
+  "order": [
+    "hero",
+    "faq"
+  ]
+}

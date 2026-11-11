@@ -1,0 +1,125 @@
+{{ 'tgu-sections.css' | asset_url | stylesheet_tag }}
+
+{%- comment -%}
+  Condition guide: one card per condition label used on products (the condition: tags). Each card can link to a
+  filtered view of that condition, e.g. /collections/all/condition:open-box (Shopify's tag filter URL).
+{%- endcomment -%}
+
+{%- style -%}
+  #shopify-section-{{ section.id }} .tgu-section {
+    --tgu-pt: {{ section.settings.padding_top | times: 0.67 | round }}px;
+    --tgu-pb: {{ section.settings.padding_bottom | times: 0.67 | round }}px;
+    --tgu-pt-d: {{ section.settings.padding_top }}px;
+    --tgu-pb-d: {{ section.settings.padding_bottom }}px;
+  }
+{%- endstyle -%}
+
+<section class="tgu-cond tgu-section color-{{ section.settings.color_scheme }} gradient">
+  <div class="tgu-inner">
+    <div class="tgu-plates__header">
+      {%- if section.settings.eyebrow != blank -%}
+        <span class="tgu-eyebrow">{{ section.settings.eyebrow | escape }}</span>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="tgu-h2 tgu-heading">{{ section.settings.heading | escape }}</h2>
+      {%- endif -%}
+      {%- if section.settings.text != blank -%}
+        <div class="tgu-body-l">{{ section.settings.text }}</div>
+      {%- endif -%}
+    </div>
+
+    <ol class="tgu-cond__list" role="list">
+      {%- for block in section.blocks -%}
+        {%- assign tag_handle = block.settings.label | handleize | prepend: 'condition-' -%}
+        <li
+          class="tgu-cond__card{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+          {% if settings.animations_reveal_on_scroll %}
+            data-cascade
+            style="--animation-order: {{ forloop.index }};"
+          {% endif %}
+          {{ block.shopify_attributes }}
+        >
+          <div class="tgu-cond__meter" aria-hidden="true">
+            {%- for i in (1..5) -%}
+              <span{% if i <= block.settings.level %} class="is-on"{% endif %}></span>
+            {%- endfor -%}
+          </div>
+          <span class="badge tgu-badge--condition">{{ block.settings.label | escape }}</span>
+          <p class="tgu-cond__def">{{ block.settings.definition | escape }}</p>
+          {%- if block.settings.tip != blank -%}
+            <p class="tgu-cond__tip"><strong>What to check:</strong> {{ block.settings.tip | escape }}</p>
+          {%- endif -%}
+          <a class="tgu-cond__link" href="{{ routes.all_products_collection_url }}/{{ tag_handle }}">
+            Shop {{ block.settings.label | downcase | escape }} &rarr;
+          </a>
+        </li>
+      {%- endfor -%}
+    </ol>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "TGU condition guide",
+  "tag": "div",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Condition guide" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Know what you're getting." },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>Every product shows its condition. Here's what each label means. The photos and description always cover the details of that exact item.</p>"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 160,
+      "step": 8,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 96
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 160,
+      "step": 8,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 96
+    }
+  ],
+  "blocks": [
+    {
+      "type": "condition",
+      "name": "Condition",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label (matches the condition: tag)", "default": "Open box" },
+        { "type": "range", "id": "level", "min": 1, "max": 5, "step": 1, "label": "Condition meter", "default": 4 },
+        { "type": "textarea", "id": "definition", "label": "What it means" },
+        { "type": "textarea", "id": "tip", "label": "What to check" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "TGU condition guide",
+      "blocks": [
+        { "type": "condition", "settings": { "label": "New", "level": 5 } },
+        { "type": "condition", "settings": { "label": "Open box", "level": 4 } },
+        { "type": "condition", "settings": { "label": "As is", "level": 2 } }
+      ]
+    }
+  ]
+}
+{% endschema %}

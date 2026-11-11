@@ -757,9 +757,7 @@
         endif
       -%}
 
-      <script type="application/ld+json">
-        {{ product | structured_data }}
-      </script>
+      {%- render 'tgu-product-jsonld', product: product -%}
     </div>
   </product-component>
 </product-info>

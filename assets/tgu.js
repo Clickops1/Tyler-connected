@@ -178,3 +178,54 @@
     btn.textContent = open ? btn.dataset.closeLabel : btn.dataset.openLabel;
   });
 })();
+
+/* ---------- FAQ: live search + current-topic highlight ---------- */
+(() => {
+  class TguFaq extends HTMLElement {
+    connectedCallback() {
+      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => this.init(), { once: true });
+      else this.init();
+    }
+    init() {
+      this.items = [...this.querySelectorAll('[data-faq-item]')];
+      this.groups = [...this.querySelectorAll('[data-faq-group]')];
+      this.empty = this.querySelector('[data-faq-empty]');
+      this.querySelectorAll('[data-faq-search]').forEach((input) =>
+        input.addEventListener('input', () => this.filter(input.value))
+      );
+      this.links = [...this.querySelectorAll('[data-faq-link]')];
+      if (this.links.length && 'IntersectionObserver' in window) {
+        const io = new IntersectionObserver(
+          (entries) => entries.forEach((e) => {
+            if (!e.isIntersecting) return;
+            this.links.forEach((l) => l.toggleAttribute('aria-current', l.getAttribute('href') === `#${e.target.id}`));
+          }),
+          { rootMargin: '-30% 0px -60% 0px' }
+        );
+        this.groups.filter((g) => g.id).forEach((g) => io.observe(g));
+      }
+      // Open a question linked directly, e.g. /pages/faq#faq-visiting
+      if (location.hash) {
+        const target = this.querySelector(location.hash.replace(/[^#\w-]/g, ''));
+        const first = target && target.querySelector('details');
+        if (first) first.open = true;
+      }
+    }
+    filter(raw) {
+      const q = raw.trim().toLowerCase();
+      let shown = 0;
+      this.items.forEach((item) => {
+        const match = !q || item.textContent.toLowerCase().includes(q);
+        item.hidden = !match;
+        if (match) shown += 1;
+        if (q && match) item.open = true;
+        if (!q) item.open = false;
+      });
+      this.groups.forEach((g) => {
+        g.hidden = !g.querySelector('[data-faq-item]:not([hidden])');
+      });
+      if (this.empty) this.empty.hidden = shown > 0;
+    }
+  }
+  if (!customElements.get('tgu-faq')) customElements.define('tgu-faq', TguFaq);
+})();

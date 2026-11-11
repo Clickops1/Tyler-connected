@@ -1,0 +1,179 @@
+{
+  "sections": {
+    "hero": {
+      "type": "tgu-page-hero",
+      "settings": {
+        "eyebrow": "Franklin, WI \u00b7 Milwaukee area",
+        "heading": "Liquidation store in Franklin, WI.",
+        "text": "Overstock and returns at liquidation prices, near Milwaukee.",
+        "button_label": "Plan your visit",
+        "button_link": "/pages/visit",
+        "color_scheme": "scheme-2",
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
+    },
+    "story": {
+      "type": "tgu-story",
+      "settings": {
+        "eyebrow": "Franklin, WI \u00b7 Milwaukee area",
+        "heading": "Your local liquidation store.",
+        "text": "<p>Looking for a liquidation store near Milwaukee? The Great Unknown Liquidation is a family-owned store at 9924 S Monarch Dr in Franklin, Wisconsin, run by Tyler and Kylee Rude.</p><p>We buy overstock, shelf pulls and returns and pass the savings on: renovation gear for DIYers and contractors, plus furniture, electronics, watches and home goods. Stock changes all the time, so every visit is a treasure hunt.</p>",
+        "signature": "",
+        "button_label": "Plan your visit",
+        "button_link": "/pages/visit",
+        "color_scheme": "scheme-1",
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
+    },
+    "map": {
+      "type": "tgu-treasure-map",
+      "settings": {
+        "eyebrow": "Choose your trail",
+        "heading": "Where will the hunt take you?",
+        "text": "Every aisle is new ground. Pick a stop and see what's on the shelves.",
+        "cta": "Explore",
+        "color_scheme": "scheme-2",
+        "padding_top": 96,
+        "padding_bottom": 96
+      },
+      "blocks": {
+        "m1": {
+          "type": "stop",
+          "settings": {
+            "place": "Renovation Ridge",
+            "title": "Renovation & tools",
+            "caption": "Tile, fixtures, flooring and tools for DIYers and contractors.",
+            "icon": "tools",
+            "x": 14,
+            "y": 68
+          }
+        },
+        "m2": {
+          "type": "stop",
+          "settings": {
+            "place": "Furniture Falls",
+            "title": "Furniture",
+            "caption": "Recliners, tables, dressers and more.",
+            "icon": "sofa",
+            "x": 36,
+            "y": 40
+          }
+        },
+        "m3": {
+          "type": "stop",
+          "settings": {
+            "place": "Gadget Gulch",
+            "title": "Electronics & watches",
+            "caption": "TVs, gadgets, smartwatches and accessories.",
+            "icon": "electronics",
+            "x": 60,
+            "y": 62
+          }
+        },
+        "m4": {
+          "type": "stop",
+          "settings": {
+            "place": "Homestead Hollow",
+            "title": "Home goods",
+            "caption": "Kitchen, decor and everyday household finds.",
+            "icon": "home",
+            "x": 84,
+            "y": 30
+          }
+        }
+      },
+      "block_order": [
+        "m1",
+        "m2",
+        "m3",
+        "m4"
+      ]
+    },
+    "latest": {
+      "type": "tgu-new-arrivals",
+      "settings": {
+        "eyebrow": "Fresh off the truck",
+        "heading": "What's on the shelves this week",
+        "only_recent": false,
+        "hide_sold": true,
+        "limit": 8,
+        "link_label": "See all new finds",
+        "color_scheme": "scheme-1",
+        "padding_top": 64,
+        "padding_bottom": 96
+      }
+    },
+    "visit": {
+      "type": "tgu-visit",
+      "settings": {
+        "eyebrow": "Visit the store",
+        "heading": "Come take a look.",
+        "address": "9924 S Monarch Dr\nFranklin, WI 53132",
+        "hours": "Showroom open by appointment",
+        "phone": "",
+        "button_label": "Book a visit",
+        "button_link": "",
+        "show_map": true,
+        "color_scheme": "scheme-4",
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
+    },
+    "faq": {
+      "type": "tgu-faq",
+      "settings": {
+        "eyebrow": "Good to know",
+        "heading": "Visiting us",
+        "show_search": false,
+        "search_label": "Search questions",
+        "empty_text": "No questions match that. Try another word, or send us a message.",
+        "schema": false,
+        "cta_heading": "",
+        "cta_text": "Come see the store in person, or send us a message.",
+        "cta_label": "Visit or contact us",
+        "cta_link": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 80,
+        "padding_bottom": 96
+      },
+      "blocks": {
+        "q2_0": {
+          "type": "question",
+          "settings": {
+            "question": "Where are you?",
+            "answer": "<p>9924 S Monarch Dr, Franklin, WI 53132, in the Milwaukee area. <a href=\"/pages/visit\">Get directions</a>.</p>"
+          }
+        },
+        "q2_1": {
+          "type": "question",
+          "settings": {
+            "question": "Do I need an appointment?",
+            "answer": "<p>Yes, the showroom is open by appointment. <a href=\"/pages/visit\">Book a visit</a> and we'll set up a time.</p>"
+          }
+        },
+        "q2_2": {
+          "type": "question",
+          "settings": {
+            "question": "Can I see an item before I buy it?",
+            "answer": "<p>Yes. Book a visit and come take a look in person.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q2_0",
+        "q2_1",
+        "q2_2"
+      ]
+    }
+  },
+  "order": [
+    "hero",
+    "story",
+    "map",
+    "latest",
+    "visit",
+    "faq"
+  ]
+}

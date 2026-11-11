@@ -1,10 +1,100 @@
 {
   "sections": {
-    "main": {
-      "type": "main-404"
+    "hero": {
+      "type": "tgu-page-hero",
+      "settings": {
+        "eyebrow": "Page not found",
+        "heading": "Off the trail.",
+        "text": "This page wandered into the great unknown. Let's get you back on the path.",
+        "button_label": "Back to the shop",
+        "button_link": "/collections/all",
+        "color_scheme": "scheme-2",
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
+    },
+    "map": {
+      "type": "tgu-treasure-map",
+      "settings": {
+        "eyebrow": "Pick a new trail",
+        "heading": "Try one of these.",
+        "text": "Every aisle is new ground. Pick a stop and see what's on the shelves.",
+        "cta": "Explore",
+        "color_scheme": "scheme-2",
+        "padding_top": 96,
+        "padding_bottom": 96
+      },
+      "blocks": {
+        "m1": {
+          "type": "stop",
+          "settings": {
+            "place": "Renovation Ridge",
+            "title": "Renovation & tools",
+            "caption": "Tile, fixtures, flooring and tools for DIYers and contractors.",
+            "icon": "tools",
+            "x": 14,
+            "y": 68
+          }
+        },
+        "m2": {
+          "type": "stop",
+          "settings": {
+            "place": "Furniture Falls",
+            "title": "Furniture",
+            "caption": "Recliners, tables, dressers and more.",
+            "icon": "sofa",
+            "x": 36,
+            "y": 40
+          }
+        },
+        "m3": {
+          "type": "stop",
+          "settings": {
+            "place": "Gadget Gulch",
+            "title": "Electronics & watches",
+            "caption": "TVs, gadgets, smartwatches and accessories.",
+            "icon": "electronics",
+            "x": 60,
+            "y": 62
+          }
+        },
+        "m4": {
+          "type": "stop",
+          "settings": {
+            "place": "Homestead Hollow",
+            "title": "Home goods",
+            "caption": "Kitchen, decor and everyday household finds.",
+            "icon": "home",
+            "x": 84,
+            "y": 30
+          }
+        }
+      },
+      "block_order": [
+        "m1",
+        "m2",
+        "m3",
+        "m4"
+      ]
+    },
+    "latest": {
+      "type": "tgu-new-arrivals",
+      "settings": {
+        "eyebrow": "Fresh off the truck",
+        "heading": "What's on the shelves this week",
+        "only_recent": false,
+        "hide_sold": true,
+        "limit": 8,
+        "link_label": "See all new finds",
+        "color_scheme": "scheme-1",
+        "padding_top": 64,
+        "padding_bottom": 96
+      }
     }
   },
   "order": [
-    "main"
+    "hero",
+    "map",
+    "latest"
   ]
 }

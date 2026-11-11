@@ -1,0 +1,65 @@
+{%- comment -%}
+  Site-wide structured data for search engines: the store as a local business (schema.org "Store"), built only from
+  the confirmed business details in Theme settings → TGU Liquidation. Fields left blank there are left out here.
+  Replaces Dawn's generic Organization block.
+{%- endcomment -%}
+{%- liquid
+  assign same_as = ''
+  assign social_keys = 'social_tiktok_link,social_instagram_link,social_facebook_link,social_youtube_link,social_pinterest_link,social_twitter_link' | split: ','
+  for s in social_keys
+    assign link = settings[s]
+    if link != blank
+      assign same_as = same_as | append: '|' | append: link
+    endif
+  endfor
+  assign same_as = same_as | remove_first: '|' | split: '|'
+-%}
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Store",
+    "@id": {{ request.origin | append: '/#store' | json }},
+    "name": {{ shop.name | json }},
+    "url": {{ request.origin | append: '/' | json }},
+    "logo": {{ 'tgu-app-icon-512.png' | asset_url | prepend: 'https:' | json }},
+    "image": {{ 'tgu-og-image.jpg' | asset_url | prepend: 'https:' | json }},
+    {%- if shop.description != blank %}
+    "description": {{ shop.description | json }},
+    {%- endif %}
+    {%- if settings.tgu_street != blank %}
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": {{ settings.tgu_street | json }},
+      "addressLocality": {{ settings.tgu_city | json }},
+      "addressRegion": {{ settings.tgu_region | json }},
+      "postalCode": {{ settings.tgu_postal | json }},
+      "addressCountry": "US"
+    },
+    {%- endif %}
+    {%- if settings.tgu_service_area != blank %}
+    "areaServed": {{ settings.tgu_service_area | remove_first: 'the ' | json }},
+    {%- endif %}
+    {%- if settings.tgu_phone != blank %}
+    "telephone": {{ settings.tgu_phone | json }},
+    {%- endif %}
+    {%- if settings.tgu_email != blank %}
+    "email": {{ settings.tgu_email | json }},
+    {%- endif %}
+    "sameAs": {{ same_as | json }}
+  }
+</script>
+{%- if request.page_type == 'index' -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": {{ shop.name | json }},
+      "url": {{ request.origin | append: '/' | json }},
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {{ request.origin | append: routes.search_url | append: '?q={search_term_string}' | json }},
+        "query-input": "required name=search_term_string"
+      }
+    }
+  </script>
+{%- endif -%}

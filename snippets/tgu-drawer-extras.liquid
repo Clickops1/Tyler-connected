@@ -1,0 +1,54 @@
+{%- comment -%}
+  Brand block inside the hamburger menu: tagline, "Book a visit" button, address, hours, contact, TikTok.
+  Reads the business details from Theme settings → TGU Liquidation.
+{%- endcomment -%}
+<div class="tgu-drawer">
+  <svg class="tgu-drawer__ridge" viewBox="0 0 240 44" aria-hidden="true" focusable="false">
+    <path d="M2 40 L52 8 L84 28 L116 4 L160 34 L184 18 L238 40"/>
+  </svg>
+  {%- if settings.tgu_menu_tagline != blank -%}
+    <p class="tgu-drawer__tagline">{{ settings.tgu_menu_tagline | escape }}</p>
+  {%- endif -%}
+  {%- if settings.tgu_menu_cta != blank -%}
+    <a class="button tgu-drawer__cta" href="{{ settings.tgu_booking_url | default: '/pages/visit' }}">
+      {{- settings.tgu_menu_cta | escape -}}
+    </a>
+  {%- endif -%}
+  <dl class="tgu-drawer__info">
+    {%- if settings.tgu_street != blank -%}
+      <div>
+        <dt>Visit</dt>
+        <dd>
+          <a href="https://www.google.com/maps/search/?api=1&query={{ settings.tgu_street | append: ', ' | append: settings.tgu_city | append: ', ' | append: settings.tgu_region | append: ' ' | append: settings.tgu_postal | url_encode }}" target="_blank" rel="noopener">
+            {{- settings.tgu_street | escape }}<br>{{ settings.tgu_city | escape }}, {{ settings.tgu_region | escape }} {{ settings.tgu_postal | escape -}}
+          </a>
+        </dd>
+      </div>
+    {%- endif -%}
+    {%- if settings.tgu_hours != blank -%}
+      <div>
+        <dt>Hours</dt>
+        <dd>{{ settings.tgu_hours | escape }}</dd>
+      </div>
+    {%- endif -%}
+    {%- if settings.tgu_phone != blank or settings.tgu_email != blank -%}
+      <div>
+        <dt>Contact</dt>
+        <dd>
+          {%- if settings.tgu_phone != blank -%}
+            <a href="tel:{{ settings.tgu_phone | remove: ' ' | remove: '(' | remove: ')' | remove: '-' | remove: '.' }}">{{ settings.tgu_phone | escape }}</a><br>
+          {%- endif -%}
+          {%- if settings.tgu_email != blank -%}
+            <a href="mailto:{{ settings.tgu_email }}">{{ settings.tgu_email | escape }}</a>
+          {%- endif -%}
+        </dd>
+      </div>
+    {%- endif -%}
+    {%- if settings.social_tiktok_link != blank -%}
+      <div>
+        <dt>Follow the finds</dt>
+        <dd><a href="{{ settings.social_tiktok_link }}" target="_blank" rel="noopener">TikTok @tguliquidation</a></dd>
+      </div>
+    {%- endif -%}
+  </dl>
+</div>

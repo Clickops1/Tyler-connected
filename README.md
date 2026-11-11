@@ -52,14 +52,54 @@ For a whole pallet, use **Products → Import** with Shopify's CSV template. Put
 ### Page templates
 Create each page in **Online Store → Pages**, then pick its template under **Theme template**:
 
-| Page | Handle | Template | Notes |
+| Page | Handle | Template | What's on it |
 | --- | --- | --- | --- |
-| About | `about` | `page.about` | The page's own text shows under "What we stand for". The homepage "Read our story" button links to `/pages/about`. |
-| Visit | `visit` | `page.visit` | Address, map, FAQ and a contact form. Product pages link "Book a visit" to `/pages/visit`. |
-| Mystery boxes | `mystery-boxes` | `page.mystery-boxes` | Coming-soon page with the email sign-up. |
-| What we carry | `what-we-carry` | `page.what-we-carry` | Category cards, new arrivals, just sold. |
-| Wholesale & contractors | `wholesale` | `page.wholesale` | **[CONFIRM]** Only publish once Tyler confirms they sell wholesale. The page's text plus a contact form. |
-| Faith statement | `faith` | default `page` | In Tyler and Kylee's own words. |
+| About | `about` | `page.about` | Story, values, the page's own text, trail, visit. The homepage "Read our story" button links here. |
+| Visit | `visit` | `page.visit` | Address, map, visiting FAQ, contact form. "Book a visit" buttons link here by default. |
+| Help & FAQ | `faq` | `page.faq` | Searchable FAQ with topic navigation, plus FAQ structured data for Google. |
+| Condition guide | `condition-guide` | `page.condition-guide` | What New / Like new / Open box / Used / As is mean, each linking to that condition's products. |
+| How it works | `how-it-works` | `page.how-it-works` | 4-step trail, next drop, buying FAQ, visit. |
+| Drops | `drops` | `page.drops` | Next-drop countdown, just landed, finds videos, just sold. |
+| What we carry | `what-we-carry` | `page.what-we-carry` | Category cards, ticker, new arrivals, just sold. |
+| Mystery boxes | `mystery-boxes` | `page.mystery-boxes` | Coming-soon page with the box reveal and sign-up. |
+| Franklin, WI (local SEO) | `liquidation-store-franklin-wi` | `page.local` | Local landing page for "liquidation store near Milwaukee / Franklin" searches. |
+| Wholesale & contractors | `wholesale` | `page.wholesale` | **[CONFIRM]** Only publish once Tyler confirms they offer it. |
+| Faith statement | `faith` | `page.faith` | In Tyler and Kylee's own words (the page's text). |
+
+The 404 page ("Off the trail.") and blog articles (breadcrumbs) are styled automatically.
+
+### Menus (hamburger)
+The header uses a hamburger menu on every screen size, with a "Book a visit" button beside it on desktop. Set up
+**Online Store → Navigation**:
+
+- **Main menu** (`main-menu`): Shop all, New this week (`/collections/all?sort_by=created-descending`), Drops,
+  What we carry (with the four category collections nested under it), Mystery boxes, How it works, Condition guide,
+  About, Help & FAQ, Visit.
+- **Footer menu** (`footer`): Help & FAQ, Condition guide, Visit, Faith statement, plus the Shopify policies.
+
+The menu also shows the address, hours, contact details and TikTok from **Theme settings → TGU Liquidation**.
+
+### SEO checklist
+Built in:
+- Structured data: the store as a local business (address, area served, TikTok), products with real price,
+  availability and **condition** (shows as New/Used in Google), breadcrumbs on products, collections and articles,
+  and FAQ data on the Help & FAQ page.
+- Brand share image (logo on forest) for any page without its own image, plus Open Graph and Twitter tags.
+- One main heading per page (TGU page heroes hide the duplicate page title).
+
+To do in Shopify:
+- [ ] **Business details** in Theme settings → TGU Liquidation: fill in phone, email and hours once confirmed. They feed
+      the menu and the structured data.
+- [ ] **Search engine listing** on every product, collection and page (Edit → Search engine listing): a clear title
+      ("Open-box power recliner | The Great Unknown Liquidation") and a one-sentence description.
+- [ ] **Homepage title and description** in Online Store → Preferences, e.g. "Liquidation store in Franklin, WI |
+      The Great Unknown Liquidation" and "Overstock and returns at liquidation prices near Milwaukee: renovation gear,
+      furniture, electronics, watches and home goods."
+- [ ] **Alt text** on product photos: say what the item is and its condition.
+- [ ] **Google Business Profile** for the Franklin address, linking to the site, and **Google Search Console** with the
+      sitemap at `/sitemap.xml` (Shopify generates it).
+- [ ] **Collection descriptions**: two or three plain sentences each (they show at the top of the collection).
+- [ ] Optional: a **blog** ("Finds journal") with hauls and how-tos. Each post is a new page Google can find.
 
 ### Filters (shop by condition, category, price)
 Install Shopify's free **Search & Discovery** app, then under **Filters** add: Availability, Price, Product type, and

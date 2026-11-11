@@ -12,6 +12,85 @@
     "settings": [
       {
         "type": "header",
+        "content": "Business details"
+      },
+      {
+        "type": "paragraph",
+        "content": "Used by the menu, the Visit and FAQ pages, and the structured data Google reads. Only enter confirmed details."
+      },
+      {
+        "type": "text",
+        "id": "tgu_street",
+        "label": "Street address",
+        "default": "9924 S Monarch Dr"
+      },
+      {
+        "type": "text",
+        "id": "tgu_city",
+        "label": "City",
+        "default": "Franklin"
+      },
+      {
+        "type": "text",
+        "id": "tgu_region",
+        "label": "State",
+        "default": "WI"
+      },
+      {
+        "type": "text",
+        "id": "tgu_postal",
+        "label": "ZIP",
+        "default": "53132"
+      },
+      {
+        "type": "text",
+        "id": "tgu_hours",
+        "label": "Hours (shown on the site)",
+        "default": "Showroom open by appointment",
+        "info": "Confirm with Tyler before launch."
+      },
+      {
+        "type": "text",
+        "id": "tgu_phone",
+        "label": "Phone",
+        "info": "Leave blank until confirmed."
+      },
+      {
+        "type": "text",
+        "id": "tgu_email",
+        "label": "Email",
+        "info": "Leave blank until confirmed."
+      },
+      {
+        "type": "url",
+        "id": "tgu_booking_url",
+        "label": "\"Book a visit\" link",
+        "info": "Defaults to /pages/visit."
+      },
+      {
+        "type": "text",
+        "id": "tgu_service_area",
+        "label": "Area served",
+        "default": "the Milwaukee area"
+      },
+      {
+        "type": "header",
+        "content": "Menu"
+      },
+      {
+        "type": "text",
+        "id": "tgu_menu_cta",
+        "label": "Menu button",
+        "default": "Book a visit"
+      },
+      {
+        "type": "text",
+        "id": "tgu_menu_tagline",
+        "label": "Menu tagline",
+        "default": "Renovation gear. Liquidation prices."
+      },
+      {
+        "type": "header",
         "content": "\"Just in\" badge"
       },
       {

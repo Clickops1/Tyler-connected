@@ -1,0 +1,140 @@
+{
+  "sections": {
+    "hero": {
+      "type": "tgu-page-hero",
+      "settings": {
+        "eyebrow": "Condition guide",
+        "heading": "New, open box or as-is?",
+        "text": "Here's exactly what each label means.",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "scheme-2",
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
+    },
+    "guide": {
+      "type": "tgu-condition-guide",
+      "settings": {
+        "eyebrow": "Condition guide",
+        "heading": "Know what you're getting.",
+        "text": "<p>Every product shows its condition. Here's what each label means. The photos and description always cover the details of that exact item.</p>",
+        "color_scheme": "scheme-1",
+        "padding_top": 96,
+        "padding_bottom": 64
+      },
+      "blocks": {
+        "k0": {
+          "type": "condition",
+          "settings": {
+            "label": "New",
+            "level": 5,
+            "definition": "Unused, in its original condition.",
+            "tip": "The photos for anything shown in the description."
+          }
+        },
+        "k1": {
+          "type": "condition",
+          "settings": {
+            "label": "Like new",
+            "level": 4,
+            "definition": "Looks and works like new. It may have been opened or returned.",
+            "tip": "The photos for packaging and any missing accessories."
+          }
+        },
+        "k2": {
+          "type": "condition",
+          "settings": {
+            "label": "Open box",
+            "level": 4,
+            "definition": "The packaging has been opened. It may have been returned or used for display.",
+            "tip": "The description for what's included in the box."
+          }
+        },
+        "k3": {
+          "type": "condition",
+          "settings": {
+            "label": "Used",
+            "level": 3,
+            "definition": "Previously used. Expect normal signs of wear.",
+            "tip": "The photos up close for scuffs or marks."
+          }
+        },
+        "k4": {
+          "type": "condition",
+          "settings": {
+            "label": "As is",
+            "level": 2,
+            "definition": "Sold as-is, exactly as you see it.",
+            "tip": "Everything. Read the description and come see it in person if you're unsure."
+          }
+        }
+      },
+      "block_order": [
+        "k0",
+        "k1",
+        "k2",
+        "k3",
+        "k4"
+      ]
+    },
+    "faq": {
+      "type": "tgu-faq",
+      "settings": {
+        "eyebrow": "Good to know",
+        "heading": "Condition questions",
+        "show_search": false,
+        "search_label": "Search questions",
+        "empty_text": "No questions match that. Try another word, or send us a message.",
+        "schema": false,
+        "cta_heading": "",
+        "cta_text": "Come see the store in person, or send us a message.",
+        "cta_label": "Visit or contact us",
+        "cta_link": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 32,
+        "padding_bottom": 96
+      },
+      "blocks": {
+        "q1_0": {
+          "type": "question",
+          "settings": {
+            "question": "What do the condition labels mean?",
+            "answer": "<p>Every product shows its condition, like New, Open box or As is. See the <a href=\"/pages/condition-guide\">condition guide</a> for what each one means. The photos and description always cover the details of that exact item.</p>"
+          }
+        },
+        "q1_1": {
+          "type": "question",
+          "settings": {
+            "question": "What does \"as-is\" mean?",
+            "answer": "<p>The item is sold exactly as you see it. Look closely at the photos and description, and come see it in person if you're unsure.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q1_0",
+        "q1_1"
+      ]
+    },
+    "latest": {
+      "type": "tgu-new-arrivals",
+      "settings": {
+        "eyebrow": "Fresh off the truck",
+        "heading": "What's on the shelves this week",
+        "only_recent": false,
+        "hide_sold": true,
+        "limit": 8,
+        "link_label": "See all new finds",
+        "color_scheme": "scheme-1",
+        "padding_top": 64,
+        "padding_bottom": 96
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "guide",
+    "faq",
+    "latest"
+  ]
+}

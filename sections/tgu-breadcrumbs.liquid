@@ -1,0 +1,89 @@
+{%- comment -%}
+  Visible breadcrumbs plus BreadcrumbList structured data. Works on product, collection, page, blog and article pages.
+{%- endcomment -%}
+{%- liquid
+  assign crumbs_names = 'Home'
+  assign crumbs_urls = routes.root_url
+  case request.page_type
+    when 'product'
+      assign parent = collection | default: product.collections.first
+      if parent != blank
+        assign crumbs_names = crumbs_names | append: '|' | append: parent.title
+        assign crumbs_urls = crumbs_urls | append: '|' | append: parent.url
+      endif
+      assign crumbs_names = crumbs_names | append: '|' | append: product.title
+      assign crumbs_urls = crumbs_urls | append: '|' | append: product.url
+    when 'collection'
+      assign crumbs_names = crumbs_names | append: '|Shop'
+      assign crumbs_urls = crumbs_urls | append: '|' | append: routes.all_products_collection_url
+      if collection.handle != 'all'
+        assign crumbs_names = crumbs_names | append: '|' | append: collection.title
+        assign crumbs_urls = crumbs_urls | append: '|' | append: collection.url
+      endif
+    when 'page'
+      assign crumbs_names = crumbs_names | append: '|' | append: page.title
+      assign crumbs_urls = crumbs_urls | append: '|' | append: page.url
+    when 'blog'
+      assign crumbs_names = crumbs_names | append: '|' | append: blog.title
+      assign crumbs_urls = crumbs_urls | append: '|' | append: blog.url
+    when 'article'
+      assign crumbs_names = crumbs_names | append: '|' | append: blog.title | append: '|' | append: article.title
+      assign crumbs_urls = crumbs_urls | append: '|' | append: blog.url | append: '|' | append: article.url
+  endcase
+  assign names = crumbs_names | split: '|'
+  assign urls = crumbs_urls | split: '|'
+-%}
+
+{%- if names.size > 1 -%}
+  <nav class="tgu-crumbs color-{{ section.settings.color_scheme }} gradient" aria-label="Breadcrumb">
+    <ol class="tgu-crumbs__list page-width" role="list">
+      {%- for name in names -%}
+        <li class="tgu-crumbs__item">
+          {%- if forloop.last -%}
+            <span aria-current="page">{{ name | escape }}</span>
+          {%- else -%}
+            <a href="{{ urls[forloop.index0] }}">{{ name | escape }}</a>
+            <svg class="tgu-crumbs__sep" viewBox="0 0 16 8" aria-hidden="true" focusable="false"><path d="M1 7 L5 2 L8 5 L11 1 L15 7"/></svg>
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ol>
+  </nav>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {%- for name in names -%}
+          {
+            "@type": "ListItem",
+            "position": {{ forloop.index }},
+            "name": {{ name | json }},
+            "item": {{ request.origin | append: urls[forloop.index0] | json }}
+          }{%- unless forloop.last -%},{%- endunless -%}
+        {%- endfor -%}
+      ]
+    }
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "TGU breadcrumbs",
+  "tag": "div",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "TGU breadcrumbs"
+    }
+  ]
+}
+{% endschema %}

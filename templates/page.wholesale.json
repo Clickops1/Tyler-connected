@@ -17,7 +17,8 @@
       "type": "main-page",
       "settings": {
         "padding_top": 64,
-        "padding_bottom": 32
+        "padding_bottom": 32,
+        "hide_title": true
       }
     },
     "form": {

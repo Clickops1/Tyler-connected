@@ -30,6 +30,13 @@
   <meta property="og:image:secure_url" content="https:{{ page_image | image_url }}">
   <meta property="og:image:width" content="{{ page_image.width }}">
   <meta property="og:image:height" content="{{ page_image.height }}">
+{%- else -%}
+  {%- comment -%} TGU: brand share image (logo on forest) when the page has no image of its own {%- endcomment -%}
+  <meta property="og:image" content="https:{{ 'tgu-og-image.jpg' | asset_url }}">
+  <meta property="og:image:secure_url" content="https:{{ 'tgu-og-image.jpg' | asset_url }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="{{ shop.name | escape }}">
 {%- endif -%}
 
 {%- if request.page_type == 'product' -%}

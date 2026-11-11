@@ -404,3 +404,101 @@ tgu-recently-viewed[hidden] { display: none; }
   background-size: 600px 400px;
 }
 .facets__heading, .facet-filters__label { font-family: var(--font-body-family); font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; font-size: 1.2rem; }
+
+/* ---------- Hamburger menu (Dawn drawer) ---------- */
+.tgu-header-cta {
+  min-height: 4rem;
+  padding: 0 2rem;
+  font-size: 1.2rem;
+  margin-right: 1.2rem;
+  align-self: center;
+}
+@media screen and (min-width: 750px) {
+  .menu-drawer { width: 48rem; }
+}
+.menu-drawer {
+  background-image:
+    radial-gradient(ellipse at 100% 0%, rgba(215, 177, 141, 0.12), transparent 55%),
+    linear-gradient(180deg, var(--tgu-forest) 0%, var(--tgu-forest-deep) 100%);
+  border-right: 1.5px solid rgba(215, 177, 141, 0.35);
+}
+.menu-drawer__navigation { padding: 3.2rem 0 1.6rem; }
+.menu-drawer__menu-item {
+  font-family: var(--font-heading-family);
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: clamp(2.8rem, 3.4vw, 3.6rem);
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+  color: var(--tgu-cream);
+  padding: 1rem 3.2rem;
+  position: relative;
+  transition: color 0.2s var(--tgu-ease), padding-left 0.25s var(--tgu-ease);
+}
+.menu-drawer__menu-item:hover,
+.menu-drawer__menu-item:focus-visible { color: var(--tgu-sand); padding-left: 4.4rem; background: transparent; }
+.menu-drawer__menu { list-style: none; margin: 0; padding: 0; }
+.menu-drawer .menu-drawer__menu-item--active,
+.menu-drawer .menu-drawer__menu-item:focus,
+.menu-drawer .menu-drawer__menu-item:hover {
+  color: var(--tgu-sand);
+  background-color: transparent;
+  padding-left: 4.4rem;
+}
+.menu-drawer__menu-item--active::before,
+.menu-drawer__menu-item:hover::before {
+  content: '';
+  position: absolute;
+  left: 2rem;
+  top: 50%;
+  width: 1.2rem;
+  height: 1.2rem;
+  margin-top: -0.6rem;
+  border-radius: 50%;
+  background: var(--tgu-sand);
+}
+.menu-drawer__submenu .menu-drawer__menu-item { font-size: 2.4rem; }
+.menu-drawer__close-button { font-family: var(--font-body-family); font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; font-size: 1.2rem; color: var(--tgu-sand); }
+@media (prefers-reduced-motion: no-preference) {
+  .menu-opening .menu-drawer__menu > li { animation: tgu-rise 0.45s var(--tgu-ease) both; }
+  .menu-opening .menu-drawer__menu > li:nth-child(2) { animation-delay: 0.05s; }
+  .menu-opening .menu-drawer__menu > li:nth-child(3) { animation-delay: 0.1s; }
+  .menu-opening .menu-drawer__menu > li:nth-child(4) { animation-delay: 0.15s; }
+  .menu-opening .menu-drawer__menu > li:nth-child(5) { animation-delay: 0.2s; }
+  .menu-opening .menu-drawer__menu > li:nth-child(6) { animation-delay: 0.25s; }
+  .menu-opening .menu-drawer__menu > li:nth-child(7) { animation-delay: 0.3s; }
+  .menu-opening .menu-drawer__menu > li:nth-child(n + 8) { animation-delay: 0.35s; }
+}
+
+.tgu-drawer {
+  margin: 0 3.2rem 2.4rem;
+  padding: 2.4rem 0 0;
+  border-top: 1px solid rgba(215, 177, 141, 0.3);
+  color: var(--tgu-cream);
+}
+.tgu-drawer__ridge {
+  width: 9.6rem;
+  height: auto;
+  fill: none;
+  stroke: var(--tgu-sand);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  display: block;
+  margin-bottom: 1.2rem;
+}
+.tgu-drawer__tagline { margin: 0 0 1.6rem; font-weight: 300; font-style: italic; font-size: 1.8rem; color: var(--tgu-cream); }
+.tgu-drawer__cta { width: 100%; }
+.tgu-drawer__info { margin: 2.4rem 0 0; display: grid; gap: 1.6rem; }
+.tgu-drawer__info dt { font-size: 1.1rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--tgu-sand); margin-bottom: 0.4rem; }
+.tgu-drawer__info dd { margin: 0; font-size: 1.5rem; line-height: 1.5; }
+.tgu-drawer__info a { color: var(--tgu-cream); text-underline-offset: 4px; }
+.tgu-drawer__info a:hover { color: var(--tgu-sand-light); }
+
+/* ---------- Polish (from the redesign audit) ---------- */
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+h1, h2, h3, .h0, .h1, .h2, .tgu-display, .tgu-h2 { text-wrap: balance; }
+p, .rte { text-wrap: pretty; }
+.button:active:not(:disabled) { transform: translateY(1px) scale(0.98); }
+.rte p, .tgu-body-l { max-width: 68ch; }

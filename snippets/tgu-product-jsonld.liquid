@@ -1,0 +1,68 @@
+{%- comment -%}
+  Product structured data with each variant's real price, availability and condition (schema.org itemCondition),
+  so search results can show "Used" or "New" next to the price. Condition comes from the same tag/metafield as the
+  badges: new → NewCondition; like new, open box, used and as is → UsedCondition; refurbished → RefurbishedCondition.
+  Accepts: product
+{%- endcomment -%}
+{%- capture tgu_condition -%}{%- render 'tgu-condition-name', product: product -%}{%- endcapture -%}
+{%- liquid
+  assign key = tgu_condition | strip | handleize
+  assign item_condition = blank
+  case key
+    when 'new'
+      assign item_condition = 'https://schema.org/NewCondition'
+    when 'refurbished'
+      assign item_condition = 'https://schema.org/RefurbishedCondition'
+    when 'like-new', 'open-box', 'used', 'as-is'
+      assign item_condition = 'https://schema.org/UsedCondition'
+  endcase
+  assign description = product.description | strip_html | strip_newlines | truncate: 5000
+-%}
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "@id": {{ request.origin | append: product.url | append: '#product' | json }},
+    "name": {{ product.title | json }},
+    "url": {{ request.origin | append: product.url | json }},
+    {%- if description != blank %}
+    "description": {{ description | json }},
+    {%- endif %}
+    {%- if product.media.size > 0 %}
+    "image": [
+      {%- for media in product.media limit: 6 -%}
+        {%- if media.preview_image -%}
+          {{ media.preview_image | image_url: width: 1600 | prepend: 'https:' | json }}{%- unless forloop.last -%},{%- endunless -%}
+        {%- endif -%}
+      {%- endfor -%}
+    ],
+    {%- endif %}
+    {%- if product.vendor != blank and product.vendor != shop.name %}
+    "brand": { "@type": "Brand", "name": {{ product.vendor | json }} },
+    {%- endif %}
+    {%- if product.selected_or_first_available_variant.sku != blank %}
+    "sku": {{ product.selected_or_first_available_variant.sku | json }},
+    {%- endif %}
+    {%- if product.selected_or_first_available_variant.barcode != blank %}
+    "gtin": {{ product.selected_or_first_available_variant.barcode | json }},
+    {%- endif %}
+    "offers": [
+      {%- for variant in product.variants -%}
+        {
+          "@type": "Offer",
+          "url": {{ request.origin | append: variant.url | json }},
+          "price": {{ variant.price | divided_by: 100.0 | json }},
+          "priceCurrency": {{ cart.currency.iso_code | json }},
+          "availability": "https://schema.org/{% if variant.available %}InStock{% else %}SoldOut{% endif %}",
+          {%- if item_condition != blank %}
+          "itemCondition": {{ item_condition | json }},
+          {%- endif %}
+          {%- if variant.sku != blank %}
+          "sku": {{ variant.sku | json }},
+          {%- endif %}
+          "seller": { "@id": {{ request.origin | append: '/#store' | json }} }
+        }{%- unless forloop.last -%},{%- endunless -%}
+      {%- endfor -%}
+    ]
+  }
+</script>

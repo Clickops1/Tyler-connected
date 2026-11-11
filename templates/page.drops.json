@@ -1,0 +1,113 @@
+{
+  "sections": {
+    "hero": {
+      "type": "tgu-page-hero",
+      "settings": {
+        "eyebrow": "Drops",
+        "heading": "Fresh off the truck.",
+        "text": "New stock lands all the time. Here's what just came in.",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "scheme-2",
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
+    },
+    "drop": {
+      "type": "tgu-drop",
+      "settings": {
+        "drop_date": "",
+        "badge": "Next drop",
+        "live_badge": "Live now",
+        "heading": "The next truckload.",
+        "text": "Fresh overstock and returns, straight to the shelves. Get a heads-up the moment it lands.",
+        "count_label": "new finds in this drop",
+        "live_button": "See the drop",
+        "form_label": "Get drop alerts",
+        "form_button": "Notify me",
+        "success": "You're in. We'll email you when the next drop lands.",
+        "color_scheme": "scheme-3",
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
+    },
+    "latest": {
+      "type": "tgu-new-arrivals",
+      "settings": {
+        "eyebrow": "This week's finds",
+        "heading": "Just landed",
+        "only_recent": false,
+        "hide_sold": true,
+        "limit": 12,
+        "link_label": "See all new finds",
+        "color_scheme": "scheme-1",
+        "padding_top": 64,
+        "padding_bottom": 96
+      }
+    },
+    "reels": {
+      "type": "tgu-video-finds",
+      "settings": {
+        "eyebrow": "Straight from the aisles",
+        "heading": "Watch the hunt.",
+        "follow_label": "Follow on TikTok",
+        "color_scheme": "scheme-2",
+        "padding_top": 96,
+        "padding_bottom": 96
+      },
+      "blocks": {
+        "r0": {
+          "type": "reel",
+          "settings": {
+            "caption": "Look what came off the truck"
+          }
+        },
+        "r1": {
+          "type": "reel",
+          "settings": {
+            "caption": "Pallet of tile, unboxed"
+          }
+        },
+        "r2": {
+          "type": "reel",
+          "settings": {
+            "caption": "This recliner though"
+          }
+        },
+        "r3": {
+          "type": "reel",
+          "settings": {
+            "caption": "Mystery find of the week"
+          }
+        }
+      },
+      "block_order": [
+        "r0",
+        "r1",
+        "r2",
+        "r3"
+      ]
+    },
+    "sold": {
+      "type": "tgu-just-sold",
+      "settings": {
+        "eyebrow": "Already found a home",
+        "heading": "Just missed it",
+        "text": "Stock changes all the time. Follow along so you don't miss the next one.",
+        "stamp": "Sold",
+        "show_price": true,
+        "limit": 6,
+        "color_scheme": "scheme-3",
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "drop",
+    "latest",
+    "reels",
+    "sold"
+  ]
+}

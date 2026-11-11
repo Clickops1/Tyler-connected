@@ -1,5 +1,11 @@
 {
   "sections": {
+    "breadcrumbs": {
+      "type": "tgu-breadcrumbs",
+      "settings": {
+        "color_scheme": "scheme-1"
+      }
+    },
     "main": {
       "type": "main-article",
       "blocks": {
@@ -35,6 +41,7 @@
     }
   },
   "order": [
+    "breadcrumbs",
     "main"
   ]
 }

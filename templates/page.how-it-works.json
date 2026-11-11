@@ -1,0 +1,204 @@
+{
+  "sections": {
+    "hero": {
+      "type": "tgu-page-hero",
+      "settings": {
+        "eyebrow": "How it works",
+        "heading": "Treasure hunting, made simple.",
+        "text": "Spot it, see it, make it yours.",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "scheme-2",
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
+    },
+    "trail": {
+      "type": "tgu-trail",
+      "settings": {
+        "eyebrow": "Step by step",
+        "heading": "How buying from us works.",
+        "text": "",
+        "button_label": "",
+        "button_link": "",
+        "contours": true,
+        "color_scheme": "scheme-2",
+        "padding_top": 96,
+        "padding_bottom": 96
+      },
+      "blocks": {
+        "s0": {
+          "type": "step",
+          "settings": {
+            "icon": "trail",
+            "title": "Spot the find",
+            "text": "Browse the newest finds right here, or follow along on TikTok @tguliquidation."
+          }
+        },
+        "s1": {
+          "type": "step",
+          "settings": {
+            "icon": "pin",
+            "title": "Come see it",
+            "text": "Book a visit to our Franklin showroom and see it in person."
+          }
+        },
+        "s2": {
+          "type": "step",
+          "settings": {
+            "icon": "home",
+            "title": "Make it yours",
+            "text": "Check out right here on the site, or ask us about it when you visit."
+          }
+        },
+        "s3": {
+          "type": "step",
+          "settings": {
+            "icon": "box",
+            "title": "Watch for the next drop",
+            "text": "New stock lands all the time. Sign up for drop alerts so you hear first."
+          }
+        }
+      },
+      "block_order": [
+        "s0",
+        "s1",
+        "s2",
+        "s3"
+      ]
+    },
+    "drop": {
+      "type": "tgu-drop",
+      "settings": {
+        "drop_date": "",
+        "badge": "Next drop",
+        "live_badge": "Live now",
+        "heading": "The next truckload.",
+        "text": "Fresh overstock and returns, straight to the shelves. Get a heads-up the moment it lands.",
+        "count_label": "new finds in this drop",
+        "live_button": "See the drop",
+        "form_label": "Get drop alerts",
+        "form_button": "Notify me",
+        "success": "You're in. We'll email you when the next drop lands.",
+        "color_scheme": "scheme-3",
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
+    },
+    "faq": {
+      "type": "tgu-faq",
+      "settings": {
+        "eyebrow": "Questions",
+        "heading": "Before you buy",
+        "show_search": true,
+        "search_label": "Search questions",
+        "empty_text": "No questions match that. Try another word, or send us a message.",
+        "schema": false,
+        "cta_heading": "",
+        "cta_text": "Come see the store in person, or send us a message.",
+        "cta_label": "Visit or contact us",
+        "cta_link": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 80,
+        "padding_bottom": 96
+      },
+      "blocks": {
+        "c0": {
+          "type": "category",
+          "settings": {
+            "title": "Shopping & prices"
+          }
+        },
+        "q0_0": {
+          "type": "question",
+          "settings": {
+            "question": "Why are your prices so low?",
+            "answer": "<p>We buy overstock, shelf pulls and returns, and pass the savings on to you.</p>"
+          }
+        },
+        "q0_1": {
+          "type": "question",
+          "settings": {
+            "question": "What does \"below retail\" mean?",
+            "answer": "<p>When we know an item's retail price, we show it next to our price so you can see the difference. If we don't know the retail price, we don't show one.</p>"
+          }
+        },
+        "q0_2": {
+          "type": "question",
+          "settings": {
+            "question": "How often does new stock come in?",
+            "answer": "<p>Stock changes all the time. Check <a href=\"/collections/all?sort_by=created-descending\">New this week</a>, sign up for drop alerts, or follow along on TikTok @tguliquidation.</p>"
+          }
+        },
+        "q0_3": {
+          "type": "question",
+          "settings": {
+            "question": "If I see it online, is it still available?",
+            "answer": "<p>The stock count on each product page is the real number left. Quantities are often small, so when something sells out it may not come back.</p>"
+          }
+        },
+        "c3": {
+          "type": "category",
+          "settings": {
+            "title": "Orders & payment"
+          }
+        },
+        "q3_0": {
+          "type": "question",
+          "settings": {
+            "question": "How do I pay?",
+            "answer": "<p>Securely at checkout. You'll see every payment option available there.</p>"
+          }
+        },
+        "q3_1": {
+          "type": "question",
+          "settings": {
+            "question": "Do you ship, or is it pickup?",
+            "answer": "<p>See our <a href=\"/policies/shipping-policy\">shipping policy</a> for the options and costs.</p>"
+          }
+        },
+        "q3_2": {
+          "type": "question",
+          "settings": {
+            "question": "What's your return policy?",
+            "answer": "<p>See our <a href=\"/policies/refund-policy\">return policy</a> for the details.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "c0",
+        "q0_0",
+        "q0_1",
+        "q0_2",
+        "q0_3",
+        "c3",
+        "q3_0",
+        "q3_1",
+        "q3_2"
+      ]
+    },
+    "visit": {
+      "type": "tgu-visit",
+      "settings": {
+        "eyebrow": "Visit the store",
+        "heading": "Come take a look.",
+        "address": "9924 S Monarch Dr\nFranklin, WI 53132",
+        "hours": "Showroom open by appointment",
+        "phone": "",
+        "button_label": "Book a visit",
+        "button_link": "",
+        "show_map": true,
+        "color_scheme": "scheme-4",
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "trail",
+    "drop",
+    "faq",
+    "visit"
+  ]
+}

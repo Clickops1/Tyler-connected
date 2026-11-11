@@ -30,42 +30,49 @@
       }
     },
     "faq": {
-      "type": "collapsible-content",
+      "type": "tgu-faq",
       "settings": {
-        "caption": "",
+        "eyebrow": "Before you come",
         "heading": "Good to know",
-        "heading_size": "h1",
-        "heading_alignment": "left",
-        "layout": "none",
-        "container_color_scheme": "scheme-1",
+        "show_search": false,
+        "search_label": "Search questions",
+        "empty_text": "No questions match that. Try another word, or send us a message.",
+        "schema": false,
+        "cta_heading": "",
+        "cta_text": "Come see the store in person, or send us a message.",
+        "cta_label": "Visit or contact us",
+        "cta_link": "",
         "color_scheme": "scheme-1",
-        "open_first_collapsible_row": false,
-        "image_ratio": "adapt",
-        "desktop_layout": "image_second",
         "padding_top": 64,
-        "padding_bottom": 32
+        "padding_bottom": 96
       },
       "blocks": {
-        "q1": {
-          "type": "collapsible_row",
+        "q2_0": {
+          "type": "question",
           "settings": {
-            "heading": "Do I need an appointment?",
-            "icon": "none",
-            "row_content": "<p>Yes, our showroom is open by appointment. Book a visit and we'll set up a time.</p>"
+            "question": "Where are you?",
+            "answer": "<p>9924 S Monarch Dr, Franklin, WI 53132, in the Milwaukee area. <a href=\"/pages/visit\">Get directions</a>.</p>"
           }
         },
-        "q3": {
-          "type": "collapsible_row",
+        "q2_1": {
+          "type": "question",
           "settings": {
-            "heading": "Does the stock change?",
-            "icon": "none",
-            "row_content": "<p>All the time. We buy overstock, shelf pulls and returns, so most items are one of a kind. Check \"New this week\" or follow us on TikTok @tguliquidation.</p>"
+            "question": "Do I need an appointment?",
+            "answer": "<p>Yes, the showroom is open by appointment. <a href=\"/pages/visit\">Book a visit</a> and we'll set up a time.</p>"
+          }
+        },
+        "q2_2": {
+          "type": "question",
+          "settings": {
+            "question": "Can I see an item before I buy it?",
+            "answer": "<p>Yes. Book a visit and come take a look in person.</p>"
           }
         }
       },
       "block_order": [
-        "q1",
-        "q3"
+        "q2_0",
+        "q2_1",
+        "q2_2"
       ]
     },
     "form": {
