@@ -3,9 +3,9 @@
     "hero": {
       "type": "tgu-page-hero",
       "settings": {
-        "eyebrow": "Franklin, WI \u00b7 Milwaukee area",
-        "heading": "Liquidation store in Franklin, WI.",
-        "text": "Overstock and returns at liquidation prices, near Milwaukee.",
+        "eyebrow": "Oak Creek, WI \u00b7 Milwaukee area",
+        "heading": "Liquidation store in Oak Creek, WI.",
+        "text": "Unclaimed and recovered new products at liquidation prices, near Milwaukee.",
         "button_label": "Plan your visit",
         "button_link": "/pages/visit",
         "color_scheme": "scheme-2",
@@ -16,9 +16,9 @@
     "story": {
       "type": "tgu-story",
       "settings": {
-        "eyebrow": "Franklin, WI \u00b7 Milwaukee area",
-        "heading": "Your local liquidation store.",
-        "text": "<p>Looking for a liquidation store near Milwaukee? The Great Unknown Liquidation is a family-owned store at 9924 S Monarch Dr in Franklin, Wisconsin, run by Tyler and Kylee Rude.</p><p>We buy overstock, shelf pulls and returns and pass the savings on: renovation gear for DIYers and contractors, plus furniture, electronics, watches and home goods. Stock changes all the time, so every visit is a treasure hunt.</p>",
+        "eyebrow": "Oak Creek, WI \u00b7 Milwaukee area",
+        "heading": "Your local liquidation store near Milwaukee.",
+        "text": "<p>The Great Unknown Liquidation is a family-owned store in Oak Creek, Wisconsin, run by Tyler and Kylee Rude. We buy overstock, lost and unclaimed packages, and liquidation products, and pass the savings on to DIYers, contractors and everyday shoppers.</p><p>What you'll find on our shelves:</p><ul><li>Watches</li><li>Jewelry</li><li>Home goods</li><li>Tools</li><li>Renovation gear</li></ul><p>Every visit is a treasure hunt.</p>",
         "signature": "",
         "button_label": "Plan your visit",
         "button_link": "/pages/visit",
@@ -39,56 +39,57 @@
         "padding_bottom": 96
       },
       "blocks": {
-        "m1": {
+        "m0": {
           "type": "stop",
           "settings": {
             "place": "Renovation Ridge",
-            "title": "Renovation & tools",
-            "caption": "Tile, fixtures, flooring and tools for DIYers and contractors.",
+            "title": "Tools & renovation gear",
+            "caption": "Power tools, supplies and renovation gear for DIYers and contractors.",
             "icon": "tools",
             "x": 14,
             "y": 68
           }
         },
-        "m2": {
+        "m1": {
           "type": "stop",
           "settings": {
-            "place": "Furniture Falls",
-            "title": "Furniture",
-            "caption": "Recliners, tables, dressers and more.",
-            "icon": "sofa",
+            "place": "Watchtower Peak",
+            "title": "Watches & jewelry",
+            "caption": "Watches and jewelry, brand new at liquidation prices.",
+            "icon": "watch",
             "x": 36,
             "y": 40
           }
         },
-        "m3": {
-          "type": "stop",
-          "settings": {
-            "place": "Gadget Gulch",
-            "title": "Electronics & watches",
-            "caption": "TVs, gadgets, smartwatches and accessories.",
-            "icon": "electronics",
-            "x": 60,
-            "y": 62
-          }
-        },
-        "m4": {
+        "m2": {
           "type": "stop",
           "settings": {
             "place": "Homestead Hollow",
             "title": "Home goods",
             "caption": "Kitchen, decor and everyday household finds.",
             "icon": "home",
+            "x": 60,
+            "y": 62
+          }
+        },
+        "m3": {
+          "type": "stop",
+          "settings": {
+            "place": "Mystery Mountain",
+            "title": "Mystery boxes",
+            "caption": "$20 to $150. You never know what's inside.",
+            "icon": "box",
             "x": 84,
-            "y": 30
+            "y": 30,
+            "link": "/pages/mystery-boxes"
           }
         }
       },
       "block_order": [
+        "m0",
         "m1",
         "m2",
-        "m3",
-        "m4"
+        "m3"
       ]
     },
     "latest": {
@@ -110,7 +111,7 @@
       "settings": {
         "eyebrow": "Visit the store",
         "heading": "Come take a look.",
-        "address": "9924 S Monarch Dr\nFranklin, WI 53132",
+        "address": "Oak Creek, WI",
         "hours": "Showroom open by appointment",
         "phone": "",
         "button_label": "Book a visit",
@@ -118,7 +119,9 @@
         "show_map": true,
         "color_scheme": "scheme-4",
         "padding_top": 96,
-        "padding_bottom": 96
+        "padding_bottom": 96,
+        "inventory_label": "See our inventory online",
+        "inventory_link": "/collections/all"
       }
     },
     "faq": {
@@ -136,14 +139,15 @@
         "cta_link": "",
         "color_scheme": "scheme-1",
         "padding_top": 80,
-        "padding_bottom": 96
+        "padding_bottom": 96,
+        "expand_all": true
       },
       "blocks": {
         "q2_0": {
           "type": "question",
           "settings": {
             "question": "Where are you?",
-            "answer": "<p>9924 S Monarch Dr, Franklin, WI 53132, in the Milwaukee area. <a href=\"/pages/visit\">Get directions</a>.</p>"
+            "answer": "<p>We're in Oak Creek, Wisconsin, in the Milwaukee area. <a href=\"/pages/visit\">Get directions</a>.</p>"
           }
         },
         "q2_1": {

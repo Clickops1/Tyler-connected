@@ -25,56 +25,57 @@
         "padding_bottom": 96
       },
       "blocks": {
-        "m1": {
+        "m0": {
           "type": "stop",
           "settings": {
             "place": "Renovation Ridge",
-            "title": "Renovation & tools",
-            "caption": "Tile, fixtures, flooring and tools for DIYers and contractors.",
+            "title": "Tools & renovation gear",
+            "caption": "Power tools, supplies and renovation gear for DIYers and contractors.",
             "icon": "tools",
             "x": 14,
             "y": 68
           }
         },
-        "m2": {
+        "m1": {
           "type": "stop",
           "settings": {
-            "place": "Furniture Falls",
-            "title": "Furniture",
-            "caption": "Recliners, tables, dressers and more.",
-            "icon": "sofa",
+            "place": "Watchtower Peak",
+            "title": "Watches & jewelry",
+            "caption": "Watches and jewelry, brand new at liquidation prices.",
+            "icon": "watch",
             "x": 36,
             "y": 40
           }
         },
-        "m3": {
-          "type": "stop",
-          "settings": {
-            "place": "Gadget Gulch",
-            "title": "Electronics & watches",
-            "caption": "TVs, gadgets, smartwatches and accessories.",
-            "icon": "electronics",
-            "x": 60,
-            "y": 62
-          }
-        },
-        "m4": {
+        "m2": {
           "type": "stop",
           "settings": {
             "place": "Homestead Hollow",
             "title": "Home goods",
             "caption": "Kitchen, decor and everyday household finds.",
             "icon": "home",
+            "x": 60,
+            "y": 62
+          }
+        },
+        "m3": {
+          "type": "stop",
+          "settings": {
+            "place": "Mystery Mountain",
+            "title": "Mystery boxes",
+            "caption": "$20 to $150. You never know what's inside.",
+            "icon": "box",
             "x": 84,
-            "y": 30
+            "y": 30,
+            "link": "/pages/mystery-boxes"
           }
         }
       },
       "block_order": [
+        "m0",
         "m1",
         "m2",
-        "m3",
-        "m4"
+        "m3"
       ]
     },
     "latest": {

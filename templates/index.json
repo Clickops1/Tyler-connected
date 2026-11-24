@@ -3,9 +3,9 @@
     "hero": {
       "type": "tgu-hero",
       "settings": {
-        "eyebrow": "Family-owned liquidation \u00b7 Franklin, WI",
+        "eyebrow": "Family-owned liquidation \u00b7 Oak Creek, WI",
         "heading": "Every aisle is new ground.",
-        "tagline": "Renovation gear. Liquidation prices.",
+        "tagline": "Brand-new finds. Liquidation prices.",
         "button_label_1": "See the latest finds",
         "button_link_1": "shopify://collections/all",
         "button_label_2": "Book a visit",
@@ -33,10 +33,10 @@
     "mystery": {
       "type": "tgu-mystery-teaser",
       "settings": {
-        "badge": "Coming soon",
-        "heading": "Mystery boxes.",
-        "text": "<p>We're not announcing them yet. (They're coming.)</p>",
-        "show_signup": true,
+        "badge": "Now available",
+        "heading": "Mystery boxes are here.",
+        "text": "<p>Pick your price: $50, $100 or $150 mystery boxes, or a $20\u2013$40 white elephant gift with a single mystery item inside.</p>",
+        "show_signup": false,
         "button_label": "Get mystery box updates",
         "success_message": "You're on the list. We'll tell you the moment they drop.",
         "follow_label": "Follow the finds on TikTok",
@@ -44,7 +44,9 @@
         "padding_top": 96,
         "padding_bottom": 96,
         "reveal_label": "Peek inside",
-        "reveal_close_label": "Close the box"
+        "reveal_close_label": "Close the box",
+        "shop_label": "Shop mystery boxes",
+        "shop_link": "/pages/mystery-boxes"
       }
     },
     "story": {
@@ -52,8 +54,8 @@
       "settings": {
         "eyebrow": "Our story",
         "heading": "From our family to yours.",
-        "text": "<p>The Great Unknown Liquidation is a family business in Franklin, Wisconsin, run by Tyler and Kylee Rude. We buy overstock, shelf pulls and returns, and pass the savings on to you.</p><p>Honest deals on the stuff you need, and plenty you didn't know you needed.</p>",
-        "signature": "Tyler & Kylee",
+        "text": "<p>The Great Unknown Liquidation is a family business in Oak Creek, Wisconsin, run by Tyler and Kylee Rude. We buy overstock, lost and unclaimed packages, and liquidation products, and pass the savings on to DIYers, contractors and everyday shoppers.</p><p>Watches, jewelry, home goods, tools and renovation gear: honest deals on the stuff you need, and plenty you didn't know you needed.</p>",
+        "signature": "Kylee & Tyler",
         "button_label": "Read our story",
         "button_link": "/pages/about",
         "color_scheme": "scheme-1",
@@ -66,7 +68,7 @@
       "settings": {
         "eyebrow": "Visit the store",
         "heading": "Come take a look.",
-        "address": "9924 S Monarch Dr\nFranklin, WI 53132",
+        "address": "Oak Creek, WI",
         "hours": "Showroom open by appointment",
         "phone": "",
         "button_label": "Book a visit",
@@ -74,7 +76,9 @@
         "show_map": true,
         "color_scheme": "scheme-4",
         "padding_top": 96,
-        "padding_bottom": 96
+        "padding_bottom": 96,
+        "inventory_label": "See our inventory online",
+        "inventory_link": "/collections/all"
       }
     },
     "ticker": {
@@ -88,56 +92,56 @@
         "t0": {
           "type": "item",
           "settings": {
-            "text": "Recliners",
+            "text": "Watches",
             "link": ""
           }
         },
         "t1": {
           "type": "item",
           "settings": {
-            "text": "Pallets of tile",
+            "text": "Jewelry",
             "link": ""
           }
         },
         "t2": {
           "type": "item",
           "settings": {
-            "text": "Smartwatches",
+            "text": "Power tools",
             "link": ""
           }
         },
         "t3": {
           "type": "item",
           "settings": {
-            "text": "Power tools",
+            "text": "Renovation gear",
             "link": ""
           }
         },
         "t4": {
           "type": "item",
           "settings": {
-            "text": "Dressers",
+            "text": "Home goods",
             "link": ""
           }
         },
         "t5": {
           "type": "item",
           "settings": {
-            "text": "TVs",
+            "text": "Kitchen finds",
             "link": ""
           }
         },
         "t6": {
           "type": "item",
           "settings": {
-            "text": "Kitchen finds",
+            "text": "Mystery boxes",
             "link": ""
           }
         },
         "t7": {
           "type": "item",
           "settings": {
-            "text": "Home goods",
+            "text": "White elephant gifts",
             "link": ""
           }
         }
@@ -179,8 +183,8 @@
           "type": "step",
           "settings": {
             "icon": "pin",
-            "title": "Come see it",
-            "text": "Book a visit to our Franklin showroom and see it in person."
+            "title": "See it or buy it now",
+            "text": "Buy it online right away, or book a visit to our Oak Creek showroom to see it in person."
           }
         },
         "s2": {
@@ -231,56 +235,57 @@
         "padding_bottom": 96
       },
       "blocks": {
-        "m1": {
+        "m0": {
           "type": "stop",
           "settings": {
             "place": "Renovation Ridge",
-            "title": "Renovation & tools",
-            "caption": "Tile, fixtures, flooring and tools for DIYers and contractors.",
+            "title": "Tools & renovation gear",
+            "caption": "Power tools, supplies and renovation gear for DIYers and contractors.",
             "icon": "tools",
             "x": 14,
             "y": 68
           }
         },
-        "m2": {
+        "m1": {
           "type": "stop",
           "settings": {
-            "place": "Furniture Falls",
-            "title": "Furniture",
-            "caption": "Recliners, tables, dressers and more.",
-            "icon": "sofa",
+            "place": "Watchtower Peak",
+            "title": "Watches & jewelry",
+            "caption": "Watches and jewelry, brand new at liquidation prices.",
+            "icon": "watch",
             "x": 36,
             "y": 40
           }
         },
-        "m3": {
-          "type": "stop",
-          "settings": {
-            "place": "Gadget Gulch",
-            "title": "Electronics & watches",
-            "caption": "TVs, gadgets, smartwatches and accessories.",
-            "icon": "electronics",
-            "x": 60,
-            "y": 62
-          }
-        },
-        "m4": {
+        "m2": {
           "type": "stop",
           "settings": {
             "place": "Homestead Hollow",
             "title": "Home goods",
             "caption": "Kitchen, decor and everyday household finds.",
             "icon": "home",
+            "x": 60,
+            "y": 62
+          }
+        },
+        "m3": {
+          "type": "stop",
+          "settings": {
+            "place": "Mystery Mountain",
+            "title": "Mystery boxes",
+            "caption": "$20 to $150. You never know what's inside.",
+            "icon": "box",
             "x": 84,
-            "y": 30
+            "y": 30,
+            "link": "/pages/mystery-boxes"
           }
         }
       },
       "block_order": [
+        "m0",
         "m1",
         "m2",
-        "m3",
-        "m4"
+        "m3"
       ]
     },
     "drop": {
@@ -290,7 +295,7 @@
         "badge": "Next drop",
         "live_badge": "Live now",
         "heading": "The next truckload.",
-        "text": "Fresh overstock and returns, straight to the shelves. Get a heads-up the moment it lands.",
+        "text": "Fresh unclaimed and recovered finds, straight to the shelves. Get a heads-up the moment it lands.",
         "count_label": "new finds in this drop",
         "live_button": "See the drop",
         "form_label": "Get drop alerts",
@@ -343,6 +348,20 @@
         "r2",
         "r3"
       ]
+    },
+    "reviews": {
+      "type": "tgu-reviews",
+      "settings": {
+        "eyebrow": "From our customers",
+        "heading": "Finds people love.",
+        "interval": 7,
+        "link_label": "Read more reviews",
+        "color_scheme": "scheme-1",
+        "padding_top": 96,
+        "padding_bottom": 96
+      },
+      "blocks": {},
+      "block_order": []
     }
   },
   "order": [
@@ -356,6 +375,7 @@
     "mystery",
     "sold",
     "story",
+    "reviews",
     "divider",
     "visit"
   ]

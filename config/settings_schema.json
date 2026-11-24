@@ -22,13 +22,13 @@
         "type": "text",
         "id": "tgu_street",
         "label": "Street address",
-        "default": "9924 S Monarch Dr"
+        "default": ""
       },
       {
         "type": "text",
         "id": "tgu_city",
         "label": "City",
-        "default": "Franklin"
+        "default": "Oak Creek"
       },
       {
         "type": "text",
@@ -40,7 +40,7 @@
         "type": "text",
         "id": "tgu_postal",
         "label": "ZIP",
-        "default": "53132"
+        "default": ""
       },
       {
         "type": "text",
@@ -87,7 +87,7 @@
         "type": "text",
         "id": "tgu_menu_tagline",
         "label": "Menu tagline",
-        "default": "Renovation gear. Liquidation prices."
+        "default": "Brand-new finds. Liquidation prices."
       },
       {
         "type": "header",

@@ -4,8 +4,8 @@
       "type": "tgu-page-hero",
       "settings": {
         "eyebrow": "What we carry",
-        "heading": "Overstock and returns, all over the map.",
-        "text": "Renovation gear. Liquidation prices.",
+        "heading": "Unclaimed and recovered finds, all over the map.",
+        "text": "Brand-new products at liquidation prices.",
         "button_label": "",
         "button_link": "",
         "color_scheme": "scheme-2",
@@ -18,7 +18,7 @@
       "settings": {
         "eyebrow": "Shop by category",
         "heading": "Pick a trail.",
-        "text": "<p>Renovation gear for DIYers and contractors, plus furniture, electronics, watches and home goods.</p>",
+        "text": "<p>Watches, jewelry, home goods, tools and renovation gear, brand new at liquidation prices.</p>",
         "color_scheme": "scheme-1",
         "padding_top": 96,
         "padding_bottom": 96
@@ -28,8 +28,8 @@
           "type": "plate",
           "settings": {
             "icon": "tools",
-            "title": "Renovation & tools",
-            "caption": "Tile, fixtures, flooring and tools for DIYers and contractors.",
+            "title": "Tools & renovation gear",
+            "caption": "Power tools, supplies and renovation gear for DIYers and contractors.",
             "collection": "",
             "link": "",
             "cta": "Shop"
@@ -38,9 +38,9 @@
         "b1": {
           "type": "plate",
           "settings": {
-            "icon": "sofa",
-            "title": "Furniture",
-            "caption": "Recliners, tables, dressers and more.",
+            "icon": "watch",
+            "title": "Watches & jewelry",
+            "caption": "Watches and jewelry, brand new at liquidation prices.",
             "collection": "",
             "link": "",
             "cta": "Shop"
@@ -49,9 +49,9 @@
         "b2": {
           "type": "plate",
           "settings": {
-            "icon": "electronics",
-            "title": "Electronics & watches",
-            "caption": "TVs, gadgets, smartwatches and accessories.",
+            "icon": "home",
+            "title": "Home goods",
+            "caption": "Kitchen, decor and everyday household finds.",
             "collection": "",
             "link": "",
             "cta": "Shop"
@@ -60,11 +60,11 @@
         "b3": {
           "type": "plate",
           "settings": {
-            "icon": "home",
-            "title": "Home goods",
-            "caption": "Kitchen, decor and everyday household finds.",
+            "icon": "box",
+            "title": "Mystery boxes",
+            "caption": "$20 to $150. You never know what's inside.",
             "collection": "",
-            "link": "",
+            "link": "/pages/mystery-boxes",
             "cta": "Shop"
           }
         }
@@ -87,56 +87,56 @@
         "t0": {
           "type": "item",
           "settings": {
-            "text": "Recliners",
+            "text": "Watches",
             "link": ""
           }
         },
         "t1": {
           "type": "item",
           "settings": {
-            "text": "Pallets of tile",
+            "text": "Jewelry",
             "link": ""
           }
         },
         "t2": {
           "type": "item",
           "settings": {
-            "text": "Smartwatches",
+            "text": "Power tools",
             "link": ""
           }
         },
         "t3": {
           "type": "item",
           "settings": {
-            "text": "Power tools",
+            "text": "Renovation gear",
             "link": ""
           }
         },
         "t4": {
           "type": "item",
           "settings": {
-            "text": "Dressers",
+            "text": "Home goods",
             "link": ""
           }
         },
         "t5": {
           "type": "item",
           "settings": {
-            "text": "TVs",
+            "text": "Kitchen finds",
             "link": ""
           }
         },
         "t6": {
           "type": "item",
           "settings": {
-            "text": "Kitchen finds",
+            "text": "Mystery boxes",
             "link": ""
           }
         },
         "t7": {
           "type": "item",
           "settings": {
-            "text": "Home goods",
+            "text": "White elephant gifts",
             "link": ""
           }
         }

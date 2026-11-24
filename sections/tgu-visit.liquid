@@ -65,6 +65,11 @@
               <a class="button" href="tel:{{ phone_digits }}">{{ section.settings.button_label | escape }}</a>
             {%- endif -%}
           {%- endif -%}
+          {%- if section.settings.inventory_label != blank -%}
+            <a class="button" href="{{ section.settings.inventory_link | default: routes.all_products_collection_url }}">
+              {{- section.settings.inventory_label | escape -}}
+            </a>
+          {%- endif -%}
           {%- if section.settings.address != blank -%}
             <a
               class="button button--secondary"
@@ -114,7 +119,7 @@
       "type": "textarea",
       "id": "address",
       "label": "Address",
-      "default": "9924 S Monarch Dr\nFranklin, WI 53132"
+      "default": "Oak Creek, WI"
     },
     {
       "type": "textarea",
@@ -141,6 +146,18 @@
       "id": "button_link",
       "label": "Booking link",
       "info": "e.g. your Contact page or a booking app."
+    },
+    {
+      "type": "text",
+      "id": "inventory_label",
+      "label": "Inventory button label",
+      "default": "See our inventory online"
+    },
+    {
+      "type": "url",
+      "id": "inventory_link",
+      "label": "Inventory button link",
+      "info": "Defaults to all products."
     },
     {
       "type": "checkbox",

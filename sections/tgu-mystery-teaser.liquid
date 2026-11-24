@@ -111,6 +111,14 @@
           {%- endform -%}
         {%- endif -%}
 
+        {%- if section.settings.shop_label != blank -%}
+          <div class="tgu-buttons">
+            <a class="button" href="{{ section.settings.shop_link | default: '/pages/mystery-boxes' }}">
+              {{- section.settings.shop_label | escape -}}
+            </a>
+          </div>
+        {%- endif -%}
+
         {%- if section.settings.follow_label != blank and settings.social_tiktok_link != blank -%}
           <div class="tgu-teaser__follow">
             <a class="button button--secondary" href="{{ settings.social_tiktok_link }}" target="_blank" rel="noopener">
@@ -184,6 +192,18 @@
       "id": "success_message",
       "label": "Success message",
       "default": "You're on the list. We'll tell you the moment they drop."
+    },
+    {
+      "type": "text",
+      "id": "shop_label",
+      "label": "Shop button",
+      "info": "Leave blank to hide. Use once mystery boxes are for sale."
+    },
+    {
+      "type": "url",
+      "id": "shop_link",
+      "label": "Shop button link",
+      "info": "Defaults to /pages/mystery-boxes"
     },
     {
       "type": "text",

@@ -1,6 +1,6 @@
 # The Great Unknown Liquidation: Shopify theme
 
-A custom Shopify theme for The Great Unknown Liquidation (Franklin, WI), built on Shopify's Dawn theme and styled to the
+A custom Shopify theme for The Great Unknown Liquidation (Oak Creek, WI), built on Shopify's Dawn theme and styled to the
 TGU brand guidelines v1.0 (forest / sand / cream, Antonio + Montserrat, the mountain-and-river mark).
 
 Tyler and Kylee manage products, orders and payments in Shopify. This repo only controls how the store looks.
@@ -11,7 +11,7 @@ Tyler and Kylee manage products, orders and payments in Shopify. This repo only 
 | --- | --- |
 | Brand layer | `assets/tgu-brand.css`: Antonio uppercase headlines, pill buttons, brand badges, forest plates, contour motif, focus rings, reduced-motion support. Color schemes live in `config/settings_data.json`. |
 | Logos and icons | `assets/tgu-logo-{sand,forest,cream}.png`, `tgu-mark-sand.png`, favicons and app icon, pulled from the brand guidelines PDF. The header shows the mark until a logo is uploaded in the theme editor. |
-| Homepage | `templates/index.json`: hero, "What we carry" category plates, "What's on the shelves this week" products, mystery box teaser with email sign-up, our story, visit (address + map). |
+| Homepage | `templates/index.json`: hero, "What we carry" category plates, "What's on the shelves this week" products, treasure map, mystery boxes (live), our story, rotating reviews, visit (address, map, inventory link). |
 | Custom sections | `sections/tgu-*.liquid`: all editable in the Shopify theme editor and addable to any page. |
 | Condition badges | `snippets/tgu-product-badges.liquid`: shows **Open box**, **As is**, **New**, etc. on product cards and product pages. |
 | % below retail | Product cards and pages show "35% below retail" when a compare-at price is set. |
@@ -61,8 +61,8 @@ Create each page in **Online Store → Pages**, then pick its template under **T
 | How it works | `how-it-works` | `page.how-it-works` | 4-step trail, next drop, buying FAQ, visit. |
 | Drops | `drops` | `page.drops` | Next-drop countdown, just landed, finds videos, just sold. |
 | What we carry | `what-we-carry` | `page.what-we-carry` | Category cards, ticker, new arrivals, just sold. |
-| Mystery boxes | `mystery-boxes` | `page.mystery-boxes` | Coming-soon page with the box reveal and sign-up. |
-| Franklin, WI (local SEO) | `liquidation-store-franklin-wi` | `page.local` | Local landing page for "liquidation store near Milwaukee / Franklin" searches. |
+| Mystery boxes | `mystery-boxes` | `page.mystery-boxes` | Price tiers ($20–$40 white elephant gift, $50, $100, $150), box reveal, FAQ. |
+| Oak Creek, WI (local SEO) | `liquidation-store-oak-creek-wi` | `page.local` | Local landing page for "liquidation store near Milwaukee / Oak Creek" searches. |
 | Wholesale & contractors | `wholesale` | `page.wholesale` | **[CONFIRM]** Only publish once Tyler confirms they offer it. |
 | Faith statement | `faith` | `page.faith` | In Tyler and Kylee's own words (the page's text). |
 
@@ -92,11 +92,11 @@ To do in Shopify:
       the menu and the structured data.
 - [ ] **Search engine listing** on every product, collection and page (Edit → Search engine listing): a clear title
       ("Open-box power recliner | The Great Unknown Liquidation") and a one-sentence description.
-- [ ] **Homepage title and description** in Online Store → Preferences, e.g. "Liquidation store in Franklin, WI |
-      The Great Unknown Liquidation" and "Overstock and returns at liquidation prices near Milwaukee: renovation gear,
-      furniture, electronics, watches and home goods."
+- [ ] **Homepage title and description** in Online Store → Preferences, e.g. "Liquidation store in Oak Creek, WI |
+      The Great Unknown Liquidation" and "Unclaimed and recovered new products at liquidation prices near Milwaukee:
+      watches, jewelry, home goods, tools and renovation gear."
 - [ ] **Alt text** on product photos: say what the item is and its condition.
-- [ ] **Google Business Profile** for the Franklin address, linking to the site, and **Google Search Console** with the
+- [ ] **Google Business Profile** for the Oak Creek address, linking to the site, and **Google Search Console** with the
       sitemap at `/sitemap.xml` (Shopify generates it).
 - [ ] **Collection descriptions**: two or three plain sentences each (they show at the top of the collection).
 - [ ] Optional: a **blog** ("Finds journal") with hauls and how-tos. Each post is a new page Google can find.
@@ -110,7 +110,7 @@ The "Just missed it" strip shows real sold-out products. It only works if sold-o
 default). It hides itself when nothing is sold out.
 
 ### Create in Shopify admin
-- [ ] Collections: **Renovation & tools**, **Furniture**, **Electronics & watches**, **Home goods**. Then in the
+- [ ] Collections: **Tools & renovation gear**, **Watches & jewelry**, **Home goods**, **Mystery boxes**. Then in the
       theme editor, link each "What we carry" plate to its collection.
 - [ ] Navigation: a `main-menu` (Shop all, the four categories, About, Visit) and a `footer` menu (About, Contact,
       Faith statement, policies).
@@ -122,10 +122,28 @@ default). It hides itself when nothing is sold out.
 - [ ] Theme settings → Logo: upload `tgu-logo-sand.png` or the mark if you want something other than the default
       header mark.
 
+### Mystery boxes
+Create one product per box (White elephant gift $20–$40, $50 box, $100 box, $150 box) and a **Mystery boxes**
+collection. Then in the theme editor link each card in the **TGU mystery box tiers** section to its product, so the
+price and "sold out" state come from the store. Replace the box art with photos of the real boxes.
+
+### Reviews
+The **TGU reviews** section (homepage and About) rotates real customer reviews. Add one block per review, copied
+word for word from Google or Facebook with the customer's name as they gave it, and set the button link to the
+Google reviews page. It stays hidden until at least one review is added. (Alternative: a reviews app such as
+Judge.me, which collects product reviews automatically.)
+
 ### [CONFIRM] with Tyler and Kylee before launch
 The brand guidelines say: don't invent prices, hours, policies, reviews, stock counts or social handles.
 
+- [ ] **New street address and ZIP** in Oak Creek. The site shows "Oak Creek, WI" until it's filled in under
+      Theme settings → TGU Liquidation (it then flows into the menu, structured data and map links); also update the
+      Visit section address and the footer text.
 - [ ] Hours: the site currently says **"Showroom open by appointment"** (Visit section and footer).
+- [ ] Do they still carry **furniture and electronics**? The categories now follow Tyler's list: watches, jewelry,
+      home goods, tools and renovation gear (plus mystery boxes).
+- [ ] Do the **Used** and **As is** condition labels apply, given the merchandise is brand new?
+- [ ] FAQ answers still to confirm: how often new stock comes in, payment methods, shipping vs pickup, return policy.
 - [ ] Phone number: blank for now. Add it in the Visit section, which also turns on the "Book a visit" button.
 - [ ] Booking method: a phone call, a contact form, or a booking app? Set the Visit section's booking link.
 - [ ] Email address for the contact page.

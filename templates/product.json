@@ -73,7 +73,7 @@
           "type": "tgu_visit_prompt",
           "settings": {
             "heading": "Want to see it first?",
-            "text": "Come take a look at our Franklin showroom.",
+            "text": "Come take a look at our Oak Creek showroom.",
             "link_label": "Book a visit",
             "link": ""
           }
@@ -83,7 +83,7 @@
           "settings": {
             "heading": "Can I see it before I buy?",
             "icon": "eye",
-            "content": "<p>Yes. Book a visit to our showroom at 9924 S Monarch Dr in Franklin, WI, and we'll show you around.</p>"
+            "content": "<p>Yes. Book a visit to our Oak Creek showroom and we'll show you around.</p>"
           }
         },
         "faq_price": {
@@ -91,7 +91,7 @@
           "settings": {
             "heading": "Why is it priced so low?",
             "icon": "price_tag",
-            "content": "<p>We buy overstock, shelf pulls and returns, and pass the savings on to you. That's also why stock changes and most items are one of a kind.</p>"
+            "content": "<p>We buy overstock, lost and unclaimed packages, and liquidation products, and pass the savings on to you. That's also why stock changes all the time.</p>"
           }
         },
         "faq_returns": {

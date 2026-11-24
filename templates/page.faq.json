@@ -5,7 +5,7 @@
       "settings": {
         "eyebrow": "Help & FAQ",
         "heading": "Questions? We've got answers.",
-        "text": "Honest answers about prices, condition, visiting and orders.",
+        "text": "Honest answers about prices, condition, the showroom and orders.",
         "button_label": "",
         "button_link": "",
         "color_scheme": "scheme-2",
@@ -41,7 +41,7 @@
           "type": "question",
           "settings": {
             "question": "Why are your prices so low?",
-            "answer": "<p>We buy overstock, shelf pulls and returns, and pass the savings on to you.</p>"
+            "answer": "<p>We buy overstock, lost and unclaimed packages, and liquidation products, and pass the savings on to you.</p>"
           }
         },
         "q0_1": {
@@ -88,14 +88,14 @@
         "c2": {
           "type": "category",
           "settings": {
-            "title": "Visiting the store"
+            "title": "The showroom"
           }
         },
         "q2_0": {
           "type": "question",
           "settings": {
             "question": "Where are you?",
-            "answer": "<p>9924 S Monarch Dr, Franklin, WI 53132, in the Milwaukee area. <a href=\"/pages/visit\">Get directions</a>.</p>"
+            "answer": "<p>We're in Oak Creek, Wisconsin, in the Milwaukee area. <a href=\"/pages/visit\">Get directions</a>.</p>"
           }
         },
         "q2_1": {
@@ -148,8 +148,8 @@
         "q4_0": {
           "type": "question",
           "settings": {
-            "question": "When do mystery boxes launch?",
-            "answer": "<p>We're not announcing them yet. <a href=\"/pages/mystery-boxes\">Get on the list</a> and you'll hear first.</p>"
+            "question": "What mystery boxes do you have?",
+            "answer": "<p>$50, $100 and $150 mystery boxes, plus a $20\u2013$40 white elephant gift with a single mystery item inside. <a href=\"/pages/mystery-boxes\">See mystery boxes</a>.</p>"
           }
         },
         "c5": {
@@ -162,7 +162,7 @@
           "type": "question",
           "settings": {
             "question": "Do you carry renovation supplies?",
-            "answer": "<p>Yes. Renovation gear for DIYers and contractors is a big part of what we carry: tile, fixtures, flooring and tools, at liquidation prices.</p>"
+            "answer": "<p>Yes. Tools and renovation gear for DIYers and contractors are a big part of what we carry, alongside watches, jewelry and home goods, all at liquidation prices.</p>"
           }
         },
         "q5_1": {

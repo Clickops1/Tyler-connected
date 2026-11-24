@@ -3,9 +3,9 @@
     "hero": {
       "type": "tgu-page-hero",
       "settings": {
-        "eyebrow": "Coming soon",
+        "eyebrow": "Now available",
         "heading": "Mystery boxes.",
-        "text": "What's inside? That's the fun part.",
+        "text": "Pick your price. We'll pick the surprise.",
         "button_label": "",
         "button_link": "",
         "color_scheme": "scheme-2",
@@ -16,16 +16,18 @@
     "teaser": {
       "type": "tgu-mystery-teaser",
       "settings": {
-        "badge": "Coming soon",
-        "heading": "Be first in line.",
-        "text": "<p>We're not announcing them yet. (They're coming.)</p>",
-        "show_signup": true,
+        "badge": "Now available",
+        "heading": "What's inside? That's the fun part.",
+        "text": "<p>Pick your price: $50, $100 or $150 mystery boxes, or a $20\u2013$40 white elephant gift with a single mystery item inside.</p>",
+        "show_signup": false,
         "button_label": "Get mystery box updates",
         "success_message": "You're on the list. We'll tell you the moment they drop.",
         "follow_label": "Follow the finds on TikTok",
-        "color_scheme": "scheme-2",
+        "color_scheme": "scheme-3",
         "padding_top": 96,
-        "padding_bottom": 96
+        "padding_bottom": 96,
+        "shop_label": "Shop mystery boxes",
+        "shop_link": "/pages/mystery-boxes"
       }
     },
     "ticker": {
@@ -39,56 +41,56 @@
         "t0": {
           "type": "item",
           "settings": {
-            "text": "Recliners",
+            "text": "Watches",
             "link": ""
           }
         },
         "t1": {
           "type": "item",
           "settings": {
-            "text": "Pallets of tile",
+            "text": "Jewelry",
             "link": ""
           }
         },
         "t2": {
           "type": "item",
           "settings": {
-            "text": "Smartwatches",
+            "text": "Power tools",
             "link": ""
           }
         },
         "t3": {
           "type": "item",
           "settings": {
-            "text": "Power tools",
+            "text": "Renovation gear",
             "link": ""
           }
         },
         "t4": {
           "type": "item",
           "settings": {
-            "text": "Dressers",
+            "text": "Home goods",
             "link": ""
           }
         },
         "t5": {
           "type": "item",
           "settings": {
-            "text": "TVs",
+            "text": "Kitchen finds",
             "link": ""
           }
         },
         "t6": {
           "type": "item",
           "settings": {
-            "text": "Kitchen finds",
+            "text": "Mystery boxes",
             "link": ""
           }
         },
         "t7": {
           "type": "item",
           "settings": {
-            "text": "Home goods",
+            "text": "White elephant gifts",
             "link": ""
           }
         }
@@ -103,11 +105,104 @@
         "t6",
         "t7"
       ]
+    },
+    "tiers": {
+      "type": "tgu-mystery-tiers",
+      "settings": {
+        "badge": "Now available",
+        "heading": "Pick your price.",
+        "text": "We pick the surprise.",
+        "cta": "Shop",
+        "color_scheme": "scheme-2",
+        "padding_top": 96,
+        "padding_bottom": 96
+      },
+      "blocks": {
+        "x0": {
+          "type": "tier",
+          "settings": {
+            "name": "White elephant gift",
+            "price_text": "$20\u2013$40",
+            "description": "One mystery item. Made for gift swaps and stocking stuffers.",
+            "icon": "star",
+            "featured": false
+          }
+        },
+        "x1": {
+          "type": "tier",
+          "settings": {
+            "name": "The $50 box",
+            "price_text": "$50",
+            "description": "A box of brand-new mystery finds.",
+            "icon": "box",
+            "featured": false
+          }
+        },
+        "x2": {
+          "type": "tier",
+          "settings": {
+            "name": "The $100 box",
+            "price_text": "$100",
+            "description": "More finds, bigger surprises.",
+            "icon": "box",
+            "featured": true
+          }
+        },
+        "x3": {
+          "type": "tier",
+          "settings": {
+            "name": "The $150 box",
+            "price_text": "$150",
+            "description": "Our biggest box of mystery finds.",
+            "icon": "box",
+            "featured": false
+          }
+        }
+      },
+      "block_order": [
+        "x0",
+        "x1",
+        "x2",
+        "x3"
+      ]
+    },
+    "faq": {
+      "type": "tgu-faq",
+      "settings": {
+        "eyebrow": "Good to know",
+        "heading": "Mystery box questions",
+        "show_search": false,
+        "expand_all": true,
+        "search_label": "Search questions",
+        "empty_text": "",
+        "schema": false,
+        "cta_heading": "",
+        "cta_text": "",
+        "cta_label": "",
+        "cta_link": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 80,
+        "padding_bottom": 96
+      },
+      "blocks": {
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "What mystery boxes do you have?",
+            "answer": "<p>$50, $100 and $150 mystery boxes, plus a $20\u2013$40 white elephant gift with a single mystery item inside.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q1"
+      ]
     }
   },
   "order": [
     "hero",
+    "tiers",
     "teaser",
-    "ticker"
+    "ticker",
+    "faq"
   ]
 }

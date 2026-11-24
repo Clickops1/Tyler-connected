@@ -1,5 +1,5 @@
-{%- comment -%} One FAQ question (used by sections/tgu-faq.liquid). Accepts: block {%- endcomment -%}
-<details class="tgu-faq__item" data-faq-item {{ block.shopify_attributes }}>
+{%- comment -%} One FAQ question (used by sections/tgu-faq.liquid). Accepts: block, open (boolean) {%- endcomment -%}
+<details class="tgu-faq__item" data-faq-item{% if open %} open{% endif %} {{ block.shopify_attributes }}>
   <summary>
     <span class="tgu-faq__q">{{ block.settings.question | escape }}</span>
     <span class="tgu-faq__icon" aria-hidden="true"></span>

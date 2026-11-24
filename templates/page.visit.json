@@ -5,7 +5,7 @@
       "settings": {
         "eyebrow": "Visit the store",
         "heading": "Come take a look.",
-        "text": "9924 S Monarch Dr, Franklin, WI 53132",
+        "text": "Oak Creek, WI \u00b7 Milwaukee area",
         "button_label": "",
         "button_link": "",
         "color_scheme": "scheme-2",
@@ -18,7 +18,7 @@
       "settings": {
         "eyebrow": "Find us",
         "heading": "Plan your visit.",
-        "address": "9924 S Monarch Dr\nFranklin, WI 53132",
+        "address": "Oak Creek, WI",
         "hours": "Showroom open by appointment",
         "phone": "",
         "button_label": "Book a visit",
@@ -26,7 +26,9 @@
         "show_map": true,
         "color_scheme": "scheme-4",
         "padding_top": 96,
-        "padding_bottom": 96
+        "padding_bottom": 96,
+        "inventory_label": "See our inventory online",
+        "inventory_link": "/collections/all"
       }
     },
     "faq": {
@@ -44,14 +46,15 @@
         "cta_link": "",
         "color_scheme": "scheme-1",
         "padding_top": 64,
-        "padding_bottom": 96
+        "padding_bottom": 96,
+        "expand_all": true
       },
       "blocks": {
         "q2_0": {
           "type": "question",
           "settings": {
             "question": "Where are you?",
-            "answer": "<p>9924 S Monarch Dr, Franklin, WI 53132, in the Milwaukee area. <a href=\"/pages/visit\">Get directions</a>.</p>"
+            "answer": "<p>We're in Oak Creek, Wisconsin, in the Milwaukee area. <a href=\"/pages/visit\">Get directions</a>.</p>"
           }
         },
         "q2_1": {

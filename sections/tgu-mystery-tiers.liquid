@@ -1,0 +1,153 @@
+{{ 'tgu-sections.css' | asset_url | stylesheet_tag }}
+
+{%- comment -%}
+  Mystery box tiers: one card per price point. Link each card to its Shopify product so the price and
+  "sold out" state come from the store; the price text is only shown when no product is linked yet.
+{%- endcomment -%}
+
+{%- style -%}
+  #shopify-section-{{ section.id }} .tgu-section {
+    --tgu-pt: {{ section.settings.padding_top | times: 0.67 | round }}px;
+    --tgu-pb: {{ section.settings.padding_bottom | times: 0.67 | round }}px;
+    --tgu-pt-d: {{ section.settings.padding_top }}px;
+    --tgu-pb-d: {{ section.settings.padding_bottom }}px;
+  }
+{%- endstyle -%}
+
+<section class="tgu-tiers tgu-section tgu-contours color-{{ section.settings.color_scheme }} gradient">
+  <div class="tgu-inner">
+    <div class="tgu-tiers__header{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+      {%- if section.settings.badge != blank -%}
+        <span class="badge tgu-badge--deal tgu-tiers__badge">{{ section.settings.badge | escape }}</span>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="tgu-h2 tgu-heading">{{ section.settings.heading | escape }}</h2>
+      {%- endif -%}
+      {%- if section.settings.text != blank -%}
+        <p class="tgu-tiers__intro">{{ section.settings.text | escape }}</p>
+      {%- endif -%}
+    </div>
+
+    <ul class="tgu-tiers__grid" role="list">
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign p = block.settings.product
+          assign link = block.settings.link
+          if link == blank and p != blank
+            assign link = p.url
+          endif
+          if link == blank
+            assign link = section.settings.fallback_link | default: '/collections/all'
+          endif
+        -%}
+        <li
+          class="tgu-tier{% if block.settings.featured %} tgu-tier--featured{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+          {% if settings.animations_reveal_on_scroll %}
+            data-cascade
+            style="--animation-order: {{ forloop.index }};"
+          {% endif %}
+          {{ block.shopify_attributes }}
+        >
+          <a class="tgu-tier__link" href="{{ link }}">
+            <span class="tgu-tier__icon">{% render 'tgu-icon', icon: block.settings.icon %}</span>
+            <span class="tgu-tier__name">{{ block.settings.name | escape }}</span>
+            <span class="tgu-tier__price">
+              {%- if p != blank and block.settings.price_text == blank -%}
+                {%- if p.price_varies -%}{{ p.price_min | money_without_trailing_zeros }}–{{ p.price_max | money_without_trailing_zeros }}{%- else -%}{{ p.price | money_without_trailing_zeros }}{%- endif -%}
+              {%- else -%}
+                {{ block.settings.price_text | escape }}
+              {%- endif -%}
+            </span>
+            {%- if block.settings.description != blank -%}
+              <span class="tgu-tier__text">{{ block.settings.description | escape }}</span>
+            {%- endif -%}
+            {%- if p != blank and p.available == false -%}
+              <span class="tgu-tier__cta">{{ 'products.product.sold_out' | t }}</span>
+            {%- else -%}
+              <span class="tgu-tier__cta">{{ section.settings.cta | escape }} &rarr;</span>
+            {%- endif -%}
+          </a>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "TGU mystery box tiers",
+  "tag": "div",
+  "class": "section",
+  "max_blocks": 6,
+  "settings": [
+    { "type": "text", "id": "badge", "label": "Badge", "default": "Now available" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Pick your price." },
+    { "type": "text", "id": "text", "label": "Intro", "default": "We pick the surprise." },
+    { "type": "text", "id": "cta", "label": "Card link text", "default": "Shop" },
+    { "type": "url", "id": "fallback_link", "label": "Link for cards without a product", "info": "e.g. your mystery box collection." },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-2"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 160,
+      "step": 8,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 96
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 160,
+      "step": 8,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 96
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tier",
+      "name": "Box",
+      "settings": [
+        { "type": "text", "id": "name", "label": "Name", "default": "Mystery box" },
+        { "type": "product", "id": "product", "label": "Product", "info": "Its price and sold-out state show automatically." },
+        { "type": "text", "id": "price_text", "label": "Price text", "info": "Overrides the product price, e.g. \"$20–$40\"." },
+        { "type": "textarea", "id": "description", "label": "Description" },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "default": "box",
+          "options": [
+            { "value": "box", "label": "Box" },
+            { "value": "star", "label": "Star" },
+            { "value": "heart", "label": "Heart" },
+            { "value": "mountains", "label": "Mountains" }
+          ]
+        },
+        { "type": "checkbox", "id": "featured", "label": "Highlight this box", "default": false },
+        { "type": "url", "id": "link", "label": "Link (overrides product)" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "TGU mystery box tiers",
+      "blocks": [
+        { "type": "tier", "settings": { "name": "White elephant gift", "price_text": "$20–$40", "icon": "star" } },
+        { "type": "tier", "settings": { "name": "The $50 box", "price_text": "$50" } },
+        { "type": "tier", "settings": { "name": "The $100 box", "price_text": "$100" } },
+        { "type": "tier", "settings": { "name": "The $150 box", "price_text": "$150" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

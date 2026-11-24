@@ -15,12 +15,14 @@
     </a>
   {%- endif -%}
   <dl class="tgu-drawer__info">
-    {%- if settings.tgu_street != blank -%}
+    {%- if settings.tgu_city != blank -%}
+      {%- capture tgu_addr -%}{% if settings.tgu_street != blank %}{{ settings.tgu_street }}, {% endif %}{{ settings.tgu_city }}, {{ settings.tgu_region }} {{ settings.tgu_postal }}{%- endcapture -%}
       <div>
         <dt>Visit</dt>
         <dd>
-          <a href="https://www.google.com/maps/search/?api=1&query={{ settings.tgu_street | append: ', ' | append: settings.tgu_city | append: ', ' | append: settings.tgu_region | append: ' ' | append: settings.tgu_postal | url_encode }}" target="_blank" rel="noopener">
-            {{- settings.tgu_street | escape }}<br>{{ settings.tgu_city | escape }}, {{ settings.tgu_region | escape }} {{ settings.tgu_postal | escape -}}
+          <a href="https://www.google.com/maps/search/?api=1&query={{ tgu_addr | strip | url_encode }}" target="_blank" rel="noopener">
+            {%- if settings.tgu_street != blank -%}{{ settings.tgu_street | escape }}<br>{%- endif -%}
+            {{- settings.tgu_city | escape }}, {{ settings.tgu_region | escape }} {{ settings.tgu_postal | escape -}}
           </a>
         </dd>
       </div>

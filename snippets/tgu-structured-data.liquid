@@ -26,10 +26,12 @@
     {%- if shop.description != blank %}
     "description": {{ shop.description | json }},
     {%- endif %}
-    {%- if settings.tgu_street != blank %}
+    {%- if settings.tgu_city != blank %}
     "address": {
       "@type": "PostalAddress",
+      {%- if settings.tgu_street != blank %}
       "streetAddress": {{ settings.tgu_street | json }},
+      {%- endif %}
       "addressLocality": {{ settings.tgu_city | json }},
       "addressRegion": {{ settings.tgu_region | json }},
       "postalCode": {{ settings.tgu_postal | json }},

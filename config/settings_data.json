@@ -193,16 +193,16 @@
       },
       "tgu_new_badge_days": 7,
       "tgu_new_badge_label": "Just in",
-      "tgu_street": "9924 S Monarch Dr",
-      "tgu_city": "Franklin",
+      "tgu_street": "",
+      "tgu_city": "Oak Creek",
       "tgu_region": "WI",
-      "tgu_postal": "53132",
+      "tgu_postal": "",
       "tgu_hours": "Showroom open by appointment",
       "tgu_phone": "",
       "tgu_email": "",
       "tgu_service_area": "the Milwaukee area",
       "tgu_menu_cta": "Book a visit",
-      "tgu_menu_tagline": "Renovation gear. Liquidation prices."
+      "tgu_menu_tagline": "Brand-new finds. Liquidation prices."
     }
   }
 }

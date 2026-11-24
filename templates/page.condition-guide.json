@@ -38,7 +38,7 @@
           "settings": {
             "label": "Like new",
             "level": 4,
-            "definition": "Looks and works like new. It may have been opened or returned.",
+            "definition": "Looks and works like new, with only light signs of handling.",
             "tip": "The photos for packaging and any missing accessories."
           }
         },
@@ -47,7 +47,7 @@
           "settings": {
             "label": "Open box",
             "level": 4,
-            "definition": "The packaging has been opened. It may have been returned or used for display.",
+            "definition": "The packaging has been opened, but the product inside is new.",
             "tip": "The description for what's included in the box."
           }
         },

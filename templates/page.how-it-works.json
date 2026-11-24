@@ -39,8 +39,8 @@
           "type": "step",
           "settings": {
             "icon": "pin",
-            "title": "Come see it",
-            "text": "Book a visit to our Franklin showroom and see it in person."
+            "title": "See it or buy it now",
+            "text": "Buy it online right away, or book a visit to our Oak Creek showroom to see it in person."
           }
         },
         "s2": {
@@ -74,7 +74,7 @@
         "badge": "Next drop",
         "live_badge": "Live now",
         "heading": "The next truckload.",
-        "text": "Fresh overstock and returns, straight to the shelves. Get a heads-up the moment it lands.",
+        "text": "Fresh unclaimed and recovered finds, straight to the shelves. Get a heads-up the moment it lands.",
         "count_label": "new finds in this drop",
         "live_button": "See the drop",
         "form_label": "Get drop alerts",
@@ -113,7 +113,7 @@
           "type": "question",
           "settings": {
             "question": "Why are your prices so low?",
-            "answer": "<p>We buy overstock, shelf pulls and returns, and pass the savings on to you.</p>"
+            "answer": "<p>We buy overstock, lost and unclaimed packages, and liquidation products, and pass the savings on to you.</p>"
           }
         },
         "q0_1": {
@@ -182,7 +182,7 @@
       "settings": {
         "eyebrow": "Visit the store",
         "heading": "Come take a look.",
-        "address": "9924 S Monarch Dr\nFranklin, WI 53132",
+        "address": "Oak Creek, WI",
         "hours": "Showroom open by appointment",
         "phone": "",
         "button_label": "Book a visit",
@@ -190,7 +190,9 @@
         "show_map": true,
         "color_scheme": "scheme-4",
         "padding_top": 96,
-        "padding_bottom": 96
+        "padding_bottom": 96,
+        "inventory_label": "See our inventory online",
+        "inventory_link": "/collections/all"
       }
     }
   },

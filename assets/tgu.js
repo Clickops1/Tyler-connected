@@ -229,3 +229,43 @@
   }
   if (!customElements.get('tgu-faq')) customElements.define('tgu-faq', TguFaq);
 })();
+
+/* ---------- Reviews carousel ---------- */
+(() => {
+  class TguReviews extends HTMLElement {
+    connectedCallback() {
+      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => this.init(), { once: true });
+      else this.init();
+    }
+    init() {
+      this.slides = [...this.querySelectorAll('.tgu-review')];
+      this.dots = [...this.querySelectorAll('[data-dot]')];
+      this.index = 0;
+      if (this.slides.length < 2) return;
+      this.querySelector('[data-prev]')?.addEventListener('click', () => this.go(this.index - 1, true));
+      this.querySelector('[data-next]')?.addEventListener('click', () => this.go(this.index + 1, true));
+      this.dots.forEach((d) => d.addEventListener('click', () => this.go(Number(d.dataset.dot), true)));
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!reduce) {
+        const ms = Number(this.dataset.interval || 7) * 1000;
+        this.timer = setInterval(() => { if (!this.paused) this.go(this.index + 1); }, ms);
+        this.addEventListener('mouseenter', () => (this.paused = true));
+        this.addEventListener('mouseleave', () => (this.paused = false));
+        this.addEventListener('focusin', () => (this.paused = true));
+        this.addEventListener('focusout', () => (this.paused = false));
+      }
+    }
+    disconnectedCallback() { clearInterval(this.timer); }
+    go(i, user) {
+      const n = this.slides.length;
+      this.index = (i + n) % n;
+      this.slides.forEach((s, k) => {
+        s.classList.toggle('is-active', k === this.index);
+        s.setAttribute('aria-hidden', k === this.index ? 'false' : 'true');
+      });
+      this.dots.forEach((d, k) => d.classList.toggle('is-active', k === this.index));
+      if (user) this.paused = true;
+    }
+  }
+  if (!customElements.get('tgu-reviews')) customElements.define('tgu-reviews', TguReviews);
+})();

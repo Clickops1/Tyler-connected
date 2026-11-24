@@ -5,7 +5,7 @@
       "settings": {
         "eyebrow": "Our story",
         "heading": "From our family to yours.",
-        "text": "Honest deals, lasting impact.",
+        "text": "Faith, honesty and integrity.",
         "button_label": "",
         "button_link": "",
         "color_scheme": "scheme-2",
@@ -16,10 +16,10 @@
     "story": {
       "type": "tgu-story",
       "settings": {
-        "eyebrow": "Meet Tyler & Kylee",
-        "heading": "A family business in Franklin, WI.",
-        "text": "<p>The Great Unknown Liquidation is a family business in Franklin, Wisconsin, run by Tyler and Kylee Rude. We buy overstock, shelf pulls and returns, and pass the savings on to you.</p><p>Honest deals on the stuff you need, and plenty you didn't know you needed.</p>",
-        "signature": "Tyler & Kylee",
+        "eyebrow": "Meet Kylee & Tyler",
+        "heading": "A family business in Oak Creek, WI.",
+        "text": "<p>We're Kylee and Tyler Rude, a husband and wife team building our lives and business around Jesus Christ.</p><p>Through The Great Unknown Liquidation, our mission is to provide high-quality, brand-new merchandise at deeply discounted prices while leading with faith, honesty, and integrity.</p><p>Inspired by James 1:2\u20134, we believe God uses every season to strengthen our faith and build perseverance. We are committed to putting people before profit, supporting international missions, and using the opportunities God provides to serve others and bring glory to His name.</p>",
+        "signature": "Kylee & Tyler",
         "button_label": "",
         "button_link": "",
         "color_scheme": "scheme-1",
@@ -31,14 +31,14 @@
       "type": "tgu-category-plates",
       "settings": {
         "eyebrow": "What we stand for",
-        "heading": "Honest deals. Lasting impact.",
+        "heading": "Faith, honesty and integrity.",
         "text": "",
         "color_scheme": "scheme-1",
         "padding_top": 96,
         "padding_bottom": 96
       },
       "blocks": {
-        "b0": {
+        "v0": {
           "type": "plate",
           "settings": {
             "icon": "mountains",
@@ -49,23 +49,34 @@
             "cta": ""
           }
         },
-        "b1": {
+        "v1": {
           "type": "plate",
           "settings": {
             "icon": "check",
-            "title": "Honest first",
-            "caption": "We say \"as-is\" and \"open box\" when it's true. No fake urgency, no made-up savings.",
+            "title": "Honesty & integrity",
+            "caption": "We lead with faith, honesty and integrity. We say \"open box\" or \"as-is\" when it's true, with no fake urgency and no made-up savings.",
             "collection": "",
             "link": "",
             "cta": ""
           }
         },
-        "b2": {
+        "v2": {
           "type": "plate",
           "settings": {
             "icon": "home",
             "title": "Family-run",
-            "caption": "Tyler and Kylee Rude run the store together, right here in Franklin.",
+            "caption": "Kylee and Tyler Rude run the store together in Oak Creek, Wisconsin.",
+            "collection": "",
+            "link": "",
+            "cta": ""
+          }
+        },
+        "v3": {
+          "type": "plate",
+          "settings": {
+            "icon": "heart",
+            "title": "People before profit",
+            "caption": "We put people before profit and support international missions.",
             "collection": "",
             "link": "",
             "cta": ""
@@ -73,9 +84,10 @@
         }
       },
       "block_order": [
-        "b0",
-        "b1",
-        "b2"
+        "v0",
+        "v1",
+        "v2",
+        "v3"
       ]
     },
     "content": {
@@ -112,8 +124,8 @@
           "type": "step",
           "settings": {
             "icon": "pin",
-            "title": "Come see it",
-            "text": "Book a visit to our Franklin showroom and see it in person."
+            "title": "See it or buy it now",
+            "text": "Buy it online right away, or book a visit to our Oak Creek showroom to see it in person."
           }
         },
         "s2": {
@@ -136,7 +148,7 @@
       "settings": {
         "eyebrow": "Visit the store",
         "heading": "Come take a look.",
-        "address": "9924 S Monarch Dr\nFranklin, WI 53132",
+        "address": "Oak Creek, WI",
         "hours": "Showroom open by appointment",
         "phone": "",
         "button_label": "Book a visit",
@@ -144,14 +156,31 @@
         "show_map": true,
         "color_scheme": "scheme-4",
         "padding_top": 96,
-        "padding_bottom": 96
+        "padding_bottom": 96,
+        "inventory_label": "See our inventory online",
+        "inventory_link": "/collections/all"
       }
+    },
+    "reviews": {
+      "type": "tgu-reviews",
+      "settings": {
+        "eyebrow": "From our customers",
+        "heading": "Finds people love.",
+        "interval": 7,
+        "link_label": "Read more reviews",
+        "color_scheme": "scheme-1",
+        "padding_top": 96,
+        "padding_bottom": 96
+      },
+      "blocks": {},
+      "block_order": []
     }
   },
   "order": [
     "hero",
     "story",
     "values",
+    "reviews",
     "content",
     "trail",
     "visit"
